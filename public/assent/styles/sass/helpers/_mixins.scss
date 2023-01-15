@@ -1,0 +1,146 @@
+    @mixin btn-circle ($color){
+
+        background-color:$color;
+        color: $color_brouwn;
+        width: 37px;
+        height: 37px;
+        -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+        &::before{
+            line-height: 36px;
+        }
+        &:hover{
+            background-color: $home_color;
+            color: white;
+            cursor: pointer;
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+        }
+
+    }
+
+
+    @mixin btn-user ($color){
+
+        background-color:$color;
+        color: black;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+        &::before{
+            line-height: 30px;
+        }
+        &:hover{
+            background-color: $color_orng;
+            color: $color_brouwn;
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+        }
+
+    }
+
+    @mixin rounded-line($width, $height, $z-index,$color,$margin){
+        background-color: $color;
+        width: $width;
+        height: $height;
+        z-index: $z-index;
+        margin-left: $margin;
+    }
+
+    @mixin btn_add ($color_btn){
+        background-color: $color_btn;
+        color: black;
+        height: 45px;
+        width: 160px;
+        line-height: 43px;
+        position: relative;
+        text-decoration: none;
+        -webkit-transition: background-image .5s ease-out;
+        -moz-transition: background-image .5s ease-out;
+        -o-transition: background-image .5s ease-out;
+        transition: background-image .5s ease-out;
+        transform:translateY(0px);
+        transition:all 0.5s ease-in-out;
+
+        &:hover{
+            color: $color_brouwn;
+            background-color:$color_orng;
+            -webkit-transition: background-image .5s ease-out;
+            -moz-transition: background-image .5s ease-out;
+            -o-transition: background-image .5s ease-out;
+            transition: background-image .5s ease-out;
+            transform:translateY(-5px);
+            transition:all 0.5s ease-in-out;
+            }
+
+    }
+    @mixin btn_card1 ($color_btncard){
+        background-color:white;
+        color: black;
+        height: 45px;
+       /* width: 160px;*/
+        line-height: 43px;
+        position: relative;
+        text-decoration: none;
+        -webkit-transition: background-image .5s ease-out;
+        -moz-transition: background-image .5s ease-out;
+        -o-transition: background-image .5s ease-out;
+        transition: background-image .5s ease-out;
+        transform:translateY(0px);
+        transition:all 0.5s ease-in-out;
+
+        &:hover{
+            color: white;
+            background-color:$color_btncard;
+            -webkit-transition: background-image .5s ease-out;
+            -moz-transition: background-image .5s ease-out;
+            -o-transition: background-image .5s ease-out;
+            transition: background-image .5s ease-out;
+            transform:translateY(-5px);
+            transition:all 0.5s ease-in-out;
+        }
+
+    }
+    @mixin btn_web ($color_btn){
+        background-color: $color_btn;
+        color: $color_brouwn;
+        height: 45px;
+        line-height: 43px;
+        position: relative;
+        // top: -39px;
+        text-decoration: none;
+        background-image: url(../../../assent/img/final22-01.png);
+        background-repeat: no-repeat;
+        background-size: 67%;
+        background-position-x: 205px;
+        background-position-y: -16px;
+        -webkit-transition: background-image .5s ease-out;
+        -moz-transition: background-image .5s ease-out;
+        -o-transition: background-image .5s ease-out;
+        transform:translateY(0px);
+        transition:all 0.5s ease-in-out;
+
+        &:hover{
+            color: $favorites_color !important;
+            background:#fff;
+            border: 1px solid $favorites_color;
+            -webkit-transition: background-image .5s ease-out;
+            -moz-transition: background-image .5s ease-out;
+            -o-transition: background-image .5s ease-out;
+            transition: background-image .5s ease-out;
+            transform:translateY(-5px);
+            transition:all 0.5s ease-in-out;
+        }
+
+    }
+

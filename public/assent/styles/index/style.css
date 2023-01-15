@@ -1,0 +1,178 @@
+@font-face {
+    font-family: Tajwal;
+    /*src: url(../../../fonts/Tajawal-Bold.ttf)  format('truetype');*/
+    src: url("../..awal-Bold.ttf")  format('truetype');
+}
+@font-face {
+    font-family: Tajwal-light;
+    /*src: url("../../../rawafed/assent/fonts/Tajawal-Light.ttf")  format('truetype');*/
+    src: url("../..awal-Light.ttf")  format('truetype');
+}
+body, html {
+    height: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: Tajwal;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url('../..pg');
+    width:100%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    object-fit: contain !important ;
+}
+@media only screen and (max-width: 991.98px ) {
+    .solidBG{
+        display: none;
+    }
+    .gradient{
+        height: auto !important;
+        position: relative !important;
+    }
+    .header_in_responsive{
+        background-color: white;
+    }
+    .custome_image{
+        height: 100px !important;
+        width: 100px !important;
+
+    }
+    .vertical-center{
+        margin-top: 240px !important;
+        left: 0 !important;
+        right: 0 !important;
+        position: relative !important;
+    }
+    .copyRightCustom {
+        margin-top: 100px !important;
+        position: relative !important;
+    }
+    .copyRightCustom p{
+        font-size: 18px !important;
+    }
+    body{
+        /*font-size: 20px !important;*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition : 1s ease-in-out;
+        width:100%;
+        height: 100% !important;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-size:cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-attachment: fixed;
+    }
+    .custome_image{
+        width: 250px !important;
+        height: 250px !important;
+    }
+    .awards{
+        margin-top: 200px !important;
+        bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        position: relative !important;
+        font-size: 30px !important;
+    }
+
+    .awards img{
+        width: 80px !important;
+        height: 80px !important;
+
+    }
+    .custom-button{
+        left: 0;
+        right: 0;
+        font-size:26px !important;
+        position: relative !important;
+    }
+}
+.solidBG{
+    position:relative;
+    height:auto;
+    right: 0;
+    background-color: white;
+}
+.gradient {
+    position:relative;
+    background-image: radial-gradient(at 200px 200px, #ef00ff63 0, #6200ff8f 70%);
+}
+button{
+    display: flex;
+    align-items: center;
+}
+.custom-button{
+    transition: all .5s ease;
+    color: #232323;
+    border: none;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 14px;
+    background-color: #ffffffd6;
+    padding: 15px;
+    outline: none;
+    border-radius: 54px;
+    /* width: 100px; */
+}
+.custom-button:hover{
+    border: none;
+    color: #1a0836;
+    background-color: #fbdf75;
+}
+.vertical-center {
+    margin: 0;
+    margin-top: 10rem !important;
+    /*position: absolute;
+    top: 25%;
+    right: 15%;
+    left: 15%;
+*/
+}
+.awards{
+    color: white !important;
+    font-size: 15px;
+
+}
+.separator{
+    display: flex;
+    align-items: center;
+}
+.separator h5{
+    padding: 0 1rem; /* creates the space */
+}
+.separator .line{
+    flex: 1;
+    height: 1px ;
+    background-color: #b9bbbe !important;
+}
+.middle{
+    font-family: Tajwal-light;
+    font-size: 18px !important;
+}
+a.disable-links {
+    pointer-events: none;
+    text-decoration: none;
+    /*background-color: #dadadad9;*/
+    color: #515151;
+    text-decoration: none;
+    background-color: #ccccccdb;
+}
+.txt-rotate{
+    color:#026960;
+}
+.analytics{
+    color:white;
+}

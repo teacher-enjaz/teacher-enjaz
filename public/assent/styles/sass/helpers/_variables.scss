@@ -1,0 +1,191 @@
+/*@import '../sass/helpers/mixins';*/
+$direction: rtl;
+$home_color: #F9D56E;
+$color_orng:#fed180;
+$color_brouwn:#492B31;
+$color_black:#000;
+$floatLeft :left;
+$floatRight: right;
+$tajwal-font:'Tajawal','sans-serif';
+$aboutus-bg:"assets\imgs\vidoe.png";
+$fadeYellowColor:#F9D56E;
+$fadeGreenColor:#B6C134;
+$orangeColor: #FC573B;
+$darkGray:#525252;
+$whiteColor: #fff;
+$purbleColor:#BE63F9;
+$grayColor: #888686;
+$favorites_color:#F9D56E;
+$bk_section:black;
+/*start- class color*/
+.text-white{
+    color: #F9D56E !important;
+}
+.modal-header{
+    .text-white{
+        color: black !important;
+    }
+}
+
+.bk_orng{
+    color: black !important;
+}
+.btn_attach{
+    color: white;
+}
+.color_home{
+    color:$home_color ;
+}
+.color_orng{
+    color:$color_orng ;
+}
+.color-black{
+    color: $home_color;
+ }
+input:focus{
+    outline: none;
+    box-shadow : none !important;
+}
+.bk-orng{
+    background-color:$color_orng ;
+}
+.text-brouwn{
+    color:white;
+}
+.bg-warning{
+    color:black !important;
+}
+.text-date{
+    color: white !important;
+}
+.text-gr{
+    color: white;
+}
+.bk_home{
+    background-color: $home_color;
+}
+.bk_orng{
+    background-color: $color_orng;
+}
+
+.bk-fav{
+    background-color: $favorites_color;
+}
+.text-fav{
+  color: $favorites_color;
+}
+.text-color-stage{
+    color: white ;
+}
+
+/*end- class color*/
+
+
+/*start- size-font*/
+.size-20{
+    font-size:20px ;
+    font-weight: normal!important;
+}
+.size-11{
+    font-size:11px ;
+    font-weight: normal!important;
+}
+.size-12{
+    font-size:12px ;
+    font-weight: normal!important;
+}
+.size-13{
+    font-size:13px ;
+    font-weight: normal!important;
+}
+.size-14{
+    font-size:14px ;
+    font-weight: normal!important;
+}
+.size-15{
+    font-size:15px ;
+    font-weight: normal!important;
+}
+.size-24{
+    font-size:24px ;
+    font-weight: normal!important;
+    @media (max-width: 767px) {
+        font-size:16px ;
+    }
+}
+.size-16{
+    font-size:16px ;
+    font-weight: normal!important;
+    @media (max-width: 767px) {
+        font-size:12px ;
+    }
+}
+.size-18{
+    font-size:18px ;
+    font-weight: normal!important;
+    @media (max-width: 767px) {
+        font-size:16px ;
+    }
+}
+.size-26{
+    font-size:26px ;
+    font-weight: normal!important;
+}
+.size-55{
+    font-size:55px ;
+    font-weight: normal!important;
+}
+/*end- size-font*/
+
+/*start-class height*/
+.h-22px{
+    height: 22px;
+}
+.h-70px{
+    height: 70px;
+}
+.h-100px{
+    height: 100px;
+}
+.h-170px{
+    height: 170px;
+}
+.h-250px{
+    height:250px;
+}
+.h-480px{
+    height:480px;
+}
+/*start-class height*/
+
+/*start-class  border-radius*/
+.border-57{
+    border-radius: 57px;
+}
+.border-20{
+    border-radius: 20px;
+}
+.border-tr-15{
+    border-radius: 15px 15px 0px 0px;
+}
+.border-lr-15{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/*start-class  border-radius*/
+
+.title_bb{
+    background-color: $home_color; color: black; border-radius: 0px 0px 15px 15px; position: relative; top: -33px;
+    .ss{
+        color: black;
+    }
+    .color_home{
+        color: black !important;
+    }
+    .text-white{
+        color: black !important;
+    }
+}
+
+

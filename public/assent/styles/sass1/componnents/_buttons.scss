@@ -1,0 +1,547 @@
+    .btn_search{
+        @include btn-circle($color_orng);
+    }
+    .btn_icon{
+        @include btn-user($home_color);
+    }
+    .btn_add{
+        @include btn_add($home_color);
+    }
+    .white{
+        @include rounded-line(40px,5px,3,$home_color,-3px);
+    }
+    .green{
+        @include rounded-line(35px,5px,2,$fadeGreenColor,-3px);
+    }
+    .yellow{
+        @include rounded-line(30px,5px,1,$fadeYellowColor,-3px);
+    }
+    .link_class{
+        background-color: $favorites_color !important;
+        color: white !important;
+        font-weight: lighter;
+        height: 19px;
+        line-height: 9px;
+        font-size: 9px;
+        border:1px solid  $favorites_color !important;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        &:hover{
+            color: $favorites_color !important;
+            background-color: white !important;
+            border:1px solid  $favorites_color !important;
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+        }
+    }
+    .link_subject{
+        background-color:$home_color !important;
+        color: white   !important;
+        font-weight: lighter;
+        height: 19px;
+        line-height: 9px;
+        font-size: 9px;
+        border:1px solid  $home_color !important;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        &:hover{
+        color: $home_color !important;
+        background-color: white !important;
+        border:1px solid  $home_color !important;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        }
+    }
+    .link_name{
+
+        color: $home_color !important;
+        font-weight: lighter;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        &:hover{
+        color: $favorites_color !important;
+        font-weight: bold;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        }
+    }
+    .link_material{
+
+        background-color:$color_orng !important;
+        color: $color_brouwn !important;
+        font-weight: lighter;
+        height: 19px;
+        line-height: 9px;
+        border:1px solid  $color_orng !important;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        &:hover{
+        color: $color_brouwn !important;
+        background-color: white !important;
+        border:1px solid  $color_orng !important;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        }
+    }
+    .btn_icon_stage {
+        background-color: #fff;
+        border-bottom: 1px solid #063332;
+        font-family: 'rawafed_font_bold';
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+        transform: translateY(0px);
+        transition: .5s ease-out;
+        a{
+            color: #063332;
+            width: 100%;
+
+        }
+        &:hover {
+            background-color: $home_color ;
+            //border-top: 1px solid #063332;
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+            transform: translateY(-5px);
+            transition: .5s ease-out;
+            a{
+                color: #fff;
+            }
+
+        }
+    }
+
+    .btn-fav{
+            border: 1px solid #E8505B;
+            background-color: white;
+            color: $favorites_color;
+            transform:translateY(0px);
+            transition:all 0.5s ease-in-out;
+            i{
+                color: $favorites_color;
+            }
+            &:hover{
+                border: 1px solid #E8505B;
+                background-color: white;
+                color: $favorites_color;
+                ::before{
+                    content: "\f004";
+                    color: $favorites_color;
+                }
+                transform:translateY(-3px);
+                transition:all 0.5s ease-in-out;
+            }
+            &:focus{
+                border: 1px solid #E8505B;
+                color: white;
+                background-color: $favorites_color;
+                ::before{
+
+                    content: "\f004";
+                    color: white;
+
+                }
+            }
+
+
+        }
+        .btn-link_video{
+            border: 1px solid #E8505B !important;
+            border-left: 0px !important;
+            background-color: white;
+            color: $favorites_color;
+            transform:translateY(0px);
+            transition:all 0.5s ease-in-out;
+            border-radius: 0px 30px 30px 0px;
+
+            i{
+                color: $favorites_color;
+            }
+            &:hover{
+                background-color: $favorites_color;
+                color: white;
+                ::before{
+                    content: "\f004";
+                    color: white;
+                }
+                transform:translateY(-3px);
+                transition:all 0.5s ease-in-out;
+            }
+            &:focus{
+                border: 1px solid #E8505B;
+                color: white;
+                background-color: $favorites_color;
+                ::before{
+
+                    content: "\f004";
+                    color: white;
+
+                }
+            }
+            &:active{
+
+                    border: 1px solid #E8505B;
+                    background-color: white;
+                    color: $favorites_color;
+
+            }
+
+        }
+        .btn-link_eCard_info{
+            border: 1px solid $home_color !important;
+            border-left: 0px !important;
+            background-color: white;
+            color: $home_color;
+            transform:translateY(0px);
+            transition:all 0.5s ease-in-out;
+            border-radius: 0px 30px 30px 0px;
+
+            i{
+                color: $home_color;
+            }
+            &:hover{
+                background-color: $home_color;
+                color: white;
+                transform:translateY(-3px);
+                transition:all 0.5s ease-in-out;
+                i{
+                    color: white;
+                }
+            }
+            &:focus{
+                border: 1px solid $home_color !important;
+                color: white;
+                background-color: $home_color !important;
+                ::before{
+                    color: white;
+
+                }
+            }
+            &:active{
+
+                    border: 1px solid $home_color;
+                    background-color: $home_color !important;
+                    color: $home_color;
+
+            }
+
+        }
+          .item-eCard{
+                .active{
+                    border: 1px solid #10938e;
+                    background-color: #10938e !important;
+                    color: white !important;
+                    border-radius: 0px 30px 30px 0px;
+                    a{
+                        color: white !important;
+                    }
+
+                }
+                .item-eCard-video {
+                    border-radius: 0px;
+                    cursor: pointer;
+                    border-bottom: 1px solid #dbdbdb;
+                    transform:translateY(0px);
+                    transition:all 0.5s ease-in-out;
+                    border-radius: 0px 30px 30px 0px;
+                    //width: 160px;
+                    a{
+                        color: #7B7B7B ;
+                    }
+                   /* &:last-child{
+                        border-bottom: 1px solid #dbdbdb00;
+                    }*/
+                    &:hover{
+                        background-color: $home_color;
+                        transform:translateY(-2px);
+                        transition:all 0.5s ease-in-out;
+                        a{
+                            color: white !important;
+                        }
+                    }
+                    @media (max-width: 767px) {
+                      //  width: 10px;
+                        margin-right: 0px !important;
+                        padding-right: 0px !important;
+                      }
+                }
+
+          }
+        .btn-link_eCard{
+            border: 1px solid #f9d56e !important;
+            border-left: 0px !important;
+            background-color: #f9d56e;
+            color:#063332  ;
+            transform:translateY(0px);
+            transition:all 0.5s ease-in-out;
+            border-radius: 0px 30px 30px 0px;
+        }
+        .btn-link_video_view{
+            border: 1px solid $favorites_color !important;
+            border-left: 0px !important;
+            background-color: $favorites_color;
+            color:white  ;
+            transform:translateY(0px);
+            transition:all 0.5s ease-in-out;
+            border-radius: 0px 30px 30px 0px;
+        }
+
+        .tabe_book{
+            border-bottom:1px solid#f3f3f3 !important;
+            li{
+                button{
+                    background-color: rgba(255, 255, 255, 0);
+                    border-bottom:2px solid $grayColor !important;
+                }
+                .active{
+                    color: $home_color;
+                    border-bottom:2px solid $home_color !important;
+                    background-color: rgba(255, 255, 255, 0);
+                }
+
+            }
+        }
+
+        .link_dir{
+            background-color: $favorites_color !important;
+            color: white !important;
+            font-weight: lighter;
+            //height: 19px;
+            line-height: 9px;
+            border:1px solid  $favorites_color !important;
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+            &:hover{
+                color: $favorites_color !important;
+                background-color: white !important;
+                border:1px solid  $favorites_color !important;
+                -webkit-transition: background-color .5s ease-out;
+                -moz-transition: background-color .5s ease-out;
+                -o-transition: background-color .5s ease-out;
+                transition: background-color .5s ease-out;
+                transform:translateY(-3px);
+                transition:all 0.5s ease-in-out;
+            }
+        }
+        .direct{
+            img{
+                transform:scale(1);
+                transition:all 0.5s ease-in-out;
+                border-bottom:2px solid  $favorites_color !important;
+                border-left:2px solid  $favorites_color !important;
+
+                &:hover{
+                    transform:scale(1.1);
+                    transition:all 0.5s ease-in-out;
+                    border-top:2px solid  $favorites_color !important;
+                    border-right:2px solid  $favorites_color !important;
+                    border-bottom:0px solid  $favorites_color !important;
+                    border-left:0px solid  $favorites_color !important;
+                }
+            }
+        }
+
+        .btn_web{
+            @include btn_web(#fec9cc);
+        }
+        .btn_login{
+            @include btn_add($home_color);
+        }
+                .card-btn{
+                    background-color:white;
+                    border: 1px solid #109f99;
+                    border-radius: 10px;
+                    color:#000000;
+                    position: relative;
+                    text-decoration: none;
+                    -webkit-transition: background-image .5s ease-out;
+                    -moz-transition: background-image .5s ease-out;
+                    -o-transition: background-image .5s ease-out;
+                    transition: background-image .5s ease-out;
+                    transform:translateY(0px);
+                    transition:all 0.5s ease-in-out;
+
+                    &:hover{
+                        color: white;
+                        background-color:$home_color;
+                        -webkit-transition: background-image .5s ease-out;
+                        -moz-transition: background-image .5s ease-out;
+                        -o-transition: background-image .5s ease-out;
+                        transition: background-image .5s ease-out;
+                        transform:translateY(-5px);
+                        transition:all 0.5s ease-in-out;
+                    }
+
+                }
+        .btn_add_user{
+            @include btn_add($color_orng);
+            color: $color_brouwn;
+        }
+        .breadcrumb-item{
+            a{
+                color: white;
+                transform:translateY(0px);
+                transition:all 0.5s ease-in-out;
+                &:hover{
+                    color: #063332  !important;
+                    padding-right: 5px;
+                    transition:all 0.5s ease-in-out;
+                }
+            }
+        }
+
+        .btn-exam{
+
+            background-color: white;
+            color: $favorites_color;
+            transform:translateY(0px);
+            transition:all 0.5s ease-in-out;
+            border-radius: 0px 30px 30px 0px !important;
+            &:hover{
+                background-color: $favorites_color ;
+                color:white !important;
+                transform:translatey(-3px);
+                transition:all 0.5s ease-in-out;
+                border-radius: 0px 30px 30px 0px !important;
+            }
+            &:focus{
+                border: 1px solid #E8505B;
+                color: white;
+                background-color: $favorites_color;
+
+            }
+            &:active{
+
+                    border: 1px solid #E8505B;
+                    background-color: white;
+                    color: $favorites_color;
+
+            }
+
+        }
+        .btn_attach{
+            img{
+                width: 60px;
+                overflow: hidden;
+                filter: grayscale(100%);
+                transform:translatey(0px);
+                transition:all 0.5s ease-in-out;
+                &:hover{
+                    filter: grayscale(0%);
+                    transform:translatey(-3px);
+                    transition:all 0.5s ease-in-out;
+                }
+            }
+
+        }
+
+
+
+        .text_link {
+            a{
+
+                transform:translateY(0px);
+                transition:all 0.5s ease-in-out;
+                &:hover{
+
+                    padding-right: 5px;
+                    transition:all 0.5s ease-in-out;
+                }
+            }
+          }
+          .dir{
+            background-color: $home_color !important;
+            color: #063332  !important;
+            font-weight: lighter;
+            height: 19px;
+            line-height: 9px;
+            border:1px solid  $home_color !important;
+            font-size: 12px;
+        }
+
+    .btn_yes_no{
+        /* ازرار  نعم ولا*/
+        .container {
+            display: block;
+            position: relative;
+            padding-right: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Hide the browser's default radio button */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 6px;
+            right: 0;
+            height: 17px;
+            width: 17px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: $home_color;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .container .checkmark:after {
+            top: 3px;
+            left: 3px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: white;
+        }
+
+    }
