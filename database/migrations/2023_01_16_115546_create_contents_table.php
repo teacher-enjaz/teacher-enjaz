@@ -17,8 +17,8 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->string('title' ,255);
             $table->boolean('comments_allowed')->default(true);
-            $table->bigInteger('veiws');
-            $table->bigInteger('likes');
+            $table->bigInteger('veiws')->default(0);
+            $table->bigInteger('likes')->default(0);
             $table->boolean('status')->default(true);
             $table->foreignId('type_id')->references('id')->on('content_types')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');

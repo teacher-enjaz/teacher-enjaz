@@ -14,6 +14,7 @@ class CreateUserQualificationsTable extends Migration
     public function up()
     {
         Schema::create('user_qualifications', function (Blueprint $table) {
+
             $table->id();
             $table->string('specialization' ,255);
             $table->string('university' ,255);

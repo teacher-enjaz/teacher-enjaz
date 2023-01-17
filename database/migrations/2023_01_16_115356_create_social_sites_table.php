@@ -14,6 +14,7 @@ class CreateSocialSitesTable extends Migration
     public function up()
     {
         Schema::create('social_sites', function (Blueprint $table) {
+
             $table->id();
             $table->longText('profile_link');
             $table->boolean('status')->default(true);

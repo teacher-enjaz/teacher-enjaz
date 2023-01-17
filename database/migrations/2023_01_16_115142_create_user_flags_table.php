@@ -14,6 +14,7 @@ class CreateUserFlagsTable extends Migration
     public function up()
     {
         Schema::create('user_flags', function (Blueprint $table) {
+
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('section_flag_id')->references('id')->on('section_flags')->onDelete('cascade');

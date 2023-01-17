@@ -14,6 +14,7 @@ class CreateReceivedMessagesTable extends Migration
     public function up()
     {
         Schema::create('received_messages', function (Blueprint $table) {
+
             $table->id();
             $table->longText('message_text');
             $table->dateTime('date_time');

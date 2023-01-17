@@ -2,30 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\enjaz\Content;
+use App\Models\enjaz\Course;
+use App\Models\enjaz\Experience;
+use App\Models\enjaz\Language;
+use App\Models\enjaz\Membership;
+use App\Models\enjaz\ReceivedMessage;
+use App\Models\enjaz\Skill;
+use App\Models\enjaz\SocialSite;
+
+use App\Models\enjaz\UserFlags;
+use App\Models\enjaz\UserQualification;
 use App\Models\Rawafed\Admin;
-use App\Models\Rawafed\Book;
-use App\Models\Rawafed\ECard;
-use App\Models\Rawafed\ECardFavourite;
-use App\Models\Rawafed\FileFavourite;
-use App\Models\Rawafed\FileMaterial;
-use App\Models\Rawafed\FileReport;
-use App\Models\Rawafed\FollowUser;
-use App\Models\Rawafed\Grade;
-use App\Models\Rawafed\InteractiveBook;
-use App\Models\Rawafed\Level;
 use App\Models\Rawafed\Permission;
-use App\Models\Rawafed\Rating;
-use App\Models\Rawafed\Resource;
-use App\Models\Rawafed\ResourceFile;
 use App\Models\Rawafed\Role;
-use App\Models\Rawafed\SocialAccount;
-use App\Models\Rawafed\Student;
-use App\Models\Rawafed\Subject;
 use App\Models\Rawafed\Supervisor;
 use App\Models\Rawafed\Teacher;
-use App\Models\Rawafed\UserType;
-use App\Models\Rawafed\VideoFavourite;
-use App\Models\Rawafed\VideoLesson;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -167,5 +159,36 @@ class User extends Authenticatable
         return false;
     }*/
 
+
+    public function userQualifications(){
+        return $this->hasMany(UserQualification::class,'user_id',id);
+    }
+    public function socialSites(){
+        return $this->hasMany(SocialSite::class,'user_id',id);
+    }
+    public function memberships(){
+        return $this->hasMany(Membership::class,'user_id',id);
+    }
+    public function skills(){
+        return $this->hasMany(Skill::class,'user_id',id);
+    }
+    public function userFlags(){
+        return $this->hasMany(UserFlags::class,'user_id',id);
+    }
+    public function experiences(){
+        return $this->hasMany(Experience::class,'user_id',id);
+    }
+    public function courses(){
+        return $this->hasMany(Course::class,'user_id',id);
+    }
+    public function languages(){
+        return $this->hasMany(Language::class,'user_id',id);
+    }
+    public function contents(){
+        return $this->hasMany(Content::class,'user_id',id);
+    }
+    public function receivedMessages(){
+        return $this->hasMany(ReceivedMessage::class,'user_id',id);
+    }
 
 }

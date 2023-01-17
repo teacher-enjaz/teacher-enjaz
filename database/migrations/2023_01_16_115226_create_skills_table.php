@@ -14,6 +14,7 @@ class CreateSkillsTable extends Migration
     public function up()
     {
         Schema::create('skills', function (Blueprint $table) {
+
             $table->id();
             $table->string('skill_name',255);
             $table->float('skill_level');
