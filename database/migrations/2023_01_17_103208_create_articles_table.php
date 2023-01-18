@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkillsTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
 
             $table->id();
-            $table->string('skill_name',255);
-            $table->float('skill_level');
+            $table->text('body');
             $table->boolean('status');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('slug')->unique();
+            $table->foreignId('content_id')->references('id')->on('contents')->onDelete('cascade');
+            $table->foreignId('classification_id')->references('id')->on('classifications')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('articles');
     }
 }

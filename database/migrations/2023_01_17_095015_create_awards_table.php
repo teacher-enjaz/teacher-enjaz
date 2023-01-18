@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContentTypesTable extends Migration
+class CreateAwardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateContentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('content_types', function (Blueprint $table) {
+        Schema::create('awards', function (Blueprint $table) {
 
             $table->id();
-            $table->string('name' , 255);
-            $table->boolean('status')->default(true);
+            $table->string('source',255);
+            $table->text('description');
+            $table->boolean('status');
+            $table->string('slug')->unique();
+            $table->foreignId('content_id')->references('id')->on('contents')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateContentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content_types');
+        Schema::dropIfExists('awards');
     }
 }

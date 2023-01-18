@@ -5,15 +5,18 @@ namespace App\Models\enjaz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Platform extends Model
+class Comment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'image',
+        'body',
         'status',
+        'content_id',
+        'sender_id',
+        'parent_id',
+
     ];
-    public function socialSites(){
-        return $this->hasMany(SocialSite::class,'platform_id',id);
+    public function content(){
+        return $this->belongsTo(Content::class, 'content_id','id');
     }
 }
