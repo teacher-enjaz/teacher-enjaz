@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use App\Models\User;
 use App\Models\User\UserQualification;

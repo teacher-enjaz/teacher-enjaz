@@ -1,24 +1,22 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ReceivedMessage extends Model
+class Course extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'message_text',
-        'date_time',
-        'status',
-        'sender_id',
+        'course_title',
+        'course_hours',
+        'training_center',
+        'end_training_date',
         'user_id',
+        'status',
     ];
     public function user(){
         return $this->belongsTo(User::class,'user_id',id);
-    }
-    public function sender(){
-        return $this->belongsTo(User::class,'sender_id',id);
     }
 }

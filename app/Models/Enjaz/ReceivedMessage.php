@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class ReceivedMessage extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'skill_name',
-        'skill_level',
-        'platform_id',
+        'message_text',
+        'date_time',
         'status',
+        'sender_id',
         'user_id',
     ];
     public function user(){
         return $this->belongsTo(User::class,'user_id',id);
+    }
+    public function sender(){
+        return $this->belongsTo(User::class,'sender_id',id);
     }
 }

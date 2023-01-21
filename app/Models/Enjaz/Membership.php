@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SocialSite extends Model
+class Membership extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'profile_link',
-        'status',
-        'platform_id',
+        'membership_name',
+        'organization',
+        'membership_date',
+        'membership_validity',
         'user_id',
+        'status',
     ];
     public function user(){
         return $this->belongsTo(User::class,'user_id',id);
-    }
-    public function platform(){
-        return $this->belongsTo(Platform::class,'platform_id',id);
     }
 }

@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserFlags extends Model
+class Language extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'status',
-        'section_flag_id',
+        'language',
+        'reading_level',
+        'speaking_level',
+        'writing_level',
+        'listening_level',
+        'is_native',
         'user_id',
+        'status',
     ];
     public function user(){
         return $this->belongsTo(User::class,'user_id',id);
-    }
-    public function sectionFlag(){
-        return $this->belongsTo(SectionFlags::class,'section_flag_id',id);
     }
 }

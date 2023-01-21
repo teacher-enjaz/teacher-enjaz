@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 namespace App\Models\User;
-use App\Models\enjaz\Qualification;
+use App\Models\Enjaz\Qualification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

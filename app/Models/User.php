@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\enjaz\Experience;
+use App\Models\Enjaz\Experience;
 use App\Models\Rawafed\Admin;
 use App\Models\Rawafed\Book;
 use App\Models\Rawafed\ECard;

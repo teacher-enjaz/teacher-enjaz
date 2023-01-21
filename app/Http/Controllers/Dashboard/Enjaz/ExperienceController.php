@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\Enjaz;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\ExperienceRequest;
 use App\Http\Traits\GeneralTrait;
-use App\Models\enjaz\Experience;
+use App\Models\Enjaz\Experience;
 use Illuminate\Support\Facades\Auth;
 
 class ExperienceController extends Controller

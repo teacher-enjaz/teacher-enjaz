@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
-use App\Models\enjaz\Content;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Achievement extends Model
+class Article extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'description',
-        'start_date',
-        'end_date',
+        'body',
         'status',
         'slug',
         'content_id',

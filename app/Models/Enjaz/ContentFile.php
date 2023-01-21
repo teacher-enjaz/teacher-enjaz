@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Award extends Model
+class ContentFile extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'source',
+        'name',
         'description',
-        'status',
-        'slug',
+        'extention',
+        'size',
+        'mime',
+        'path',
         'content_id',
 
     ];
+
     public function content(){
         return $this->belongsTo(Content::class, 'content_id','id');
     }

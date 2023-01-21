@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\enjaz;
+namespace App\Models\Enjaz;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Award extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'body',
+        'source',
+        'description',
         'status',
+        'slug',
         'content_id',
-        'sender_id',
-        'parent_id',
 
     ];
     public function content(){
