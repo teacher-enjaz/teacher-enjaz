@@ -15,7 +15,7 @@ class CreateSectionFlagsTable extends Migration
     {
         Schema::create('section_flags', function (Blueprint $table) {
             $table->id();
-            $table->string(name,255);
+            $table->string('name',255);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

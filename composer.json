@@ -30,8 +30,7 @@
         "socialiteproviders/zoho": "^4.1",
         "tymon/jwt-auth": "^1.0",
         "yajra/laravel-datatables": "1.5",
-        "yajra/laravel-datatables-oracle": "^9.19",
-        "ext-http": "*"
+        "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
