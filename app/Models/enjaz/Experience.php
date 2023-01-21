@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Enjaz;
+namespace App\Models\enjaz;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
