@@ -339,6 +339,12 @@ class PermissionSeeder extends Seeder
                 'name_ar'=>__('dashboard.controlCongratulations',[],'ar'),
                 'name_en'=>__('dashboard.controlCongratulations',[],'en')
             ],
+            /************************************** TV *******************************************/
+            [
+                'slug'=>'teacher-enjaz',
+                'name_ar'=>__('dashboard.controlTeacherEnjaz',[],'ar'),
+                'name_en'=>__('dashboard.controlTeacherEnjaz',[],'en'),
+            ],
         ];
         Permission::insert($permissions);
     }

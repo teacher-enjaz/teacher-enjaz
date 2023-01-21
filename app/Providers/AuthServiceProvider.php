@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //get all permissions to check it for user
-        if(Schema::hasTable('permissions'))
+        /*if(Schema::hasTable('permissions'))
         {
             $permissions = Permission::pluck('slug');
             foreach ($permissions as $permission) {
@@ -36,6 +36,6 @@ class AuthServiceProvider extends ServiceProvider
                     return $auth->hasAbility($permission);
                 });
             }
-        }
+        }*/
     }
 }

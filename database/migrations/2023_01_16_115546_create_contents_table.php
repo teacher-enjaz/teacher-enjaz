@@ -20,8 +20,14 @@ class CreateContentsTable extends Migration
             $table->bigInteger('veiws')->default(0);
             $table->bigInteger('likes')->default(0);
             $table->boolean('status')->default(true);
-            $table->foreignId('type_id')->references('id')->on('content_types')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('type_id')
+                ->references('id')
+                ->on('content_types')
+                ->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

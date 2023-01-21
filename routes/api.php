@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\Authentication\AuthController;
+/*use App\Http\Controllers\Api\Authentication\AuthController;
 use App\Http\Controllers\Api\Laboratories\ConceptController;
 use App\Http\Controllers\Api\Laboratories\LabCategoryController;
 use App\Http\Controllers\Api\Laboratories\LabContentController;
@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\Laboratories\ProfileController;
 use App\Http\Controllers\Api\Laboratories\SchoolStatisticsController;
 use App\Http\Controllers\Api\Laboratories\SearchController;
 use App\Http\Controllers\Dashboard\Rawafed\DeviceTokenController;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;*/
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
-Route::post('/login',[AuthController::class,'login']);
+/*Route::post('/login',[AuthController::class,'login']);
 
 Route::post('device-tokens',[DeviceTokenController::class,'store'])->middleware('auth:sanctum');
 
@@ -115,4 +115,4 @@ Route::group(['prefix' => 'lab-contents'], function () {
 
     Route::delete('destroy/{id}',[LabContentController::class,'destroy'])->middleware('auth:sanctum');
 
-});
+});*/

@@ -21,7 +21,10 @@ class CreateExperiencesTable extends Migration
             $table->date('from');
             $table->date('to');
             $table->boolean('status');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
