@@ -16,8 +16,14 @@ class CreateUserFlagsTable extends Migration
         Schema::create('user_flags', function (Blueprint $table) {
 
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('section_flag_id')->references('id')->on('section_flags')->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->foreignId('section_flag_id')
+                ->references('id')
+                ->on('section_flags')
+                ->onDelete('cascade');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

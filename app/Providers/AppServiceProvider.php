@@ -80,7 +80,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TelescopeServiceProvider::class);
         }
 
-        $this->app->bind(GeoPlaceInterface::class,GeoPlaceRepository::class);
+        /*$this->app->bind(GeoPlaceInterface::class,GeoPlaceRepository::class);
         $this->app->bind(DirectorateInterface::class,DirectorateRepository::class);
         $this->app->bind(LevelInterface::class,LevelRepository::class);
         $this->app->bind(InformationInterface::class,InformationRepository::class);
@@ -108,7 +108,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ResourceTypeInterface::class,ResourceTypeRepository::class);
         $this->app->bind(ResourceFileInterface::class,ResourceFileRepository::class);
         $this->app->bind(VideoLessonInterface::class,VideoLessonRepository::class);
-        $this->app->bind(StaticPageInterface::class,StaticPageRepository::class);
+        $this->app->bind(StaticPageInterface::class,StaticPageRepository::class);*/
 
     }
 
