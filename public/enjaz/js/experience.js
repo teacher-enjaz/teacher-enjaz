@@ -5,16 +5,24 @@ $(document).ready(function(){
         {
             if(response)
             {
-                swal({
-                    title: "تمت الإضافة بنجاح",
+                /*$('#add-experience-eModal').modal('hide');
+                myFunction();
+                setTimeout(function()
+                {
+                    window.location.reload();
+                },2000);
+*/
+                Swal.fire({
+                    title: 'تمت الإضافة بنجاح',
                     text: "",
-                    type: "success",
+                    icon: 'success',
                     showCancelButton: false,
                     confirmButtonText: "موافق",
+                    confirmButtonColor: "#109f99",
                     closeOnConfirm: true,
                     closeOnCancel: true
-                }, function (isConfirm) {
-                    if (isConfirm) {
+                }).then((result) => {
+                    if (result.isConfirmed) {
                         $('#add-experience-eModal').hide();
                         $('#add-experience-eModal').trigger('reset');
                         window.location.reload();
@@ -56,17 +64,19 @@ $(document).ready(function(){
         {
             if(response)
             {
-                swal({
-                    title: "تم التعديل بنجاح",
+                Swal.fire({
+                    title: 'تم التعديل بنجاح',
                     text: "",
-                    type: "success",
+                    icon: 'success',
                     showCancelButton: false,
                     confirmButtonText: "موافق",
+                    confirmButtonColor: "#109f99",
                     closeOnConfirm: true,
                     closeOnCancel: true
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        $('#edit-experience-eModal').hide();
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#add-experience-eModal').hide();
+                        $('#add-experience-eModal').trigger('reset');
                         window.location.reload();
                     }
                 });
@@ -97,4 +107,16 @@ $(document).ready(function(){
             }
         });
     });
+
+    /***********************************************************************/
+    function myFunction() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
 });

@@ -25,25 +25,21 @@ class ExperienceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required|string|max:100|min:5',
-            'organization'=> 'required|string|max:100|min:5',
+            'name'=> 'required|string|max:100|min:3',
+            'organization'=> 'required|string|max:100|min:3',
             'from'=> 'required',
-            'to'=> 'required',
+            'to'=> 'required|after:from',
         ];
     }
     public function messages()
     {
         return
-            [
-                'required' => __('validation.required'),
-                'string' =>  __('validation.string'),
-                'max' => __('validation.max.string'),
-                'min' => __('validation.min.string'),
-                'required_without' => __('validation.required_without'),
-                'mimes' => __('validation.mimes'),
-                'image' => __('validation.image'),
-                'file' => __('validation.file'),
-                'arabic' => __('validation.arabic'),
-            ];
+        [
+            'required' => __('validation.required'),
+            'string' =>  __('validation.string'),
+            'max' => __('validation.max.string'),
+            'min' => __('validation.min.string'),
+            'after' => __('validation.after'),
+        ];
     }
 }

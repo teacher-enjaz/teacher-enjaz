@@ -15,7 +15,8 @@ return [
 
     'accepted' => 'The :attribute must be accepted.',
     'active_url' => ':attribute رابط غير صحيح',
-    'after' => 'The :attribute must be a date after :date.',
+    'after' => ':attribute يجب ان يكون بعد وقت البداية',
+    //'after' => 'The :attribute must be a date after :date.',
     'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
     'alpha' => 'The :attribute may only contain letters.',
     'alpha_dash' => 'The :attribute may only contain letters, numbers, dashes and underscores.',
@@ -153,7 +154,7 @@ return [
         'slug' => [
             'required'=> ':attribute مطلوب',
             'unique'=> ':attribute موجود مسبقاً'
-        ]
+        ],
     ],
 
     /*
