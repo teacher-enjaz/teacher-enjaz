@@ -4,3 +4,4 @@
         <strong>{{ session('error') }}</strong>
     </div>
 @endif
+

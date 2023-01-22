@@ -22,8 +22,6 @@
                         <section class="row section">
                             <!-- experience data start -->
                             <!-- Page Heading -->
-                            @include('dashboard.layouts.includes.alerts.success')
-                            @include('dashboard.layouts.includes.alerts.errors')
 
                             <div class="section-title mb-2 ">
                                 <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.experiences')}}</h1>
@@ -54,8 +52,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-hover table-bordered" id="sampleTable"
-                                            {{-- width="100%" cellspacing="0"--}}>
+                                        <table class="table table-hover table-bordered display" id="sampleTable"
+                                             width="100%" cellspacing="0">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -112,6 +110,8 @@
                 </div>
             </div>
         </div>
+        @include('dashboard.layouts.enjaz-layouts.alerts.success')
+        @include('dashboard.layouts.enjaz-layouts.alerts.errors')
     </div>
     @include('dashboard.enjaz.experiences.create')
     @include('dashboard.enjaz.experiences.edit')
