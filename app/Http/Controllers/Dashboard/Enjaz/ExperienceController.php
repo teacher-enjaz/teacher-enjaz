@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Dashboard\Enjaz;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\ExperienceRequest;
 use App\Http\Traits\GeneralTrait;
-use App\Models\Enjaz\Experience;
+use App\Models\enjaz\Experience;
 use Illuminate\Support\Facades\Auth;
 
 class ExperienceController extends Controller
 {
-    use GeneralTrait;
+    //use GeneralTrait;
     /**
      * Display a listing of the resource.
      *
@@ -40,9 +40,10 @@ class ExperienceController extends Controller
      */
     public function store(ExperienceRequest $request)
     {
-        $this->changeStatus($request);
+        //$this->changeStatus($request);
         $request->request->add([
-            'user_id' => 1//Auth::id(),
+            'user_id' => 1,//Auth::id(),
+            'status' => 1,
         ]);
         Experience::create($request->except('_token'));
 
@@ -107,5 +108,19 @@ class ExperienceController extends Controller
             return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
         $experience->delete();
         return redirect()->route('experiences.index')->with('success', __('enjaz.successDelete'));
+    }
+
+    /**
+     * change status
+     * @param $status
+     * @param $experience_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status($status,$experience_id)
+    {
+        $experience = Experience::find($experience_id);
+        $experience->status = $status;
+        $experience->save();
+        return response()->json(['success'=>'Lesson status change successfully.']);
     }
 }

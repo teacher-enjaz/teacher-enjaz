@@ -55,7 +55,7 @@
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover table-bordered" id="sampleTable"
-                                              {{-- width="100%" cellspacing="0"--}}>
+                                            {{-- width="100%" cellspacing="0"--}}>
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -67,35 +67,40 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                @if($experiences->count() > 0)
-                                                    @foreach($experiences as $index=>$experience)
-                                                        <tr>
-                                                            <td>{{$index + 1}}</td>
-                                                            <td>{{$experience->name}}</td>
-                                                            <td>{{$experience->organization}}</td>
-                                                            <td>{{$experience->from}}</td>
-                                                            <td>{{$experience->to}}</td>
-                                                            <td class="d-flex justify-content-center">
-                                                                <div class="toggle-flip">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="flip-indecator" data-toggle-on="{{__('enjaz.published')}}"
-                                                                              data-toggle-off="{{__('enjaz.unpublished')}}"></span>
-                                                                    </label>
-                                                                </div>
-                                                                <a href="" class="edit-btn ms-1" data-bs-toggle="modal" data-id="{{$experience->id}}"
-                                                                   data-bs-target="#edit-experience-eModal" id="edit"
-                                                                   data-bs-html="true" title="{{__('enjaz.update')}}">
-                                                                    <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a class="delete-btn mb-2 delete-trashed" type="button"
-                                                                   href="{{route('experiences.destroy',$experience->id)}}">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
+                                            @if($experiences->count() > 0)
+                                                @foreach($experiences as $index=>$experience)
+                                                    <tr>
+                                                        <td>{{$index + 1}}</td>
+                                                        <td>{{$experience->name}}</td>
+                                                        <td>{{$experience->organization}}</td>
+                                                        <td>{{$experience->from}}</td>
+                                                        <td>{{$experience->to}}</td>
+                                                        <td class="d-flex justify-content-center">
+                                                            <div class="toggle-flip">
+                                                                <label>
+                                                                    <input type="checkbox" data-id="{{$experience->id}}"
+                                                                           {{ $experience->status ? 'checked' : '' }}
+                                                                           class="experience-status">
+                                                                    <span class="flip-indecator"
+                                                                          data-toggle-on="{{__('enjaz.published')}}"
+                                                                          data-toggle-off="{{__('enjaz.unpublished')}}"
+                                                                              {{--onchange="statusFunc({{$experience->id}})"--}}>
+                                                                        </span>
+                                                                </label>
+                                                            </div>
+                                                            <a href="" class="edit-btn ms-1" data-bs-toggle="modal" data-id="{{$experience->id}}"
+                                                               data-bs-target="#edit-experience-eModal" id="edit"
+                                                               data-bs-html="true" title="{{__('enjaz.update')}}">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <a class="delete-btn mb-2 delete-trashed" type="button"
+                                                               href="{{route('experiences.destroy',$experience->id)}}">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                             </tbody>
                                         </table>
                                     </div>

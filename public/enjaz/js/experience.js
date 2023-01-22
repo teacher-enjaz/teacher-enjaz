@@ -83,4 +83,18 @@ $(document).ready(function(){
             $('#toError').text(response.responseJSON.errors.to);
         }
     });
+    /************************* chasnge status *******************************/
+    $('.experience-status').change(function() {
+        var status = $(this).prop('checked') === true ? 1 : 0;
+        var experience_id = $(this).data('id');
+        console.log(experience_id)
+        $.ajax({
+            type: "GET",
+            dataType: "application/json",
+            url: 'experiences/status/'+status+'/'+experience_id,
+            success: function(data){
+                console.log(data.success)
+            }
+        });
+    });
 });
