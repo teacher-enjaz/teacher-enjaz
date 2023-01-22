@@ -46,6 +46,8 @@ Route::group(
             Route::put('update/{id}', [ExperienceController::class, 'update'])->name('experiences.update');
 
             Route::get('destroy/{id}', [ExperienceController::class, 'destroy'])->name('experiences.destroy');
+
+            Route::get('status/{status}/{id}', [ExperienceController::class, 'status']);
         });
         Route::group(['prefix' => 'skills'], function () {
 
