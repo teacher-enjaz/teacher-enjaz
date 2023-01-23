@@ -81,12 +81,12 @@
                                                                            class="experience-status">
                                                                     <span class="flip-indecator"
                                                                           data-toggle-on="{{__('enjaz.published')}}"
-                                                                          data-toggle-off="{{__('enjaz.unpublished')}}"
-                                                                              {{--onchange="statusFunc({{$experience->id}})"--}}>
+                                                                          data-toggle-off="{{__('enjaz.unpublished')}}">
                                                                         </span>
                                                                 </label>
                                                             </div>
-                                                            <a href="" class="edit-btn ms-1" data-bs-toggle="modal" data-id="{{$experience->id}}"
+                                                            <a href="" class="edit-btn ms-1" data-bs-toggle="modal"
+                                                               data-id="{{$experience->id}}"
                                                                data-bs-target="#edit-experience-eModal" id="edit"
                                                                data-bs-html="true" title="{{__('enjaz.update')}}">
                                                                 <i class="fas fa-edit"></i>
@@ -110,8 +110,8 @@
                 </div>
             </div>
         </div>
-        @include('dashboard.layouts.enjaz-layouts.alerts.success')
-        @include('dashboard.layouts.enjaz-layouts.alerts.errors')
+        {{--@include('dashboard.layouts.enjaz-layouts.alerts.success')
+        @include('dashboard.layouts.enjaz-layouts.alerts.errors')--}}
     </div>
     @include('dashboard.enjaz.experiences.create')
     @include('dashboard.enjaz.experiences.edit')

@@ -1,17 +1,15 @@
 $(document).ready(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     /************************** store Experience **********************/
     $('#experienceForm').ajaxForm({
         success:function(response)
         {
             if(response)
             {
-                /*$('#add-experience-eModal').modal('hide');
-                myFunction();
-                setTimeout(function()
-                {
-                    window.location.reload();
-                },2000);
-*/
                 Swal.fire({
                     title: 'تمت الإضافة بنجاح',
                     text: "",
@@ -42,7 +40,8 @@ $(document).ready(function(){
         }
     });
     /************************** Update Experience **********************/
-    $('#edit').click( function (e) {
+    $('body').on('click', '.edit-btn', function (e)
+    {
         e.preventDefault();
         var experience_id = $(this).data('id');
         var action = 'experiences/update/'+experience_id;
@@ -107,16 +106,4 @@ $(document).ready(function(){
             }
         });
     });
-
-    /***********************************************************************/
-    function myFunction() {
-        // Get the snackbar DIV
-        var x = document.getElementById("snackbar");
-
-        // Add the "show" class to DIV
-        x.className = "show";
-
-        // After 3 seconds, remove the show class from DIV
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    }
 });
