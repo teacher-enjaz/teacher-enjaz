@@ -202,6 +202,7 @@
                     type: "success",
                     showCancelButton: false,
                     showConfirmButton: true,
+                    confirmButtonColor: '#109f99',
                     confirmButtonText: "موافق",
                     closeOnConfirm: true,
                     closeOnCancel: true

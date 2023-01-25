@@ -4,6 +4,12 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    $('select[name="job_id"]').on('change',function (e) {
+        if($(this).val() === '-1')
+            $('#job_name').show();
+        else
+            $('#job_name').hide();
+    })
     /************************** store Experience **********************/
     $('#experienceForm').ajaxForm({
         success:function(response)
@@ -29,14 +35,18 @@ $(document).ready(function(){
             }
         },
         error: function (response) {
-            $('#experienceError').text('');
+            $('#jobError').text('');
             $('#organizationError').text('');
             $('#fromError').text('');
             $('#toError').text('');
-            $('#experienceError').text(response.responseJSON.errors.name);
+            $('#noteError').text('');
+            $('#nameError').text('');
+            $('#jobError').text(response.responseJSON.errors.job_id);
             $('#organizationError').text(response.responseJSON.errors.organization);
             $('#fromError').text(response.responseJSON.errors.from);
             $('#toError').text(response.responseJSON.errors.to);
+            $('#noteError').text(response.responseJSON.errors.notes);
+            $('#nameError').text(response.responseJSON.errors.name);
         }
     });
     /************************** Update Experience **********************/
@@ -46,15 +56,14 @@ $(document).ready(function(){
         var experience_id = $(this).data('id');
         var action = 'experiences/update/'+experience_id;
         $('#editExperienceForm').attr('action',action);
-        console.log(experience_id)
         $.get('experiences/edit/' + experience_id , function (data)
         {
             $('#id').val(data.id);
-            $('#name').val(data.name);
+            $('#option'+data.job_id).attr('selected','selected');
             $('#organization').val(data.organization);
             $('#from').val(data.from);
             $('#to').val(data.to);
-
+            $('#notes').val(data.notes);
         })
     });
 
@@ -82,14 +91,16 @@ $(document).ready(function(){
             }
         },
         error: function (response) {
-            $('#experienceError').text('');
+            $('#jobError').text('');
             $('#organizationError').text('');
             $('#fromError').text('');
             $('#toError').text('');
-            $('#experienceError').text(response.responseJSON.errors.name);
+            $('#noteError').text('');
+            $('#jobError').text(response.responseJSON.errors.job_id);
             $('#organizationError').text(response.responseJSON.errors.organization);
             $('#fromError').text(response.responseJSON.errors.from);
             $('#toError').text(response.responseJSON.errors.to);
+            $('#noteError').text(response.responseJSON.errors.notes);
         }
     });
     /************************* chasnge status *******************************/
