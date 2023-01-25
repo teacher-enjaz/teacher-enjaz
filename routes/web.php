@@ -3,7 +3,7 @@
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
 use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
 use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
-
+use \App\Http\Controllers\Dashboard\Enjaz\CoursesController;
 use App\Http\Controllers\Dashboard\Enjaz\ExperienceController;
 use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
@@ -81,17 +81,19 @@ Route::group(
 
         Route::group(['prefix' => 'courses'], function () {
 
-            Route::get('/', [ExperienceController::class, 'index'])->name('courses.index');
+            Route::get('/', [CoursesController::class, 'index'])->name('courses.index');
 
-            Route::get('create', [ExperienceController::class, 'create'])->name('courses.create');
+            Route::get('create', [CoursesController::class, 'create'])->name('courses.create');
 
-            Route::post('store', [ExperienceController::class, 'store'])->name('courses.store');
+            Route::post('store', [CoursesController::class, 'store'])->name('courses.store');
 
-            Route::get('edit/{id}', [ExperienceController::class, 'edit'])->name('courses.edit');
+            Route::get('edit/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
 
-            Route::put('update/{id}', [ExperienceController::class, 'update'])->name('courses.update');
+            Route::put('update/{id}', [CoursesController::class, 'update'])->name('courses.update');
 
-            Route::get('destroy/{id}', [ExperienceController::class, 'destroy'])->name('courses.destroy');
+            Route::get('destroy/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+
+            Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
         });
         Route::group(['prefix' => 'social-sites'], function () {
 
