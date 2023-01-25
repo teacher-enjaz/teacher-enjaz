@@ -2,6 +2,7 @@
 
 namespace App\Models\Enjaz;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,9 +26,7 @@ class Course extends Model
         'user_id',
         'status',
     ];
-    public function user(){
-        return $this->belongsTo(User::class,'user_id',id);
-    }
+
 
     /**
      * @var string[]
@@ -42,5 +41,9 @@ class Course extends Model
     public function getActive()
     {
         return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

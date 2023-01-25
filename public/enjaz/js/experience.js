@@ -10,6 +10,15 @@ $(document).ready(function(){
         else
             $('#job_name').hide();
     })
+    $('body').on('click', '.create-btn', function (e)
+    {
+        e.preventDefault();
+        $('#editJobError').text('');
+        $('#editOrganizationError').text('');
+        $('#editFromError').text('');
+        $('#editToError').text('');
+        $('#editNoteError').text('');
+    });
     /************************** store Experience **********************/
     $('#experienceForm').ajaxForm({
         success:function(response)
@@ -64,6 +73,12 @@ $(document).ready(function(){
             $('#from').val(data.from);
             $('#to').val(data.to);
             $('#notes').val(data.notes);
+
+            $('#editJobError').text('');
+            $('#editOrganizationError').text('');
+            $('#editFromError').text('');
+            $('#editToError').text('');
+            $('#editNoteError').text('');
         })
     });
 
@@ -91,23 +106,22 @@ $(document).ready(function(){
             }
         },
         error: function (response) {
-            $('#jobError').text('');
-            $('#organizationError').text('');
-            $('#fromError').text('');
-            $('#toError').text('');
-            $('#noteError').text('');
-            $('#jobError').text(response.responseJSON.errors.job_id);
-            $('#organizationError').text(response.responseJSON.errors.organization);
-            $('#fromError').text(response.responseJSON.errors.from);
-            $('#toError').text(response.responseJSON.errors.to);
-            $('#noteError').text(response.responseJSON.errors.notes);
+            $('#editJobError').text('');
+            $('#editOrganizationError').text('');
+            $('#editFromError').text('');
+            $('#editToError').text('');
+            $('#editNoteError').text('');
+            $('#editJobError').text(response.responseJSON.errors.job_id);
+            $('#editOrganizationError').text(response.responseJSON.errors.organization);
+            $('#editFromError').text(response.responseJSON.errors.from);
+            $('#editToError').text(response.responseJSON.errors.to);
+            $('#editNoteError').text(response.responseJSON.errors.notes);
         }
     });
     /************************* chasnge status *******************************/
     $('.experience-status').change(function() {
         var status = $(this).prop('checked') === true ? 1 : 0;
         var experience_id = $(this).data('id');
-        console.log(experience_id)
         $.ajax({
             type: "GET",
             dataType: "application/json",

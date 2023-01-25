@@ -29,8 +29,8 @@ class ExperienceRequest extends FormRequest
         return [
             'job_id'=> 'required',
             'organization'=> 'required|string|max:100|min:3',
-            'from'=> 'required',
-            'to'=> 'required|after:from',
+            'from'=> 'required|date',
+            'to'=> 'required|after:from|date',
             'notes'=> 'nullable|string|min:5|max:255',
             'name'=> Rule::requiredIf($this->job_id == -1),'string|min:5|max:255',
         ];

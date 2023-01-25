@@ -22,7 +22,6 @@
                         <section class="row section">
                             <!-- experience data start -->
                             <!-- Page Heading -->
-
                             <div class="section-title mb-2 ">
                                 <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.courses')}}</h1>
                                 <p class="section-hint">
@@ -31,7 +30,7 @@
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="" class="custom-btn add-btn mt-2 "
+                                <a href="" class="custom-btn add-btn mt-2 create-btn"
                                    data-bs-toggle="modal"
                                    data-bs-target="#add-course-eModal">
                                     <i class="fas fa-plus"></i>
@@ -42,7 +41,6 @@
                                         <span class="flip-indecator"
                                               data-toggle-on="عرض في ملف الإنجاز"
                                               data-toggle-off=" إخفاء من ملف الإنجاز">
-
                                         </span>
                                     </label>
                                 </div>
@@ -61,7 +59,7 @@
                                             <th>#</th>
                                             <th>{{__('enjaz.course')}}</th>
                                             <th>{{__('enjaz.organizationCourse')}}</th>
-                                            <th>{{__('enjaz.courseHourse')}}</th>
+                                            <th>{{__('enjaz.courseHours')}}</th>
                                             <th>{{__('enjaz.trainingDate')}}</th>
                                             <th>{{__('enjaz.actions')}}</th>
                                         </tr>
@@ -112,8 +110,6 @@
                 </div>
             </div>
         </div>
-        {{--@include('dashboard.layouts.enjaz-layouts.alerts.success')
-        @include('dashboard.layouts.enjaz-layouts.alerts.errors')--}}
     </div>
     @include('dashboard.enjaz.courses.create')
     @include('dashboard.enjaz.courses.edit')

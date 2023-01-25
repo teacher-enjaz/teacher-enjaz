@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
 use App\Models\Rawafed\Admin;
 use App\Models\Rawafed\Book;
@@ -354,6 +355,11 @@ class User extends Authenticatable
     public function experience()
     {
         return $this->hasMany(Experience::class);
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 
 }

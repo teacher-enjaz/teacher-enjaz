@@ -45,7 +45,8 @@ class ExperienceController extends Controller
         $request->request->add([
             'user_id' => 1,//Auth::id(),
         ]);
-        if($request->job_id == -1){
+        if($request->job_id == -1)
+        {
             $job = Job::create($request->except('_token'));
             $request['job_id'] = $job->id;
         }
@@ -74,11 +75,10 @@ class ExperienceController extends Controller
      */
     public function edit($id)
     {
-        $experience = Experience::where('id',$id)->with('job:id,name')->first();
+        $experience = Experience::find($id);//where('id',$id)->with('job:id,name')->first();
         if(!$experience)
             return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
 
-        //$jobs = Job::select('id','name')->where('status',1)->get();
         return response()->json($experience);
     }
 

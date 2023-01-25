@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="" class="custom-btn add-btn mt-2 "
+                                <a href="" class="custom-btn add-btn mt-2 create-btn"
                                    data-bs-toggle="modal"
                                    data-bs-target="#add-experience-eModal">
                                     <i class="fas fa-plus"></i>
@@ -112,8 +112,6 @@
                 </div>
             </div>
         </div>
-        {{--@include('dashboard.layouts.enjaz-layouts.alerts.success')
-        @include('dashboard.layouts.enjaz-layouts.alerts.errors')--}}
     </div>
     @include('dashboard.enjaz.experiences.create')
     @include('dashboard.enjaz.experiences.edit')
