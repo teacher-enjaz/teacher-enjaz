@@ -15,33 +15,22 @@
                         <div class="form-floating mb-3 ms-3">
                             <input type="text" class="form-control" id="name" name="name" value="">
                             <label for="floatingInput" >{{__('enjaz.course')}}</label>
-                            <div class="text-danger" id="nameError"></div>
+                            <div class="text-danger" id="editNameError"></div>
                         </div>
                         <div class="form-floating mb-3 ms-3">
                             <input type="text" class="form-control" id="training_center" name="training_center" value="">
                             <label for="floatingInput" >{{__('enjaz.organizationCourse')}}</label>
-                            <div class="text-danger" id="organizationError"></div>
+                            <div class="text-danger" id="editOrganizationError"></div>
                         </div>
                         <div class="form-floating mb-3 ms-3">
                             <input type="text" class="form-control" id="hours" name="hours" value="">
-                            <label for="floatingInput" >{{__('enjaz.courseHourse')}}</label>
-                            <div class="text-danger" id="hoursError"></div>
+                            <label for="floatingInput" >{{__('enjaz.courseHours')}}</label>
+                            <div class="text-danger" id="editHoursError"></div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-floating mb-3 ms-3">
-                                    <input type="date" class="form-control" id="end_date" name="end_date" value="">
-                                    <label for="floatingInput" >{{__('enjaz.trainingDate')}}</label>
-                                    <div class="text-danger" id="dateError"></div>
-                                </div>
-                            </div>
-                            {{--<div class="col-6">
-                                <div class="form-floating mb-3 ms-3">
-                                    <input type="date" class="form-control" id="to" name="to" value="">
-                                    <label for="floatingInput" >{{__('enjaz.to')}}</label>
-                                    <div class="text-danger" id="dateError"></div>
-                                </div>
-                            </div>--}}
+                        <div class="form-floating mb-3 ms-3">
+                            <input type="date" class="form-control" id="end_date" name="end_date" value="">
+                            <label for="floatingInput" >{{__('enjaz.trainingDate')}}</label>
+                            <div class="text-danger" id="editDateError"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn custom-btn" id="editBtn">{{__('enjaz.update')}}</button>

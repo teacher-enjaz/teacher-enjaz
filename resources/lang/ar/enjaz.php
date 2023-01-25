@@ -10,7 +10,7 @@ return [
     'addEnjazCpanel' => 'أضف خبراتك العملية',
     'addCoursesEnjazCpanel' => 'أضف دوراتك التدريبية',
     'experience' => 'الخبرة',
-    'course' => 'الدورة',
+    'course' => 'اسم الدورة',
     'organization' => 'المؤسسة',
     'from' => 'الفترة من',
     'to' => 'الفترة إلى',
@@ -28,7 +28,7 @@ return [
     'job' => 'المسمى الوظيفي',
     'notes' => 'الملاحظات',
     'addJob' => 'أضف مسمى وظيفي جديد',
-    'courseHourse' => 'عدد ساعات الدورة',
+    'courseHours' => 'عدد ساعات الدورة',
     'trainingDate' => 'تاريخ الاجتياز',
 ];
 

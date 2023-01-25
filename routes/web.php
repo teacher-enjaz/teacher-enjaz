@@ -49,6 +49,22 @@ Route::group(
 
             Route::get('status/{status}/{id}', [ExperienceController::class, 'status']);
         });
+
+        Route::group(['prefix' => 'courses'], function () {
+
+            Route::get('/', [CoursesController::class, 'index'])->name('courses.index');
+
+            Route::post('store', [CoursesController::class, 'store'])->name('courses.store');
+
+            Route::get('edit/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
+
+            Route::put('update/{id}', [CoursesController::class, 'update'])->name('courses.update');
+
+            Route::get('destroy/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+
+            Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
+        });
+
         Route::group(['prefix' => 'skills'], function () {
 
             Route::get('/', [SkillController::class, 'index'])->name('skills.index');
@@ -79,22 +95,6 @@ Route::group(
             Route::get('destroy/{id}', [MembershipController::class, 'destroy'])->name('memberships.destroy');
         });
 
-        Route::group(['prefix' => 'courses'], function () {
-
-            Route::get('/', [CoursesController::class, 'index'])->name('courses.index');
-
-            Route::get('create', [CoursesController::class, 'create'])->name('courses.create');
-
-            Route::post('store', [CoursesController::class, 'store'])->name('courses.store');
-
-            Route::get('edit/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
-
-            Route::put('update/{id}', [CoursesController::class, 'update'])->name('courses.update');
-
-            Route::get('destroy/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
-
-            Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
-        });
         Route::group(['prefix' => 'social-sites'], function () {
 
             Route::get('/', [SocialSitesController::class, 'index'])->name('socials.index');

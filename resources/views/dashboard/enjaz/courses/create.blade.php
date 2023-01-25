@@ -21,17 +21,13 @@
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="" name="hours">
-                        <label for="floatingInput" >{{__('enjaz.courseHourse')}}</label>
+                        <label for="floatingInput" >{{__('enjaz.courseHours')}}</label>
                         <div class="text-danger" id="hoursError"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-floating mb-3 ms-3">
-                                <input type="date" class="form-control" id="" name="end_date">
-                                <label for="floatingInput" >{{__('enjaz.trainingDate')}}</label>
-                                <div class="text-danger" id="dateError"></div>
-                            </div>
-                        </div>
+                    <div class="form-floating mb-3 ms-3">
+                        <input type="date" class="form-control" id="" name="end_date">
+                        <label for="floatingInput" >{{__('enjaz.trainingDate')}}</label>
+                        <div class="text-danger" id="dateError"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn custom-btn" id="saveBtn">{{__('enjaz.save')}}</button>

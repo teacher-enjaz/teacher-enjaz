@@ -23,33 +23,33 @@
                             @endif
                         </select>
                         <label for="floatingSelect">{{__('enjaz.job')}}</label>
-                        <div class="text-danger" id="jobError"></div>
+                        <div class="text-danger" id="editJobError"></div>
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="organization" name="organization" value="">
                         <label for="floatingInput" >{{__('enjaz.organization')}}</label>
-                        <div class="text-danger" id="organizationError"></div>
+                        <div class="text-danger" id="editOrganizationError"></div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-floating mb-3 ms-3">
                                 <input type="date" class="form-control" id="from" name="from" value="">
                                 <label for="floatingInput" >{{__('enjaz.from')}}</label>
-                                <div class="text-danger" id="fromError"></div>
+                                <div class="text-danger" id="editFromError"></div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating mb-3 ms-3">
                                 <input type="date" class="form-control" id="to" name="to" value="">
                                 <label for="floatingInput" >{{__('enjaz.to')}}</label>
-                                <div class="text-danger" id="toError"></div>
+                                <div class="text-danger" id="editToError"></div>
                             </div>
                         </div>
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="notes" name="notes">
                         <label for="floatingInput" >{{__('enjaz.notes')}}</label>
-                        <div class="text-danger" id="noteError"></div>
+                        <div class="text-danger" id="editNoteError"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn custom-btn" id="editBtn">{{__('enjaz.update')}}</button>

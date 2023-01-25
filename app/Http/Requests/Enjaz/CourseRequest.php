@@ -26,10 +26,10 @@ class CourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required|string|max:100|min:3',
+            'name'=> 'required|string|max:255|min:3',
             'hours'=> 'required|integer',
-            'training_center'=> 'required|string|max:100|min:1',
-            'end_date'=> 'required',
+            'training_center'=> 'required|string|max:255|min:3',
+            'end_date'=> 'required|date',
         ];
     }
     public function messages()
@@ -40,8 +40,8 @@ class CourseRequest extends FormRequest
                 'string' =>  __('validation.string'),
                 'max' => __('validation.max.string'),
                 'min' => __('validation.min.string'),
-                'after' => __('validation.after'),
                 'integer'=>__('validation.integer'),
+                'date'=>__('validation.date'),
             ];
     }
 }

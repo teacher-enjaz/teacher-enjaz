@@ -82,7 +82,8 @@ class CoursesController extends Controller
     public function update(CourseRequest $request, $id)
     {
         $course = Course::find($id);
-        if(!$course) return redirect()->route('courses.index')->with('error', __('enjaz.error'));
+        if(!$course)
+            return redirect()->route('courses.index')->with('error', __('enjaz.error'));
         $course->update($request->except('_token'));
         return redirect()->route('courses.index')->with('success', __('enjaz.successUpdate'));
     }
