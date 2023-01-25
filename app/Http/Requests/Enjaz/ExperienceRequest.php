@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Enjaz;
 
+use App\Models\Rawafed\Role;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use function __;
 
 class ExperienceRequest extends FormRequest
@@ -25,10 +27,12 @@ class ExperienceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required|string|max:100|min:3',
+            'job_id'=> 'required',
             'organization'=> 'required|string|max:100|min:3',
             'from'=> 'required',
             'to'=> 'required|after:from',
+            'notes'=> 'nullable|string|min:5|max:255',
+            'name'=> Rule::requiredIf($this->job_id == -1),'string|min:5|max:255',
         ];
     }
     public function messages()
@@ -40,6 +44,7 @@ class ExperienceRequest extends FormRequest
             'max' => __('validation.max.string'),
             'min' => __('validation.min.string'),
             'after' => __('validation.after'),
+            'requiredIf' => __('validation.after'),
         ];
     }
 }

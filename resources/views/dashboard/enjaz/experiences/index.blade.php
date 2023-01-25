@@ -57,10 +57,11 @@
                                             <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>{{__('enjaz.experience')}}</th>
+                                                <th>{{__('enjaz.job')}}</th>
                                                 <th>{{__('enjaz.organization')}}</th>
                                                 <th>{{__('enjaz.from')}}</th>
                                                 <th>{{__('enjaz.to')}}</th>
+                                                <th>{{__('enjaz.notes')}}</th>
                                                 <th>{{__('enjaz.actions')}}</th>
                                             </tr>
                                             </thead>
@@ -69,10 +70,11 @@
                                                 @foreach($experiences as $index=>$experience)
                                                     <tr>
                                                         <td>{{$index + 1}}</td>
-                                                        <td>{{$experience->name}}</td>
+                                                        <td>{{$experience->job->name}}</td>
                                                         <td>{{$experience->organization}}</td>
                                                         <td>{{$experience->from}}</td>
                                                         <td>{{$experience->to}}</td>
+                                                        <td>{{$experience->notes}}</td>
                                                         <td class="d-flex justify-content-center">
                                                             <div class="toggle-flip">
                                                                 <label>

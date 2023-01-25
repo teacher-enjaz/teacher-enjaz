@@ -10,9 +10,22 @@
                 <form id="experienceForm" name="experienceForm" method="POST" action="{{route('experiences.store')}}">
                     @csrf
                     <div class="form-floating mb-3 ms-3">
+                        <select class="form-select" aria-label="Floating label select example" name="job_id">
+                            <option label="{{__('enjaz.select')}}"></option>
+                            @if($jobs->count() > 0)
+                                @foreach($jobs as $job)
+                                    <option value="{{$job->id}}">{{$job->name}}</option>
+                                @endforeach
+                            @endif
+                            <option value="-1">أخرى..</option>
+                        </select>
+                        <label for="floatingSelect">{{__('enjaz.job')}}</label>
+                        <div class="text-danger" id="jobError"></div>
+                    </div>
+                    <div class="form-floating mb-3 ms-3" id="job_name" style="display: none">
                         <input type="text" class="form-control" id="" name="name">
-                        <label for="floatingInput" >{{__('enjaz.experience')}}</label>
-                        <div class="text-danger" id="experienceError"></div>
+                        <label for="floatingInput" >{{__('enjaz.addJob')}}</label>
+                        <div class="text-danger" id="nameError"></div>
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="" name="organization">
@@ -34,6 +47,11 @@
                                 <div class="text-danger" id="toError"></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-floating mb-3 ms-3">
+                        <input type="text" class="form-control" id="" name="notes">
+                        <label for="floatingInput" >{{__('enjaz.notes')}}</label>
+                        <div class="text-danger" id="noteError"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn custom-btn" id="saveBtn">{{__('enjaz.save')}}</button>

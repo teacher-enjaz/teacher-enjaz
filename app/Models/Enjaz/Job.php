@@ -2,24 +2,19 @@
 
 namespace App\Models\Enjaz;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Experience extends Model
+class Job extends Model
 {
     use HasFactory;
 
-    /**
-     * @var string
-     */
-    protected $table="experiences";
+    protected $table="jobs";
 
     /**\
      * @var array
      */
-    protected $fillable=['organization','from','to','notes','status','job_id','user_id', 'created_at', 'updated_at',];
+    protected $fillable=['name','status', 'created_at', 'updated_at',];
 
     /**
      * @var string[]
@@ -36,13 +31,8 @@ class Experience extends Model
         return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
     }
 
-    public function user()
+    public function experience()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function job()
-    {
-        return $this->belongsTo(Job::class);
+        return $this->hasMany(Experience::class);
     }
 }

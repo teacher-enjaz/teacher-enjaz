@@ -13,9 +13,17 @@
                     <input type="hidden" name="id" id="id" value="">
 
                     <div class="form-floating mb-3 ms-3">
-                        <input type="text" class="form-control" id="name" name="name" value="">
-                        <label for="floatingInput" >{{__('enjaz.experience')}}</label>
-                        <div class="text-danger" id="experienceError"></div>
+                        <select class="form-select" aria-label="Floating label select example" name="job_id" id="job_id">
+                            <option label="{{__('enjaz.select')}}"></option>
+                            @if($jobs->count() > 0)
+                                @foreach($jobs as $job)
+                                    <option value="{{$job->id}}" id="option{{$job->id}}">
+                                        {{$job->name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        <label for="floatingSelect">{{__('enjaz.job')}}</label>
+                        <div class="text-danger" id="jobError"></div>
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="organization" name="organization" value="">
@@ -37,6 +45,11 @@
                                 <div class="text-danger" id="toError"></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-floating mb-3 ms-3">
+                        <input type="text" class="form-control" id="notes" name="notes">
+                        <label for="floatingInput" >{{__('enjaz.notes')}}</label>
+                        <div class="text-danger" id="noteError"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn custom-btn" id="editBtn">{{__('enjaz.update')}}</button>

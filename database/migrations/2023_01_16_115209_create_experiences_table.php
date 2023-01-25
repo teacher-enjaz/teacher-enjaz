@@ -16,11 +16,15 @@ class CreateExperiencesTable extends Migration
         Schema::create('experiences', function (Blueprint $table) {
 
             $table->id();
-            $table->string('name',255);
             $table->string('organization',255);
             $table->date('from');
             $table->date('to');
-            $table->boolean('status');
+            $table->string('notes')->nullable();
+            $table->boolean('status')->default(1);
+            $table->foreignId('job_id')
+                ->references('id')
+                ->on('jobs')
+                ->onDelete('cascade');
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
