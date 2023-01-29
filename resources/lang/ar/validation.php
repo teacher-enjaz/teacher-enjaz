@@ -289,5 +289,9 @@ return [
         'specializationName' => 'اسم التخصص',
         'universityName' => 'اسم الجامعة',
         'graduatedCountryName' => 'اسم بلد التخرج',
+        'organization_id' => 'المؤسسة',
+        'organization_name' => 'اسم المؤسسة',
+        'grant_date' => 'تاريخ العضوية',
+        'validity' => 'الصلاحية',
     ],
 ];
