@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQualificationsTable extends Migration
+class CreateGraduatedCountriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateQualificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualifications', function (Blueprint $table) {
-
+        Schema::create('graduated_countries', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qualifications');
+        Schema::dropIfExists('graduated_countries');
     }
 }

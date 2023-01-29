@@ -30,5 +30,17 @@ return [
     'addJob' => 'أضف مسمى وظيفي جديد',
     'courseHours' => 'عدد ساعات الدورة',
     'trainingDate' => 'تاريخ الاجتياز',
+    'qualifications' => 'المؤهلات العلمية',
+    'addUserQualification' => 'إضافة مؤهل علمي',
+    'others' => 'أخرى..',
+    'qualification' => 'المؤهل العلمي',
+    'specialization' => 'التخصص',
+    'university' => 'الجامعة',
+    'graduated_country' => 'بلد التخرج',
+    'graduated_year' => 'سنة التخرج',
+    'addQualification' => 'أضف مؤهل علمي جديد',
+    'addSpecialization' => 'أضف تخصص جديد',
+    'addUniversity' => 'أضف اسم جامعة جديدة',
+    'addGraduatedCountry' => 'أضف بلد جديدة',
 ];
 

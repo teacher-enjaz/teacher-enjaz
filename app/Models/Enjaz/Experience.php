@@ -19,7 +19,7 @@ class Experience extends Model
     /**\
      * @var array
      */
-    protected $fillable=['organization','from','to','notes','status','job_id','user_id', 'created_at', 'updated_at',];
+    protected $fillable=['organization','from','to','notes','status','job_id','user_id', 'created_at', 'updated_at'];
 
     /**
      * @var string[]

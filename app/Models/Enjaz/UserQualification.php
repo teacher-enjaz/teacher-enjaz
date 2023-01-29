@@ -1,28 +1,64 @@
 <?php
 
 namespace App\Models\Enjaz;
-namespace App\Models\User;
-use App\Models\Enjaz\Qualification;
+
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class UserQualification extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'specialization',
-        'university',
-        'graduation_country',
-        'graduation_date',
-        'status',
-        'qualification_id',
-        'user_id',
-    ];
-    public function user(){
-        return $this->belongsTo(User::class,'user_id',id);
-    }
-    public function qualifications(){
-    return $this->belongsTo(Qualification::class,'qualification_id',id);
-}
+    protected $table = "user_qualifications";
 
+    protected $fillable = [
+        'graduation_year',
+        'status',
+        'user_id',
+        'qualification_id',
+        'specialization_id',
+        'university_id',
+        'graduated_country_id',
+        'created_at', 'updated_at'
+    ];
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'status'=> 'boolean'
+    ];
+
+    /**
+     * return subject status
+     */
+    public function getActive()
+    {
+        return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function qualification()
+    {
+        return $this->belongsTo(Qualification::class);
+    }
+
+    public function university()
+    {
+        return $this->belongsTo(University::class);
+    }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
+    }
+
+    public function graduated_country()
+    {
+        return $this->belongsTo(GraduatedCountry::class);
+    }
 }
