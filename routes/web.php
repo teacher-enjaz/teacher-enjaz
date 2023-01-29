@@ -98,8 +98,6 @@ Route::group(
 
             Route::get('/', [MembershipController::class, 'index'])->name('memberships.index');
 
-            Route::get('create', [MembershipController::class, 'create'])->name('memberships.create');
-
             Route::post('store', [MembershipController::class, 'store'])->name('memberships.store');
 
             Route::get('edit/{id}', [MembershipController::class, 'edit'])->name('memberships.edit');
@@ -107,6 +105,8 @@ Route::group(
             Route::put('update/{id}', [MembershipController::class, 'update'])->name('memberships.update');
 
             Route::get('destroy/{id}', [MembershipController::class, 'destroy'])->name('memberships.destroy');
+
+            Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
 
         Route::group(['prefix' => 'social-sites'], function () {
