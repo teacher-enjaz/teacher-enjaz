@@ -47,7 +47,7 @@ class ExperienceController extends Controller
         ]);
         if($request->job_id == -1)
         {
-            $job = Job::create($request->except('_token'));
+            $job = Job::create(['name' => $request->name]);
             $request['job_id'] = $job->id;
         }
         Experience::create($request->except('_token'));

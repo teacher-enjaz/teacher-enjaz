@@ -5,11 +5,10 @@ namespace App\Models\Enjaz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Qualification extends Model
+class GraduatedCountry extends Model
 {
     use HasFactory;
-
-    protected $table = "qualifications";
+    protected $table = "graduated_countries";
 
     protected $fillable = [
         'name',
@@ -36,4 +35,5 @@ class Qualification extends Model
     {
         return $this->hasMany(UserQualification::class);
     }
+
 }

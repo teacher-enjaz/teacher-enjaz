@@ -64,6 +64,20 @@ Route::group(
 
             Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
         });
+        Route::group(['prefix' => 'user-qualifications'], function () {
+
+            Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
+
+            Route::post('store', [UserQualificationController::class, 'store'])->name('user-qualifications.store');
+
+            Route::get('edit/{id}', [UserQualificationController::class, 'edit'])->name('user-qualifications.edit');
+
+            Route::put('update/{id}', [UserQualificationController::class, 'update'])->name('user-qualifications.update');
+
+            Route::get('destroy/{id}', [UserQualificationController::class, 'destroy'])->name('user-qualifications.destroy');
+
+            Route::get('status/{status}/{id}', [UserQualificationController::class, 'status']);
+        });
 
         Route::group(['prefix' => 'skills'], function () {
 
@@ -109,20 +123,7 @@ Route::group(
 
             Route::get('destroy/{id}', [SocialSitesController::class, 'destroy'])->name('socials.destroy');
         });
-        Route::group(['prefix' => 'user-qualifications'], function () {
 
-            Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
-
-            Route::get('create', [UserQualificationController::class, 'create'])->name('user-qualifications.create');
-
-            Route::post('store', [UserQualificationController::class, 'store'])->name('user-qualifications.store');
-
-            Route::get('edit/{id}', [UserQualificationController::class, 'edit'])->name('user-qualifications.edit');
-
-            Route::put('update/{id}', [UserQualificationController::class, 'update'])->name('user-qualifications.update');
-
-            Route::get('destroy/{id}', [UserQualificationController::class, 'destroy'])->name('user-qualifications.destroy');
-        });
         Route::group(['prefix' => 'languages'], function () {
 
             Route::get('/', [LanguageController::class, 'index'])->name('languages.index');

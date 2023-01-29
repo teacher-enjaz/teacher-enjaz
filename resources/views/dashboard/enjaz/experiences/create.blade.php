@@ -6,7 +6,6 @@
                 <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3 m-5 mt-0" >
-                <div id="custom-alert" class="alert alert-danger" style="display: none;"></div>
                 <form id="experienceForm" name="experienceForm" method="POST" action="{{route('experiences.store')}}">
                     @csrf
                     <div class="form-floating mb-3 ms-3">
@@ -17,7 +16,7 @@
                                     <option value="{{$job->id}}">{{$job->name}}</option>
                                 @endforeach
                             @endif
-                            <option value="-1">أخرى..</option>
+                            <option value="-1">{{__('enjaz.others')}}</option>
                         </select>
                         <label for="floatingSelect">{{__('enjaz.job')}}</label>
                         <div class="text-danger" id="jobError"></div>

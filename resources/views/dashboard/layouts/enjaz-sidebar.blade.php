@@ -38,10 +38,10 @@
                 </li>
                 <li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
-                        <a href="qualifications.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                        <a href="{{route('user-qualifications.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>
                               <i class="fa fa-book mx-auto"></i>
-                              <span class="text-a">المؤهلات العلمية</span>
+                              <span class="text-a">{{__('enjaz.qualifications')}}</span>
                             </span>
                         </a>
                     </div>
@@ -67,16 +67,6 @@
                     </div>
                 </li>
                 {{--<li class="col-12 col-md-12 mb-2 justify-content-center">
-                    <div class="dropdown d-flex justify-content-start">
-                        <a href="courses.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
-                            <span>
-                              <i class="fa fa-cube mx-auto"></i>
-                                <span class="text-a">الدورات</span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
-                <li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
                         <a href="skills.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>
