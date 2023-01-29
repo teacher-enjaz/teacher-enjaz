@@ -42,5 +42,15 @@ return [
     'addSpecialization' => 'أضف تخصص جديد',
     'addUniversity' => 'أضف اسم جامعة جديدة',
     'addGraduatedCountry' => 'أضف بلد جديدة',
+    'valid' => 'سارية',
+    'expired' => 'منتهية',
+    'memberships' => 'العضويات',
+    'addMemberships' => 'أضف عضوياتك التي حصلت عليها',
+    'membershipName' => 'اسم العضوية',
+    'grantDate' => 'تاريخ العضوية',
+    'validity' => 'الصلاحية',
+    'addMembership' => 'إضافة عضوية',
+    'addOrganization' => 'أضف مؤسسة جديدة',
+    'editMembership' => 'تعديل عضوية',
 ];
 

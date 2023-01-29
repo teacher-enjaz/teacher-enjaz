@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserFlagsTable extends Migration
+class CreateMembershipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,20 @@ class CreateUserFlagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_flags', function (Blueprint $table) {
-
+        Schema::create('memberships', function (Blueprint $table) {
             $table->id();
+            $table->string('name',255);
+            $table->date('grant_date');
+            $table->string('validity',255)->default(__('enjaz.valid'));
+            $table->boolean('status')->default(1);
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->foreignId('section_flag_id')
+            $table->foreignId('organization_id')
                 ->references('id')
-                ->on('section_flags')
+                ->on('organizations')
                 ->onDelete('cascade');
-            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ class CreateUserFlagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_flags');
+        Schema::dropIfExists('memberships');
     }
 }
