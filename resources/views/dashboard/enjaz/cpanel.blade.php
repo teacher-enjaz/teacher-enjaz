@@ -6,7 +6,7 @@
                 <div class="col-md-4 col-9 d-flex flex-column justify-content-sm-center justify-content-md-center text-center"
                      style="background-color: #109f99;
                      color: white !important; border-radius: 0px 0px 56px 56px; position: relative; top: -36px;">
-                    <h4 class="my-auto text-white size-18 py-2" >لوحة تحكم ملف الإنجاز</h4>
+                    <h4 class="my-auto text-white size-18 py-2" >{{__('enjaz.enjazCpanel')}}</h4>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                         <section class="row section width-80" style="display: block;">
                             <!-- Page Heading -->
                             <div class="section-title d-sm-flex align-items-center justify-content-between mb-4 ">
-                                <h1 class="h3 mb-0 text-gray-800">البيانات الشخصية</h1>
+                                <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.personalData')}} </h1>
                             </div>
                             <div class="row">
                                 <div class="about-text padd-15">
@@ -32,15 +32,26 @@
                                                 مديرية خان يونس
                                             </span>
                                     </h3>
-                                    <div class="bio mt-3">
+                                    <div class="bio mt-3 " >
                                         <div class="d-flex">
                                             <h4>نبذة</h4>
-                                            <a href="" class="me-2 mt-1" data-bs-toggle="modal" data-bs-target="#edit-bio-eModal">
+                                            @if($bio)
+                                            <a href="" class="edit-btn me-2 mt-1" data-id="{{$bio->id}}" data-bs-toggle="modal" data-bs-target="#edit-bio-eModal">
                                                 <i class="fas fa-pen"></i>
                                             </a>
+                                            @else
+                                                <a href="" class="create-btn me-2 mt-1" data-bs-toggle="modal"
+                                                   data-bs-target="#add-bio-eModal">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            @endif
                                         </div>
-                                        <p>
-                                            خبرة عشر سنوات ,خلال هذه السنوات قمت بتدريس اللغة العربية للمراحل التعليمية الثلاثة الابتدائي و الاعداداي ........ بخبرة عشر سنوات ,خلال هذه السنوات قمت بتدريس اللغة العربية للمراحل التعليمية الثلاثة الابتدائي و الاعداداي ........ بخبرة عشر سنوات ,خلال هذه السنوات قمت بتدريس اللغة العربية للمراحل التعليمية الثلاثة الابتدائي و الاعداداي
+                                        <p class="w-100 text-end">
+                                            @if($bio)
+                                                {{$bio->info}}
+                                            @else
+                                            أضف نبذة عنك
+                                            @endif
                                         </p>
                                     </div>
                                 </div>
@@ -213,4 +224,11 @@
             </div>
         </div>
     </div>--}}
+    @include('dashboard.enjaz.createBio');
+    @include('dashboard.enjaz.editBio');
+@endsection
+@section('script')
+    <script type="text/javascript" src="{{asset('template/js/plugins/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('template/js/generalScript.js')}}"></script>
+    <script src="{{asset('enjaz/js/bio.js')}}"></script>
 @endsection

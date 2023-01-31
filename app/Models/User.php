@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enjaz\Bio;
 use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
 use App\Models\Enjaz\UserQualification;
@@ -366,5 +367,9 @@ class User extends Authenticatable
     public function user_qualification()
     {
         return $this->hasMany(UserQualification::class);
+    }
+    public function bio()
+    {
+        return $this->hasOne(Bio::class);
     }
 }

@@ -293,5 +293,6 @@ return [
         'organization_name' => 'اسم المؤسسة',
         'grant_date' => 'تاريخ العضوية',
         'validity' => 'الصلاحية',
+        'info' => 'النبذة الشخصية',
     ],
 ];

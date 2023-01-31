@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
 use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
 use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
@@ -34,7 +35,7 @@ Route::group(
 
      /*************************** Teacher Enjaz Routes **********************************************/
      /*************************** Experience Routes **********************************************/
-        Route::get('enjaz-cpanel', [CPanelController::class,'index'])->name('enjaz.cpanel');
+//        Route::get('enjaz-cpanel', [CPanelController::class,'index'])->name('enjaz.cpanel');
         Route::group(['prefix' => 'experiences'], function () {
 
             Route::get('/', [ExperienceController::class, 'index'])->name('experiences.index');
@@ -151,6 +152,20 @@ Route::group(
             Route::put('update/{id}', [ContentController::class, 'update'])->name('contents.update');
 
             Route::get('destroy/{id}', [ContentController::class, 'destroy'])->name('contents.destroy');
+        });
+        Route::group(['prefix' => 'enjaz-cpanel'], function () {
+
+            Route::get('/', [BioController::class, 'index'])->name('bios.index');
+
+            Route::get('create', [BioController::class, 'create'])->name('bios.create');
+
+            Route::post('store', [BioController::class, 'store'])->name('bios.store');
+
+            Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
+
+            Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
+
+            Route::get('destroy/{id}', [BioController::class, 'destroy'])->name('bios.destroy');
         });
      /*************************** End Experience Routes ******************************************/
 });

@@ -52,5 +52,11 @@ return [
     'addMembership' => 'إضافة عضوية',
     'addOrganization' => 'أضف مؤسسة جديدة',
     'editMembership' => 'تعديل عضوية',
+    'personalData' => 'البيانات الشخصية',
+    'addBio' => 'أضف النبذة الشخصية',
+    'editBio' => 'تعديل النبذة الشخصية',
+   'summarizeBio' => 'لخص ما يميزك في كلمات موجزة',
+    'bio' => 'النبذة',
+
 ];
 
