@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Enjaz\Bio;
 use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
 use App\Models\Enjaz\Skill;
 use App\Models\Enjaz\UserLanguage;
+use App\Models\Enjaz\UserQualification;
 use App\Models\Rawafed\Admin;
 use App\Models\Rawafed\Book;
 use App\Models\Rawafed\ECard;
@@ -372,4 +374,12 @@ class User extends Authenticatable
         return $this->hasMany(UserLanguage::class);
     }
 
+    public function user_qualification()
+    {
+        return $this->hasMany(UserQualification::class);
+    }
+    public function bio()
+    {
+        return $this->hasOne(Bio::class);
+    }
 }

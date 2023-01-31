@@ -5,11 +5,11 @@ namespace App\Models\Enjaz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Qualification extends Model
+class Organization extends Model
 {
     use HasFactory;
 
-    protected $table = "qualifications";
+    protected $table = "organizations";
 
     protected $fillable = [
         'name',
@@ -24,16 +24,9 @@ class Qualification extends Model
         'status'=> 'boolean'
     ];
 
-    /**
-     * return subject status
-     */
-    public function getActive()
+    public function membership()
     {
-        return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
+        return $this->hasMany(Membership::class);
     }
 
-    public function user_qualification()
-    {
-        return $this->hasMany(UserQualification::class);
-    }
 }

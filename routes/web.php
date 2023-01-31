@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
 use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
 use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
@@ -35,7 +36,7 @@ Route::group(
 
      /*************************** Teacher Enjaz Routes **********************************************/
      /*************************** Experience Routes **********************************************/
-        Route::get('enjaz-cpanel', [CPanelController::class,'index'])->name('enjaz.cpanel');
+//        Route::get('enjaz-cpanel', [CPanelController::class,'index'])->name('enjaz.cpanel');
         Route::group(['prefix' => 'experiences'], function () {
 
             Route::get('/', [ExperienceController::class, 'index'])->name('experiences.index');
@@ -65,6 +66,20 @@ Route::group(
 
             Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
         });
+        Route::group(['prefix' => 'user-qualifications'], function () {
+
+            Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
+
+            Route::post('store', [UserQualificationController::class, 'store'])->name('user-qualifications.store');
+
+            Route::get('edit/{id}', [UserQualificationController::class, 'edit'])->name('user-qualifications.edit');
+
+            Route::put('update/{id}', [UserQualificationController::class, 'update'])->name('user-qualifications.update');
+
+            Route::get('destroy/{id}', [UserQualificationController::class, 'destroy'])->name('user-qualifications.destroy');
+
+            Route::get('status/{status}/{id}', [UserQualificationController::class, 'status']);
+        });
 
         Route::group(['prefix' => 'skills'], function () {
 
@@ -85,8 +100,6 @@ Route::group(
 
             Route::get('/', [MembershipController::class, 'index'])->name('memberships.index');
 
-            Route::get('create', [MembershipController::class, 'create'])->name('memberships.create');
-
             Route::post('store', [MembershipController::class, 'store'])->name('memberships.store');
 
             Route::get('edit/{id}', [MembershipController::class, 'edit'])->name('memberships.edit');
@@ -94,6 +107,8 @@ Route::group(
             Route::put('update/{id}', [MembershipController::class, 'update'])->name('memberships.update');
 
             Route::get('destroy/{id}', [MembershipController::class, 'destroy'])->name('memberships.destroy');
+
+            Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
 
         Route::group(['prefix' => 'social-sites'], function () {
@@ -110,11 +125,6 @@ Route::group(
 
             Route::get('destroy/{id}', [SocialSitesController::class, 'destroy'])->name('socials.destroy');
         });
-        Route::group(['prefix' => 'user-qualifications'], function () {
-
-            Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
-
-            Route::get('create', [UserQualificationController::class, 'create'])->name('user-qualifications.create');
 
             Route::post('store', [UserQualificationController::class, 'store'])->name('user-qualifications.store');
 
@@ -154,6 +164,20 @@ Route::group(
             Route::put('update/{id}', [ContentController::class, 'update'])->name('contents.update');
 
             Route::get('destroy/{id}', [ContentController::class, 'destroy'])->name('contents.destroy');
+        });
+        Route::group(['prefix' => 'enjaz-cpanel'], function () {
+
+            Route::get('/', [BioController::class, 'index'])->name('bios.index');
+
+            Route::get('create', [BioController::class, 'create'])->name('bios.create');
+
+            Route::post('store', [BioController::class, 'store'])->name('bios.store');
+
+            Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
+
+            Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
+
+            Route::get('destroy/{id}', [BioController::class, 'destroy'])->name('bios.destroy');
         });
      /*************************** End Experience Routes ******************************************/
 });

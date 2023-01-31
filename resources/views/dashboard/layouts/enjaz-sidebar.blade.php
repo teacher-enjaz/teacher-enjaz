@@ -28,7 +28,7 @@
             <ul class="ul-aside d-flex flex-column justify-content-center mb-5 pb-3">
                 <li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start ">
-                        <a href="cpanel.html" class="d-flex align-content-start title-cpanel p-1 pe-3 active">
+                        <a href="{{route('bios.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3 active">
                             <span>
                               <i class="fa fa-user mx-auto"></i>
                                  <span class="text-a">البيانات الشخصية</span>
@@ -38,10 +38,10 @@
                 </li>
                 <li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
-                        <a href="qualifications.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                        <a href="{{route('user-qualifications.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>
                               <i class="fa fa-book mx-auto"></i>
-                              <span class="text-a">المؤهلات العلمية</span>
+                              <span class="text-a">{{__('enjaz.qualifications')}}</span>
                             </span>
                         </a>
                     </div>
@@ -87,19 +87,17 @@
                     </div>
                 </li>
 
-
-
                 {{--<li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
-                        <a href="courses.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                        <a href="{{route('memberships.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>
-                              <i class="fa fa-cube mx-auto"></i>
-                                <span class="text-a">الدورات</span>
+                              <i class="fa fa-address-card mx-auto"></i>
+                                <span class="text-a">{{__('enjaz.memberships')}}</span>
                             </span>
                         </a>
                     </div>
                 </li>
-                <li class="col-12 col-md-12 mb-2 justify-content-center">
+                {{--<li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
                         <a href="skills.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>

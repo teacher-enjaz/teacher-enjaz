@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Enjaz\MembershipRequest;
-use App\Models\Enjaz\Membership;
-use App\Models\Enjaz\Organization;
+use App\Http\Requests\Enjaz\BioRequest;
+use App\Models\Enjaz\Bio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class MembershipController extends Controller
+class BioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::where('status',1)->get();
-        $memberships = Membership::orderBy('created_at','desc')->get();
-        return view('dashboard.enjaz.memberships.index',compact('memberships','organizations'));
+//        $bio= Bio::where('user_id' , Auth::id())->first();
+        $bio= Bio::where('user_id' , 1)->first();
+        return view('dashboard.enjaz.cpanel',compact('bio'));
     }
 
     /**
@@ -38,20 +38,15 @@ class MembershipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MembershipRequest $request)
+    public function store(BioRequest $request)
     {
         $request->request->add([
             'user_id' => 1,//Auth::id(),
         ]);
-        if($request->organization_id == -1)
-        {
-            $organization = Organization::create(['name' => $request->organization_name]);
-            $request['organization_id'] = $organization->id;
-        }
 
-        Membership::create($request->except('_token'));
+        Bio::create($request->except('_token'));
 
-        return redirect()->route('memberships.index')->with('success', __('enjaz.successAdd'));
+        return redirect()->route('bios.index')->with('success', __('enjaz.successAdd'));
     }
 
     /**
@@ -73,11 +68,11 @@ class MembershipController extends Controller
      */
     public function edit($id)
     {
-        $membership = Membership::find($id);
-        if(!$membership)
-            return redirect()->route('memberships.index')->with('error', __('enjaz.error'));
+        $bio = Bio::where('user_id',1)->first();
+        if(!$bio)
+            return redirect()->route('bios.index')->with('error', __('enjaz.error'));
 
-        return response()->json($membership);
+        return response()->json($bio);
     }
 
     /**
@@ -87,19 +82,15 @@ class MembershipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MembershipRequest $request, $id)
+    public function update(BioRequest $request, $id)
     {
-        $membership = Membership::find($id);
-        if(!$membership)
-            return redirect()->route('memberships.index')->with('error', __('enjaz.error'));
-        if($request->organization_id == -1)
-        {
-            $organization = Organization::create(['name' => $request->organization_name]);
-            $request['organization_id'] = $organization->id;
-        }
-        $membership->update($request->except('_token'));
+        $bio = Bio::find($id);
+        if(!$bio)
+            return redirect()->route('bios.index')->with('error', __('enjaz.error'));
 
-        return redirect()->route('memberships.index')->with('success', __('enjaz.successUpdate'));
+        $bio->update($request->except('_token'));
+
+        return redirect()->route('bios.index')->with('success', __('enjaz.successUpdate'));
     }
 
     /**
@@ -110,11 +101,11 @@ class MembershipController extends Controller
      */
     public function destroy($id)
     {
-        $membership = Membership::find($id);
-        if (!$membership)
-            return redirect()->route('memberships.index')->with('error', __('enjaz.error'));
-        $membership->delete();
-        return redirect()->route('memberships.index')->with('success', __('enjaz.successDelete'));
+//        $bio = Bio::find($id);
+//        if (!$bio)
+//            return redirect()->route('bios.index')->with('error', __('enjaz.error'));
+//        $bio->delete();
+//        return redirect()->route('bios.index')->with('success', __('enjaz.successDelete'));
     }
 
     /**
