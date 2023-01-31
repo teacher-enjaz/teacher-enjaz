@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserFlagsTable extends Migration
+class CreateUserLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,21 @@ class CreateUserFlagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_flags', function (Blueprint $table) {
-
+        Schema::create('user_languages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->foreignId('section_flag_id')
+            $table->foreignId('language_id')
                 ->references('id')
-                ->on('section_flags')
+                ->on('user-languages')
                 ->onDelete('cascade');
-            $table->boolean('status')->default(true);
+            $table->integer('reading_level');
+            $table->integer('writing_level');
+            $table->integer('speaking_level');
+            $table->boolean('status')->default(1);
+            $table->boolean('is_native')->default(0);
             $table->timestamps();
         });
     }
@@ -36,6 +39,6 @@ class CreateUserFlagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_flags');
+        Schema::dropIfExists('user_languages');
     }
 }

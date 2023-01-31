@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
 use App\Http\Controllers\Dashboard\Enjaz\SocialSitesController;
+use App\Http\Controllers\Dashboard\Enjaz\UserLanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\UserQualificationController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -69,8 +70,6 @@ Route::group(
 
             Route::get('/', [SkillController::class, 'index'])->name('skills.index');
 
-            Route::get('create', [SkillController::class, 'create'])->name('skills.create');
-
             Route::post('store', [SkillController::class, 'store'])->name('skills.store');
 
             Route::get('edit/{id}', [SkillController::class, 'edit'])->name('skills.edit');
@@ -78,6 +77,8 @@ Route::group(
             Route::put('update/{id}', [SkillController::class, 'update'])->name('skills.update');
 
             Route::get('destroy/{id}', [SkillController::class, 'destroy'])->name('skills.destroy');
+
+            Route::get('status/{status}/{id}', [SkillController::class, 'status']);
         });
 
         Route::group(['prefix' => 'memberships'], function () {
@@ -123,19 +124,22 @@ Route::group(
 
             Route::get('destroy/{id}', [UserQualificationController::class, 'destroy'])->name('user-qualifications.destroy');
         });
-        Route::group(['prefix' => 'languages'], function () {
+        Route::group(['prefix' => 'user-languages'], function () {
 
-            Route::get('/', [LanguageController::class, 'index'])->name('languages.index');
+            Route::get('/', [UserLanguageController::class, 'index'])->name('user-languages.index');
 
-            Route::get('create', [LanguageController::class, 'create'])->name('languages.create');
+            Route::get('create', [UserLanguageController::class, 'create'])->name('user-languages.create');
 
-            Route::post('store', [LanguageController::class, 'store'])->name('languages.store');
+            Route::post('store', [UserLanguageController::class, 'store'])->name('user-languages.store');
 
-            Route::get('edit/{id}', [LanguageController::class, 'edit'])->name('languages.edit');
+            Route::get('edit/{id}', [UserLanguageController::class, 'edit'])->name('user-languages.edit');
 
-            Route::put('update/{id}', [LanguageController::class, 'update'])->name('languages.update');
+            Route::put('update/{id}', [UserLanguageController::class, 'update'])->name('user-languages.update');
 
-            Route::get('destroy/{id}', [LanguageController::class, 'destroy'])->name('languages.destroy');
+            Route::get('destroy/{id}', [UserLanguageController::class, 'destroy'])->name('user-languages.destroy');
+
+            Route::get('status/{status}/{id}', [UserLanguageController::class, 'status']);
+
         });
         Route::group(['prefix' => 'contents'], function () {
 

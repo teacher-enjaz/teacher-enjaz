@@ -66,6 +66,29 @@
                         </a>
                     </div>
                 </li>
+                <li class="col-12 col-md-12 mb-2 justify-content-center">
+                    <div class="dropdown d-flex justify-content-start">
+                        <a href="{{route('skills.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                            <span>
+                              <i class="fa fa-computer-mouse mx-auto"></i>
+                                <span class="text-a">{{__('enjaz.skills')}}</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-12 col-md-12 mb-2 justify-content-center">
+                    <div class="dropdown d-flex justify-content-start">
+                        <a href="{{route('user-languages.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                            <span>
+                              <i class="fa fa-language mx-auto"></i>
+                                <span class="text-a">{{__('enjaz.user-languages')}}</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+
+
+
                 {{--<li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
                         <a href="courses.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
@@ -88,7 +111,7 @@
                 </li>
                 <li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
-                        <a href="languages.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                        <a href="user-languages.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>
                               <i class="fa fa-language mx-auto"></i>
                                 <span class="text-a">اللغات</span>

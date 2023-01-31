@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
+use App\Models\Enjaz\Skill;
+use App\Models\Enjaz\UserLanguage;
 use App\Models\Rawafed\Admin;
 use App\Models\Rawafed\Book;
 use App\Models\Rawafed\ECard;
@@ -360,6 +362,14 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->hasMany(Course::class);
+    }
+    public function skill()
+    {
+        return $this->hasMany(Skill::class);
+    }
+    public function user_language()
+    {
+        return $this->hasMany(UserLanguage::class);
     }
 
 }
