@@ -13,7 +13,7 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user-languages', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
             $table->boolean('status')->default(1);
