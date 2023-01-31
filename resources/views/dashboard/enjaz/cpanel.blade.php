@@ -201,29 +201,7 @@
         </div>
     </div>
 
-    <!-- edit bio modal -->
-    {{--<div class="modal fade bio-eModal" id="edit-bio-eModal" tabindex="-1" aria-labelledby="add-edu-eModal" aria-hidden="true">
-        <div class="modal-dialog  modal-lg modal-dialog-centered ">
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <h5 class="modal-title" id="exampleModalLabelBIO">تعديل النبذة الشخصية     </h5>
-                    <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-hint">
-                    <p> لخص ما يميزك في كلمات موجزة</p>
-                </div>
-                <div class="modal-body p-3 m-5 mt-0" >
-                    <div class="form-floating mb-3 ms-3">
-                        <textarea  class="form-control" id="floatingInputBIO" rows="4">
-                            خبرة عشر سنوات ,خلال هذه السنوات قمت بتدريس اللغة العربية للمراحل التعليمية الثلاثة الابتدائي و الاعداداي ........ بخبرة عشر سنوات ,خلال هذه السنوات قمت بتدريس اللغة العربية للمراحل التعليمية الثلاثة الابتدائي و الاعداداي ........ بخبرة عشر سنوات ,خلال هذه السنوات قمت بتدريس اللغة العربية للمراحل التعليمية الثلاثة الابتدائي و الاعداداي
-                        </textarea>
-                        <label for="floatingInput" > النبذة   </label>
-                    </div>
-                    <button type="button" class="btn custom-btn"> حفظ</button>
-                </div>
-            </div>
-        </div>
-    </div>--}}
+
     @include('dashboard.enjaz.createBio');
     @include('dashboard.enjaz.editBio');
 @endsection
