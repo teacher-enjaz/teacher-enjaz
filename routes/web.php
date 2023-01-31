@@ -66,6 +66,7 @@ Route::group(
 
             Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
         });
+
         Route::group(['prefix' => 'user-qualifications'], function () {
 
             Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
@@ -111,29 +112,6 @@ Route::group(
             Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
 
-        Route::group(['prefix' => 'social-sites'], function () {
-
-            Route::get('/', [SocialSitesController::class, 'index'])->name('socials.index');
-
-            Route::get('create', [SocialSitesController::class, 'create'])->name('socials.create');
-
-            Route::post('store', [SocialSitesController::class, 'store'])->name('socials.store');
-
-            Route::get('edit/{id}', [SocialSitesController::class, 'edit'])->name('socials.edit');
-
-            Route::put('update/{id}', [SocialSitesController::class, 'update'])->name('socials.update');
-
-            Route::get('destroy/{id}', [SocialSitesController::class, 'destroy'])->name('socials.destroy');
-        });
-
-            Route::post('store', [UserQualificationController::class, 'store'])->name('user-qualifications.store');
-
-            Route::get('edit/{id}', [UserQualificationController::class, 'edit'])->name('user-qualifications.edit');
-
-            Route::put('update/{id}', [UserQualificationController::class, 'update'])->name('user-qualifications.update');
-
-            Route::get('destroy/{id}', [UserQualificationController::class, 'destroy'])->name('user-qualifications.destroy');
-        });
         Route::group(['prefix' => 'user-languages'], function () {
 
             Route::get('/', [UserLanguageController::class, 'index'])->name('user-languages.index');
@@ -151,20 +129,7 @@ Route::group(
             Route::get('status/{status}/{id}', [UserLanguageController::class, 'status']);
 
         });
-        Route::group(['prefix' => 'contents'], function () {
 
-            Route::get('/', [ContentController::class, 'index'])->name('contents.index');
-
-            Route::get('create', [ContentController::class, 'create'])->name('contents.create');
-
-            Route::post('store', [ContentController::class, 'store'])->name('contents.store');
-
-            Route::get('edit/{id}', [ContentController::class, 'edit'])->name('contents.edit');
-
-            Route::put('update/{id}', [ContentController::class, 'update'])->name('contents.update');
-
-            Route::get('destroy/{id}', [ContentController::class, 'destroy'])->name('contents.destroy');
-        });
         Route::group(['prefix' => 'enjaz-cpanel'], function () {
 
             Route::get('/', [BioController::class, 'index'])->name('bios.index');
