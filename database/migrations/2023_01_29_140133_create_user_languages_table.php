@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContentsTable extends Migration
+class CreateUserLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('user_languages', function (Blueprint $table) {
             $table->id();
-            $table->string('title' ,255);
-            $table->boolean('comments_allowed')->default(true);
-            $table->bigInteger('veiws')->default(0);
-            $table->bigInteger('likes')->default(0);
-            $table->boolean('status')->default(true);
-            $table->foreignId('type_id')
-                ->references('id')
-                ->on('content_types')
-                ->onDelete('cascade');
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            $table->foreignId('language_id')
+                ->references('id')
+                ->on('user-languages')
+                ->onDelete('cascade');
+            $table->integer('reading_level');
+            $table->integer('writing_level');
+            $table->integer('speaking_level');
+            $table->boolean('status')->default(1);
+            $table->boolean('is_native')->default(0);
             $table->timestamps();
         });
     }
@@ -39,6 +39,6 @@ class CreateContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('user_languages');
     }
 }

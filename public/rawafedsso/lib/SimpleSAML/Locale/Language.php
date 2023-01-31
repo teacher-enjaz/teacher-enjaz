@@ -18,7 +18,7 @@ class Language
 {
 
     /**
-     * This is the default language map. It is used to map languages codes from the user agent to other language codes.
+     * This is the default language map. It is used to map user-languages codes from the user agent to other language codes.
      */
     private static $defaultLanguageMap = ['nb' => 'no'];
 
@@ -30,7 +30,7 @@ class Language
     private $configuration;
 
     /**
-     * An array holding a list of languages available.
+     * An array holding a list of user-languages available.
      *
      * @var array
      */
@@ -51,7 +51,7 @@ class Language
     private $defaultLanguage;
 
     /**
-     * An array holding a list of languages that are written from right to left.
+     * An array holding a list of user-languages that are written from right to left.
      *
      * @var array
      */
@@ -72,7 +72,7 @@ class Language
     private $customFunction;
 
     /**
-     * A list of languages supported with their names localized.
+     * A list of user-languages supported with their names localized.
      * Indexed by something that mostly resembles ISO 639-1 code,
      * with some charming SimpleSAML-specific variants...
      * that must remain before 2.0 due to backwards compatibility
@@ -125,7 +125,7 @@ class Language
     ];
 
     /**
-     * A mapping of SSP languages to locales
+     * A mapping of SSP user-languages to locales
      *
      * @var array
      */
@@ -158,9 +158,9 @@ class Language
 
 
     /**
-     * Filter configured (available) languages against installed languages.
+     * Filter configured (available) user-languages against installed user-languages.
      *
-     * @return array The set of languages both in 'language.available' and self::$language_names.
+     * @return array The set of user-languages both in 'language.available' and self::$language_names.
      */
     private function getInstalledLanguages()
     {
@@ -285,7 +285,7 @@ class Language
      * This method returns the preferred language for the user based on the Accept-Language HTTP header.
      *
      * @return string|null The preferred language based on the Accept-Language HTTP header,
-     * or null if none of the languages in the header is available.
+     * or null if none of the user-languages in the header is available.
      */
     private function getHTTPLanguage()
     {
@@ -311,7 +311,7 @@ class Language
 
             /* Some user agents use very limited precision of the quality value, but order the elements in descending
              * order. Therefore we rely on the order of the output from getAcceptLanguage() matching the order of the
-             * languages in the header when two languages have the same quality.
+             * user-languages in the header when two user-languages have the same quality.
              */
             if ($score > $bestScore) {
                 $bestLanguage = $language;
@@ -351,9 +351,9 @@ class Language
 
 
     /**
-     * Return an indexed list of all languages available.
+     * Return an indexed list of all user-languages available.
      *
-     * @return array An array holding all the languages available as the keys of the array. The value for each key is
+     * @return array An array holding all the user-languages available as the keys of the array. The value for each key is
      * true in case that the language specified by that key is currently active, or false otherwise.
      */
     public function getLanguageList()
@@ -400,7 +400,7 @@ class Language
 
     /**
      * This method will attempt to set the user-selected language in a cookie. It will do nothing if the language
-     * specified is not in the list of available languages, or the headers have already been sent to the browser.
+     * specified is not in the list of available user-languages, or the headers have already been sent to the browser.
      *
      * @param string $language The language set by the user.
      * @return void

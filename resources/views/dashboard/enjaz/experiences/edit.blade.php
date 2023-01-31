@@ -2,11 +2,10 @@
     <div class="modal-dialog  modal-lg modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header ">
-                <h5 class="modal-title" id="exampleModalLabel">{{__('enjaz.addEnjazCpanel')}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{__('enjaz.editExperience')}}</h5>
                 <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3 m-5 mt-0" >
-                <div id="custom-alert" class="alert alert-danger" style="display: none;"></div>
                 <form id="editExperienceForm" name="experienceForm" method="POST" action="">
                     @csrf
                     @method('PUT')

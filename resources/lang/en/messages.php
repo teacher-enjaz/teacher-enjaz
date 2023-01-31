@@ -35,7 +35,7 @@ return[
     'notFoundLanguage'=> 'This Language Not exist!',
     'successUpdateLanguage'=> 'Language Updated Successfully',
     'successDeleteLanguage'=> 'Language Deleted Successfully',
-    'errorAddLanguage'=> 'You must add language before or activate exist languages!',
+    'errorAddLanguage'=> 'You must add language before or activate exist user-languages!',
 
     /**
      ********************************************** Information **********************************************

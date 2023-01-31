@@ -12,7 +12,7 @@
         </li>
         <!--Languages Menu-->
         <li class="dropdown">
-            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show languages">
+            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show user-languages">
                 <i class="fa fa-language"></i>
                 <span>{{LaravelLocalization::getCurrentLocaleNative()}}</span>
             </a>

@@ -126,6 +126,6 @@ class ExperienceController extends Controller
         $experience = Experience::find($experience_id);
         $experience->status = $status;
         $experience->save();
-        return response()->json(['success'=>'Lesson status change successfully.']);
+        return response()->json(['success'=>'Experience status change successfully.']);
     }
 }

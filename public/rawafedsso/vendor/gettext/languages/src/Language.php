@@ -109,7 +109,7 @@ class Language
     }
 
     /**
-     * Return a list of all languages available.
+     * Return a list of all user-languages available.
      *
      * @throws \Exception
      *
