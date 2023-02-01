@@ -293,5 +293,10 @@ return [
         'organization_name' => 'اسم المؤسسة',
         'grant_date' => 'تاريخ العضوية',
         'validity' => 'الصلاحية',
+        'namePlatformError' => 'اسم المنصة',
+        'imagePlatformError' => 'صورة المنصة',
+        'social_platforms_id' => 'اسم المنصة',
+        'linkError'=> 'الرابط' ,
+        'link'=> 'الرابط' ,
     ],
 ];

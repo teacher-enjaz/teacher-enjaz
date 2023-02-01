@@ -52,5 +52,15 @@ return [
     'addMembership' => 'إضافة عضوية',
     'addOrganization' => 'أضف مؤسسة جديدة',
     'editMembership' => 'تعديل عضوية',
+    'socialPlatforms' => 'منصات التواصل الاجتماعي',
+    'addPlatformsEnjazCpanel' => 'اضف منصة تواصل اجتماعي جديدة',
+    'addAccountsEnjazCpanel' => 'اضف حساب تواصل اجتماعي جديدة',
+    'editPlatformsEnjazCpanel' => 'تعديل منصة تواصل اجتماعي',
+    'platformImage' => ' صورة المنصة',
+    'platformName' => ' اسم المنصة',
+    'editNameError' => 'تعديل اسم المنصة',
+    'socialAccounts' => 'حسابات التواصل الاجتماعي',
+    'socialAccountLink' => 'رابط حساب التواصل الاجتماعي',
+    'editSocialAccount' => 'تعديل حساب التواصل الاجتماعي',
 ];
 
