@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Enjaz;
 
-use App\Models\Rawafed\Role;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use function __;

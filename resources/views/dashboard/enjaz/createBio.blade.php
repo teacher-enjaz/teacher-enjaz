@@ -10,14 +10,14 @@
             </div>
             <form id="bioForm" name="bioForm" method="POST" action="{{route('bios.store')}}">
                 @csrf
-            <div class="modal-body p-3 m-5 mt-0" >
-                <div class="form-floating mb-3 ms-3">
-                        <textarea  class="form-control" id="floatingInputBIO" rows="4" name="info"></textarea>
-                    <label for="floatingInput" > {{__('enjaz.bio')}}   </label>
-                    <div class="text-danger" id="infoError"></div>
+                <div class="modal-body p-3 m-5 mt-0" >
+                    <div class="form-floating mb-3 ms-3">
+                            <textarea  class="form-control" id="floatingInputBIO" rows="4" name="info"></textarea>
+                        <label for="floatingInput" > {{__('enjaz.bio')}}   </label>
+                        <div class="text-danger" id="infoError"></div>
+                    </div>
+                    <button type="submit" class="btn custom-btn" id="saveBtn"> {{__('enjaz.save')}}</button>
                 </div>
-                <button type="submit" class="btn custom-btn" id="saveBtn"> {{__('enjaz.save')}}</button>
-            </div>
             </form>
         </div>
     </div>
