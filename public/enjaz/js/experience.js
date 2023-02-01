@@ -10,10 +10,17 @@ $(document).ready(function(){
         else
             $('#job_name').hide();
     })
+    $('select[id="job_id"]').on('change',function (e) {
+        if($(this).val() === '-1')
+            $('#edit_job_name').show();
+        else
+            $('#edit_job_name').hide();
+    })
     $('body').on('click', '.create-btn', function (e)
     {
         e.preventDefault();
         $('#editJobError').text('');
+        $('#editJobNameError').text('');
         $('#editOrganizationError').text('');
         $('#editFromError').text('');
         $('#editToError').text('');
@@ -45,12 +52,15 @@ $(document).ready(function(){
         },
         error: function (response) {
             $('#jobError').text('');
+            $('#editJobNameError').text('');
             $('#organizationError').text('');
             $('#fromError').text('');
             $('#toError').text('');
             $('#noteError').text('');
             $('#nameError').text('');
+
             $('#jobError').text(response.responseJSON.errors.job_id);
+            $('#editJobNameError').text(response.responseJSON.errors.name);
             $('#organizationError').text(response.responseJSON.errors.organization);
             $('#fromError').text(response.responseJSON.errors.from);
             $('#toError').text(response.responseJSON.errors.to);
@@ -107,11 +117,14 @@ $(document).ready(function(){
         },
         error: function (response) {
             $('#editJobError').text('');
+            $('#editJobNameError').text('');
             $('#editOrganizationError').text('');
             $('#editFromError').text('');
             $('#editToError').text('');
             $('#editNoteError').text('');
+
             $('#editJobError').text(response.responseJSON.errors.job_id);
+            $('#editJobNameError').text(response.responseJSON.errors.name);
             $('#editOrganizationError').text(response.responseJSON.errors.organization);
             $('#editFromError').text(response.responseJSON.errors.from);
             $('#editToError').text(response.responseJSON.errors.to);

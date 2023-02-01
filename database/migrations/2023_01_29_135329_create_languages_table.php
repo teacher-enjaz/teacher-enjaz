@@ -28,6 +28,6 @@ class CreateLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user-languages');
+        Schema::dropIfExists('languages');
     }
 }

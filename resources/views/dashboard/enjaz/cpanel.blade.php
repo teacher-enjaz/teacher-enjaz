@@ -24,13 +24,13 @@
                             <div class="row">
                                 <div class="about-text padd-15">
                                     <h3>
-                                            <span>
-                                                مدرس لغة عربية
-                                                <span class="slash">/</span>
-                                                مدرسة خالد الحسن الثانوية
-                                                <span class="slash">/</span>
-                                                مديرية خان يونس
-                                            </span>
+                                        <span>
+                                            مدرس لغة عربية
+                                            <span class="slash">/</span>
+                                            مدرسة خالد الحسن الثانوية
+                                            <span class="slash">/</span>
+                                            مديرية خان يونس
+                                        </span>
                                     </h3>
                                     <div class="bio mt-3 " >
                                         <div class="d-flex">
@@ -126,12 +126,9 @@
                                                     6
                                                 </p>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
                                 <div class="col-12 col-md-4" style="padding-right: 0px;">
@@ -163,8 +160,6 @@
                                                     33
                                                 </p>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -180,14 +175,10 @@
                                                     29
                                                 </p>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="row" style="margin-bottom: 3rem">
                                 <div class="buttons  d-flex justify-content-center">
                                     <a href="#" class="custom-btn ms-1"><i class="fas fa-download"></i> السيرة الذاتية</a>
@@ -200,8 +191,6 @@
             </div>
         </div>
     </div>
-
-
     @include('dashboard.enjaz.createBio');
     @include('dashboard.enjaz.editBio');
 @endsection

@@ -16,18 +16,8 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('created_at','desc')->get();
+        $courses = Course::where('user_id',1)->orderBy('created_at','desc')->get();
         return view('dashboard.enjaz.courses.index',compact('courses'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -113,6 +103,6 @@ class CoursesController extends Controller
         $course = Course::find($course_id);
         $course->status = $status;
         $course->save();
-        return response()->json(['success'=>'Lesson status change successfully.']);
+        return response()->json(['success'=>'Course Status changed successfully.']);
     }
 }

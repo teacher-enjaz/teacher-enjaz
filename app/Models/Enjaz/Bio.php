@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bio extends Model
 {
     use HasFactory;
+
     protected $table = "bios";
+
     protected $fillable = [
         'user_id',
         'info',

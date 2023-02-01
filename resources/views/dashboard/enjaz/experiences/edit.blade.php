@@ -20,9 +20,15 @@
                                         {{$job->name}}</option>
                                 @endforeach
                             @endif
+                            <option value="-1">{{__('enjaz.others')}}</option>
                         </select>
-                        <label for="floatingSelect">{{__('enjaz.job')}}</label>
+                        <label for="floatingSelect">{{__('enjaz.addJob')}}</label>
                         <div class="text-danger" id="editJobError"></div>
+                    </div>
+                    <div class="form-floating mb-3 ms-3" id="edit_job_name" style="display: none">
+                        <input type="text" class="form-control" id="" name="name">
+                        <label for="floatingInput" >{{__('enjaz.addOrganization')}}</label>
+                        <div class="text-danger" id="editJobNameError"></div>
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="organization" name="organization" value="">

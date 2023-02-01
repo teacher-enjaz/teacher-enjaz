@@ -8,10 +8,10 @@ use App\Http\Traits\GeneralTrait;
 use App\Models\enjaz\Experience;
 use App\Models\Enjaz\Job;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ExperienceController extends Controller
 {
-    //use GeneralTrait;
     /**
      * Display a listing of the resource.
      *
@@ -20,39 +20,39 @@ class ExperienceController extends Controller
     public function index()
     {
         $jobs = Job::where('status',1)->get();
-        $experiences = Experience::with('job:id,name')->orderBy('created_at','desc')->get();
+        $experiences = Experience::where('user_id',1)->with('job:id,name')->orderBy('created_at','desc')->get();
         return view('dashboard.enjaz.experiences.index',compact('experiences','jobs'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ExperienceRequest $request)
     {
-        $request->request->add([
-            'user_id' => 1,//Auth::id(),
-        ]);
-        if($request->job_id == -1)
+        /**
+         * use DB transaction to store in multiple tables
+         */
+        try
         {
-            $job = Job::create(['name' => $request->name]);
-            $request['job_id'] = $job->id;
+            DB::beginTransaction();
+            $request->request->add([
+                'user_id' => 1,//Auth::id(),
+            ]);
+            if($request->job_id == -1)
+            {
+                $job = Job::create(['name' => $request->name]);
+                $request['job_id'] = $job->id;
+            }
+            Experience::create($request->except('_token'));
+            DB::commit();
+            return redirect()->route('experiences.index')->with('success', __('enjaz.successAdd'));
         }
-        Experience::create($request->except('_token'));
-
-        return redirect()->route('experiences.index')->with('success', __('enjaz.successAdd'));
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            return redirect()->back()->with(['error' =>$e]);
+        }
     }
 
     /**
@@ -91,13 +91,31 @@ class ExperienceController extends Controller
      */
     public function update(ExperienceRequest $request, $id)
     {
-        $experience = Experience::find($id);
-        if(!$experience)
-            return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
+        /**
+         * use DB transaction to store in multiple tables
+         */
+        try
+        {
+            DB::beginTransaction();
+            $experience = Experience::find($id);
+            if(!$experience)
+                return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
 
-        $experience->update($request->except('_token'));
+            if($request->job_id == -1)
+            {
+                $job = Job::create(['name' => $request->name]);
+                $request['job_id'] = $job->id;
+            }
+            $experience->update($request->except('_token'));
 
-        return redirect()->route('experiences.index')->with('success', __('enjaz.successUpdate'));
+            DB::commit();
+            return redirect()->route('experiences.index')->with('success', __('enjaz.successUpdate'));
+        }
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            return redirect()->back()->with(['error' =>$e]);
+        }
     }
 
     /**

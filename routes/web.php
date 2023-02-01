@@ -31,12 +31,8 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function ()
     {
-     Route::get('enjaz-cpanel',[EnjazPanelController::class,'index']);
-     /*Route::get('experiences',[ExperienceController::class,'index'])->name('experiences.index');*/
-
-     /*************************** Teacher Enjaz Routes **********************************************/
-     /*************************** Experience Routes **********************************************/
-//        Route::get('enjaz-cpanel', [CPanelController::class,'index'])->name('enjaz.cpanel');
+        /*************************** Teacher Enjaz Routes **********************************************/
+        /*************************** Experience Routes **********************************************/
         Route::group(['prefix' => 'experiences'], function () {
 
             Route::get('/', [ExperienceController::class, 'index'])->name('experiences.index');
@@ -134,16 +130,13 @@ Route::group(
 
             Route::get('/', [BioController::class, 'index'])->name('bios.index');
 
-            Route::get('create', [BioController::class, 'create'])->name('bios.create');
-
             Route::post('store', [BioController::class, 'store'])->name('bios.store');
 
             Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
 
             Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
 
-            Route::get('destroy/{id}', [BioController::class, 'destroy'])->name('bios.destroy');
         });
-     /*************************** End Experience Routes ******************************************/
-});
+    });
+
 

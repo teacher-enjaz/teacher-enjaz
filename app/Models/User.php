@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Enjaz\Bio;
 use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
+use App\Models\Enjaz\Membership;
 use App\Models\Enjaz\Skill;
 use App\Models\Enjaz\UserLanguage;
 use App\Models\Enjaz\UserQualification;
@@ -361,14 +362,21 @@ class User extends Authenticatable
         return $this->hasMany(Experience::class);
     }
 
-    public function courses()
+    public function membership()
+    {
+        return $this->hasMany(Membership::class);
+    }
+
+    public function course()
     {
         return $this->hasMany(Course::class);
     }
+
     public function skill()
     {
         return $this->hasMany(Skill::class);
     }
+
     public function user_language()
     {
         return $this->hasMany(UserLanguage::class);
@@ -378,6 +386,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserQualification::class);
     }
+
     public function bio()
     {
         return $this->hasOne(Bio::class);
