@@ -13,7 +13,7 @@ class Platform extends Model
         'image',
         'status',
     ];
-    public function socialSites(){
+    public function socialAcco(){
         return $this->hasMany(SocialSite::class,'platform_id',id);
     }
 }

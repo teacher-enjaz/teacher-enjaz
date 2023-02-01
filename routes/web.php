@@ -9,7 +9,8 @@ use App\Http\Controllers\Dashboard\Enjaz\ExperienceController;
 use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
-use App\Http\Controllers\Dashboard\Enjaz\SocialSitesController;
+use App\Http\Controllers\Dashboard\Enjaz\SocialAccountsController;
+use App\Http\Controllers\Dashboard\Enjaz\SocialPlatformsController;
 use App\Http\Controllers\Dashboard\Enjaz\UserLanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\UserQualificationController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,35 @@ Route::group(
             Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
         });
 
+        Route::group(['prefix' => 'social-platforms'], function () {
+
+            Route::get('/', [SocialPlatformsController::class, 'index'])->name('social-platforms.index');
+
+            Route::post('store', [SocialPlatformsController::class, 'store'])->name('social-platforms.store');
+
+            Route::get('edit/{id}', [SocialPlatformsController::class, 'edit'])->name('social-platforms.edit');
+
+            Route::put('update/{id}', [SocialPlatformsController::class, 'update'])->name('social-platforms.update');
+
+            Route::get('destroy/{id}', [SocialPlatformsController::class, 'destroy'])->name('social-platforms.destroy');
+
+            Route::get('status/{status}/{id}', [SocialPlatformsController::class, 'status']);
+        });
+        Route::group(['prefix' => 'social-accounts'], function () {
+
+            Route::get('/', [SocialAccountsController::class, 'index'])->name('social-accounts.index');
+
+            Route::post('store', [SocialAccountsController::class, 'store'])->name('social-accounts.store');
+
+            Route::get('edit/{id}', [SocialAccountsController::class, 'edit'])->name('social-accounts.edit');
+
+            Route::put('update/{id}', [SocialAccountsController::class, 'update'])->name('social-accounts.update');
+
+            Route::get('destroy/{id}', [SocialAccountsController::class, 'destroy'])->name('social-accounts.destroy');
+
+            Route::get('status/{status}/{id}', [SocialAccountsController::class, 'status']);
+        });
+
         Route::group(['prefix' => 'user-qualifications'], function () {
 
             Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
@@ -107,6 +137,7 @@ Route::group(
 
             Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
+
 
         Route::group(['prefix' => 'user-languages'], function () {
 
