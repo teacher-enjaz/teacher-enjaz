@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class  CreateMembershipsTable extends Migration
+class CreateSkillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,14 @@ class  CreateMembershipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('memberships', function (Blueprint $table) {
+        Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
-            $table->date('grant_date');
-            $table->string('validity',255)->default(__('enjaz.valid'));
+            $table->integer('skill_level');
             $table->boolean('status')->default(1);
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-            $table->foreignId('organization_id')
-                ->references('id')
-                ->on('organizations')
                 ->onDelete('cascade');
             $table->timestamps();
         });
@@ -38,6 +33,6 @@ class  CreateMembershipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memberships');
+        Schema::dropIfExists('skills');
     }
 }

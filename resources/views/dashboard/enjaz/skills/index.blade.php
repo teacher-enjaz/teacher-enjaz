@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.enjaz-layouts.layout')
 
-@section('title'){{__('enjaz.memberships')}} | {{__('enjaz.teacherEnjaz')}}@endsection
+@section('title'){{__('enjaz.experiences')}} | {{__('enjaz.teacherEnjaz')}}@endsection
 
 @section('content')
     <div class="container file_view mt-5 profile cpanel">
@@ -20,80 +20,79 @@
                     <div class="container-fluid ">
                         <!-- educational data  -->
                         <section class="row section">
-                            <!-- experience data start -->
+                            <!-- skills data start -->
                             <!-- Page Heading -->
-
-                            <div class="section-title mb-2 ">
-                                <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.memberships')}}</h1>
+                            <div class="section-title  mb-2 ">
+                                <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.skills')}}</h1>
                                 <p class="section-hint">
-                                    {{__('enjaz.addMemberships')}}
+                                    {{__('enjaz.addSkill')}}
                                 </p>
                             </div>
-
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="" class="custom-btn add-btn mt-2 create-btn"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#add-member-eModal">
+                            <div class=" d-flex justify-content-between align-items-center ">
+                                <a href="" class="custom-btn add-btn mt-4 " data-bs-toggle="modal" data-bs-target="#add-skill-eModal">
                                     <i class="fas fa-plus"></i>
                                 </a>
                                 <div class="toggle-flip toggle-flip-section ms-4">
                                     <label>
                                         <input type="checkbox" checked>
-                                        <span class="flip-indecator"
-                                              data-toggle-on="عرض في ملف الإنجاز"
-                                              data-toggle-off=" إخفاء من ملف الإنجاز"></span>
+                                        <span class="flip-indecator" data-toggle-on="عرض في ملف الإنجاز" data-toggle-off=" إخفاء من ملف الإنجاز"></span>
                                     </label>
                                 </div>
                             </div>
+
                             <!-- DataTales Example -->
                             <div class="card shadow my-4 p-0">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.memberships')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.skills')}}</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-hover table-bordered display" id="sampleTable"
-                                             width="100%" cellspacing="0" style="border-collapse:collapse;">
+                                        <table class="table table-bordered" id="sampleTable" width="100%" cellspacing="0" style="border-collapse:collapse;">
                                             <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>{{__('enjaz.membershipName')}}</th>
-                                                    <th>{{__('enjaz.organization')}}</th>
-                                                    <th>{{__('enjaz.grantDate')}}</th>
-                                                    <th>{{__('enjaz.validity')}}</th>
-                                                    <th>{{__('enjaz.actions')}}</th>
-                                                </tr>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>{{__('enjaz.skill')}}</th>
+                                                <th>{{__('enjaz.skill_level')}}</th>
+                                                <th>{{__('enjaz.actions')}}</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                            @if($memberships->count() > 0)
-                                                @foreach($memberships as $index=>$membership)
+                                            @if($skills->count() > 0)
+                                                @foreach($skills as $index=>$skill)
                                                     <tr>
                                                         <td>{{$index + 1}}</td>
-                                                        <td>{{$membership->name}}</td>
-                                                        <td>{{$membership->organization->name}}</td>
-                                                        <td>{{$membership->grant_date}}</td>
-                                                        <td>{{$membership->validity}}</td>
+                                                        <td> {{$skill->name}}</td>
+                                                        <td class="">
+                                                            <div class="progress">
+                                                                <div class="progress-bar " role="progressbar" style="width: {{$skill->skill_level.'%'}}"
+                                                                     aria-valuemin="0" aria-valuemax="100">{{$skill->skill_level.'%'}}
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                         <td class="d-flex justify-content-center">
                                                             <div class="toggle-flip">
                                                                 <label>
-                                                                    <input type="checkbox" data-id="{{$membership->id}}"
-                                                                           {{ $membership->status ? 'checked' : '' }}
-                                                                           class="membership-status">
+                                                                    <input type="checkbox" data-id="{{$skill->id}}"
+                                                                           {{ $skill->status ? 'checked' : '' }}
+                                                                           class="skill-status">
                                                                     <span class="flip-indecator"
                                                                           data-toggle-on="{{__('enjaz.published')}}"
                                                                           data-toggle-off="{{__('enjaz.unpublished')}}">
-                                                                        </span>
+                                                                    </span>
                                                                 </label>
                                                             </div>
-                                                            <a href="" class="edit-btn ms-1" data-bs-toggle="modal"
-                                                               data-id="{{$membership->id}}"
-                                                               data-bs-target="#edit-member-eModal" id="edit"
-                                                               data-bs-html="true" title="{{__('enjaz.update')}}">
+                                                            <a href="" class="edit-btn ms-1"
+                                                               data-id="{{$skill->id}}"
+                                                               data-bs-toggle="modal"
+                                                               data-bs-target="#edit-skill-eModal"
+                                                               data-bs-toggle="tooltip"
+                                                               data-bs-html="true"
+                                                               title="{{__('enjaz.update')}} ">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <a class="delete-btn mb-2 delete-trashed" type="button"
-                                                               href="{{route('memberships.destroy',$membership->id)}}">
-                                                                <i class="fa fa-trash"></i>
+                                                            <a class="delete-btn delete-trashed" href="{{route('skills.destroy',$skill->id)}}" type="button">
+                                                                <i class="fas fa-trash-alt" data-bs-toggle="tooltip" data-bs-html="true" title="{{__('enjaz.delete')}}">
+                                                                </i>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -104,18 +103,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- experience data end -->
+                            <!-- skills data end -->
                         </section>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @include('dashboard.enjaz.memberships.create')
-    @include('dashboard.enjaz.memberships.edit')
+    @include('dashboard.enjaz.skills.create')
+    @include('dashboard.enjaz.skills.edit')
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('template/js/plugins/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/js/generalScript.js')}}"></script>
-    <script src="{{asset('enjaz/js/membership.js')}}"></script>
+    <script src="{{asset('enjaz/js/skill.js')}}"></script>
 @endsection

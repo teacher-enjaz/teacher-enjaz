@@ -298,5 +298,6 @@ return [
         'social_platforms_id' => 'اسم المنصة',
         'linkError'=> 'الرابط' ,
         'link'=> 'الرابط' ,
+        'info' => 'النبذة الشخصية',
     ],
 ];

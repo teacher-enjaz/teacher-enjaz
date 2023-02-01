@@ -53,7 +53,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered display" id="sampleTable"
-                                           width="100%" cellspacing="0">
+                                           width="100%" cellspacing="0" style="border-collapse:collapse;">
                                         <thead>
                                         <tr>
                                             <th>#</th>

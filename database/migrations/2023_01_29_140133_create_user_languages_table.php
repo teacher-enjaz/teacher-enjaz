@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class  CreateMembershipsTable extends Migration
+class CreateUserLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,21 @@ class  CreateMembershipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('memberships', function (Blueprint $table) {
+        Schema::create('user_languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->date('grant_date');
-            $table->string('validity',255)->default(__('enjaz.valid'));
-            $table->boolean('status')->default(1);
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->foreignId('organization_id')
+            $table->foreignId('language_id')
                 ->references('id')
-                ->on('organizations')
+                ->on('user-languages')
                 ->onDelete('cascade');
+            $table->integer('reading_level');
+            $table->integer('writing_level');
+            $table->integer('speaking_level');
+            $table->boolean('status')->default(1);
+            $table->boolean('is_native')->default(0);
             $table->timestamps();
         });
     }
@@ -38,6 +39,6 @@ class  CreateMembershipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memberships');
+        Schema::dropIfExists('user_languages');
     }
 }

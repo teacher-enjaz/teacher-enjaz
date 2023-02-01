@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Enjaz\UpdateUserQualificationRequest;
 use App\Http\Requests\Enjaz\UserQualificationRequest;
 use App\Models\Enjaz\GraduatedCountry;
 use App\Models\Enjaz\Qualification;
 use App\Models\Enjaz\Specialization;
 use App\Models\Enjaz\University;
 use App\Models\Enjaz\UserQualification;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserQualificationController extends Controller
 {
@@ -25,11 +24,12 @@ class UserQualificationController extends Controller
         $specializations = Specialization::where('status',1)->get();
         $universities = University::where('status',1)->get();
         $graduated_countries = GraduatedCountry::where('status',1)->get();
+
         $user_qualifications = UserQualification::with(['qualification:id,name',
             'university:id,name',
             'specialization:id,name',
             'graduated_country:id,name',
-            ])
+            ])->where('user_id',1)
             ->orderBy('created_at','desc')
             ->get();
 
@@ -42,16 +42,6 @@ class UserQualificationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,32 +49,45 @@ class UserQualificationController extends Controller
      */
     public function store(UserQualificationRequest $request)
     {
-        $request->request->add([
-            'user_id' => 1,//Auth::id(),
-        ]);
-        if($request->qualification_id == -1)
+        /**
+         * use DB transaction to store in multiple tables
+         */
+        try
         {
-            $qualification = Qualification::create(['name'=> $request->qualificationName]);
-            $request['qualification_id'] = $qualification->id;
-        }
-        if($request->specialization_id == -1)
-        {
-            $specialization = Specialization::create(['name'=> $request->specializationName]);
-            $request['specialization_id'] = $specialization->id;
-        }
-        if($request->university_id == -1)
-        {
-            $university = University::create(['name'=> $request->universityName]);
-            $request['university_id'] = $university->id;
-        }
-        if($request->graduated_country_id == -1)
-        {
-            $graduated_country = GraduatedCountry::create(['name'=> $request->graduatedCountryName]);
-            $request['graduated_country_id'] = $graduated_country->id;
-        }
-        UserQualification::create($request->except('_token'));
+            DB::beginTransaction();
+            $request->request->add([
+                'user_id' => 1,//Auth::id(),
+            ]);
+            if($request->qualification_id == -1)
+            {
+                $qualification = Qualification::create(['name'=> $request->qualificationName]);
+                $request['qualification_id'] = $qualification->id;
+            }
+            if($request->specialization_id == -1)
+            {
+                $specialization = Specialization::create(['name'=> $request->specializationName]);
+                $request['specialization_id'] = $specialization->id;
+            }
+            if($request->university_id == -1)
+            {
+                $university = University::create(['name'=> $request->universityName]);
+                $request['university_id'] = $university->id;
+            }
+            if($request->graduated_country_id == -1)
+            {
+                $graduated_country = GraduatedCountry::create(['name'=> $request->graduatedCountryName]);
+                $request['graduated_country_id'] = $graduated_country->id;
+            }
+            UserQualification::create($request->except('_token'));
 
-        return redirect()->route('user-qualifications.index')->with('success', __('enjaz.successAdd'));
+            DB::commit();
+            return redirect()->route('user-qualifications.index')->with('success', __('enjaz.successAdd'));
+        }
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            return redirect()->back()->with(['error' =>$e]);
+        }
     }
 
     /**
@@ -122,31 +125,44 @@ class UserQualificationController extends Controller
      */
     public function update(UserQualificationRequest $request, $id)
     {
-        $user_qualification = UserQualification::find($id);
-        if(!$user_qualification)
-            return redirect()->route('user-qualifications.index')->with('error', __('enjaz.error'));
-        if($request->qualification_id == -1)
+        /**
+         * use DB transaction to store in multiple tables
+         */
+        try
         {
-            $qualification = Qualification::create(['name'=> $request->qualificationName]);
-            $request['qualification_id'] = $qualification->id;
+            DB::beginTransaction();
+            $user_qualification = UserQualification::find($id);
+            if(!$user_qualification)
+                return redirect()->route('user-qualifications.index')->with('error', __('enjaz.error'));
+            if($request->qualification_id == -1)
+            {
+                $qualification = Qualification::create(['name'=> $request->qualificationName]);
+                $request['qualification_id'] = $qualification->id;
+            }
+            if($request->specialization_id == -1)
+            {
+                $specialization = Specialization::create(['name'=> $request->specializationName]);
+                $request['specialization_id'] = $specialization->id;
+            }
+            if($request->university_id == -1)
+            {
+                $university = University::create(['name'=> $request->universityName]);
+                $request['university_id'] = $university->id;
+            }
+            if($request->graduated_country_id == -1)
+            {
+                $graduated_country = GraduatedCountry::create(['name'=> $request->graduatedCountryName]);
+                $request['graduated_country_id'] = $graduated_country->id;
+            }
+            $user_qualification->update($request->except('_token'));
+            DB::commit();
+            return redirect()->route('user-qualifications.index')->with('success', __('enjaz.successUpdate'));
         }
-        if($request->specialization_id == -1)
+        catch (\Exception $e)
         {
-            $specialization = Specialization::create(['name'=> $request->specializationName]);
-            $request['specialization_id'] = $specialization->id;
+            DB::rollback();
+            return redirect()->back()->with(['error' =>$e]);
         }
-        if($request->university_id == -1)
-        {
-            $university = University::create(['name'=> $request->universityName]);
-            $request['university_id'] = $university->id;
-        }
-        if($request->graduated_country_id == -1)
-        {
-            $graduated_country = GraduatedCountry::create(['name'=> $request->graduatedCountryName]);
-            $request['graduated_country_id'] = $graduated_country->id;
-        }
-        $user_qualification->update($request->except('_token'));
-        return redirect()->route('user-qualifications.index')->with('success', __('enjaz.successUpdate'));
     }
 
     /**
