@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
 use App\Http\Controllers\Dashboard\Enjaz\SocialSitesController;
+use App\Http\Controllers\Dashboard\Enjaz\UserAwardController;
 use App\Http\Controllers\Dashboard\Enjaz\UserQualificationController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -109,63 +110,29 @@ Route::group(
 
             Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
-
-        Route::group(['prefix' => 'social-sites'], function () {
-
-            Route::get('/', [SocialSitesController::class, 'index'])->name('socials.index');
-
-            Route::get('create', [SocialSitesController::class, 'create'])->name('socials.create');
-
-            Route::post('store', [SocialSitesController::class, 'store'])->name('socials.store');
-
-            Route::get('edit/{id}', [SocialSitesController::class, 'edit'])->name('socials.edit');
-
-            Route::put('update/{id}', [SocialSitesController::class, 'update'])->name('socials.update');
-
-            Route::get('destroy/{id}', [SocialSitesController::class, 'destroy'])->name('socials.destroy');
-        });
-
-        Route::group(['prefix' => 'languages'], function () {
-
-            Route::get('/', [LanguageController::class, 'index'])->name('languages.index');
-
-            Route::get('create', [LanguageController::class, 'create'])->name('languages.create');
-
-            Route::post('store', [LanguageController::class, 'store'])->name('languages.store');
-
-            Route::get('edit/{id}', [LanguageController::class, 'edit'])->name('languages.edit');
-
-            Route::put('update/{id}', [LanguageController::class, 'update'])->name('languages.update');
-
-            Route::get('destroy/{id}', [LanguageController::class, 'destroy'])->name('languages.destroy');
-        });
-        Route::group(['prefix' => 'contents'], function () {
-
-            Route::get('/', [ContentController::class, 'index'])->name('contents.index');
-
-            Route::get('create', [ContentController::class, 'create'])->name('contents.create');
-
-            Route::post('store', [ContentController::class, 'store'])->name('contents.store');
-
-            Route::get('edit/{id}', [ContentController::class, 'edit'])->name('contents.edit');
-
-            Route::put('update/{id}', [ContentController::class, 'update'])->name('contents.update');
-
-            Route::get('destroy/{id}', [ContentController::class, 'destroy'])->name('contents.destroy');
-        });
         Route::group(['prefix' => 'enjaz-cpanel'], function () {
 
             Route::get('/', [BioController::class, 'index'])->name('bios.index');
-
-            Route::get('create', [BioController::class, 'create'])->name('bios.create');
 
             Route::post('store', [BioController::class, 'store'])->name('bios.store');
 
             Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
 
             Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
+        });
+        Route::group(['prefix' => 'user-awards'], function () {
 
-            Route::get('destroy/{id}', [BioController::class, 'destroy'])->name('bios.destroy');
+            Route::get('/', [UserAwardController::class, 'index'])->name('user-awards.index');
+
+            Route::post('store', [UserAwardController::class, 'store'])->name('user-awards.store');
+
+            Route::get('edit/{id}', [UserAwardController::class, 'edit'])->name('user-awards.edit');
+
+            Route::put('update/{id}', [UserAwardController::class, 'update'])->name('user-awards.update');
+
+            Route::get('destroy/{id}', [UserAwardController::class, 'destroy'])->name('user-awards.destroy');
+
+            Route::get('status/{status}/{id}', [UserAwardController::class, 'status']);
         });
      /*************************** End Experience Routes ******************************************/
 });

@@ -78,6 +78,7 @@ $(document).ready(function(){
             $('#id').val(data.id);
             $('#name').val(data.name);
             $('#option'+data.organization_id).attr('selected','selected');
+
             $('#grant_date').val(data.grant_date);
             $('#opt'+data.validity).attr('selected','selected');
 

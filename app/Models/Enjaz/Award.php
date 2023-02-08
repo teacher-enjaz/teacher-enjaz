@@ -8,15 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Award extends Model
 {
     use HasFactory;
+    protected $table = "awards";
+
     protected $fillable = [
-        'source',
+        'name',
+        'donor',
         'description',
         'status',
-        'slug',
-        'content_id',
-
+        'created_at', 'updated_at'
     ];
-    public function content(){
-        return $this->belongsTo(Content::class, 'content_id','id');
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'status'=> 'boolean'
+    ];
+
+    public function user_award()
+    {
+        return $this->hasMany(UserAward::class);
     }
 }
