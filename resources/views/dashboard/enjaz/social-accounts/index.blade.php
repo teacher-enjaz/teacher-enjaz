@@ -8,7 +8,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 col-9 d-flex flex-column justify-content-sm-center justify-content-md-center text-center"
                      style="background-color: #109f99; color: white !important; border-radius: 0px 0px 56px 56px;
-                     position: relative; top: -36px;">
+                     position: relative; top: -32px;">
                     <h4 class="my-auto text-white size-18 py-2" >{{__('enjaz.enjazCpanel')}}</h4>
                 </div>
             </div>
@@ -62,17 +62,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if($socialAcoounts->count() > 0)
-                                            @foreach($socialAcoounts as $index=>$account)
+                                        @if($social_accounts->count() > 0)
+                                            @foreach($social_accounts as $index=>$social_account)
                                                 <tr>
                                                     <td>{{$index + 1}}</td>
-                                                    <td>{{$account->socialPlatforms->name}}</td>
-                                                    <td>{{$account->link}}</td>
+                                                    <td>{{$social_account->social_platform->name}}</td>
+                                                    <td>{{$social_account->link}}</td>
                                                     <td class="d-flex justify-content-center">
                                                         <div class="toggle-flip">
                                                             <label>
-                                                                <input type="checkbox" data-id="{{$account->id}}"
-                                                                       {{ $account->status ? 'checked' : '' }}
+                                                                <input type="checkbox" data-id="{{$social_account->id}}"
+                                                                       {{ $social_account->status ? 'checked' : '' }}
                                                                        class="account-status">
                                                                 <span class="flip-indecator"
                                                                       data-toggle-on="{{__('enjaz.published')}}"
@@ -81,13 +81,13 @@
                                                             </label>
                                                         </div>
                                                         <a href="" class="edit-btn ms-1" data-bs-toggle="modal"
-                                                           data-id="{{$account->id}}"
+                                                           data-id="{{$social_account->id}}"
                                                            data-bs-target="#edit-account-eModal" id="edit"
                                                            data-bs-html="true" title="{{__('enjaz.update')}}">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <a class="delete-btn mb-2 delete-trashed" type="button"
-                                                           href="{{route('social-accounts.destroy',$account->id)}}">
+                                                           href="{{route('social-accounts.destroy',$social_account->id)}}">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                   </td>

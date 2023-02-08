@@ -29,14 +29,6 @@ class UserQualification extends Model
         'status'=> 'boolean'
     ];
 
-    /**
-     * return subject status
-     */
-    public function getActive()
-    {
-        return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);

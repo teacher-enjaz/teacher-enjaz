@@ -129,8 +129,8 @@
                     <div class="dropdown d-flex justify-content-start">
                         <a href="{{route('content-types.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
                             <span>
-                              <i class="fa fa-address-card mx-auto"></i>
-                                <span class="text-a">{{__('dashboard.content_types')}}</span>
+                              <i class="fa fa-sitemap mx-auto"></i>
+                                <span class="text-a">{{__('enjaz.content_types')}}</span>
                             </span>
                         </a>
                     </div>

@@ -8,7 +8,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 col-9 d-flex flex-column justify-content-sm-center justify-content-md-center text-center"
                      style="background-color: #109f99; color: white !important; border-radius: 0px 0px 56px 56px;
-                     position: relative; top: -36px;">
+                     position: relative; top: -32px;">
                     <h4 class="my-auto text-white size-18 py-2" >{{__('enjaz.enjazCpanel')}}</h4>
                 </div>
             </div>

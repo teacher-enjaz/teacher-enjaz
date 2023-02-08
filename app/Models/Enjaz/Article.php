@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
+    protected $table = "articles";
+
     protected $fillable = [
-        'slug',
         'content_id',
         'details',
+        'created_at', 'updated_at'
     ];
+
     public function content(){
-        return $this->belongsTo(Content::class, 'content_id','id');
+        return $this->belongsTo(Content::class);
     }
-    public function content_file(){
-        return $this->hasMany(ContentFile::class,'content_id','id');
-    }
+
 }

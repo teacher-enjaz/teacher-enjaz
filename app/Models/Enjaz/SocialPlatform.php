@@ -5,7 +5,7 @@ namespace App\Models\Enjaz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SocialPlatforms extends Model
+class SocialPlatform extends Model
 {
     use HasFactory;
 
@@ -20,9 +20,6 @@ class SocialPlatforms extends Model
         'status',
         'created_at','updated_at'
     ];
-    public function socialAccounts(){
-        return $this->hasMany(SocialAccounts::class);
-    }
 
     /**
      * @var string[]
@@ -31,12 +28,7 @@ class SocialPlatforms extends Model
         'status'=> 'boolean'
     ];
 
-    /**
-     * return subject status
-     */
-    public function getActive()
-    {
-        return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
+    public function user_social_account(){
+        return $this->hasMany(UserSocialAccount::class);
     }
-
 }

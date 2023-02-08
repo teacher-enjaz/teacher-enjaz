@@ -8,23 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Classification extends Model
 {
     use HasFactory;
+
+    protected $table = "classifications";
+
     protected $fillable = [
         'name',
         'status',
-        'user_id',
         'content_type_id',
-
+        'created_at', 'updated_at'
     ];
-    public function contentType(){
-        return $this->belongsTo(Classification::class,'content_type_id',id);
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'status'=> 'boolean'
+    ];
+
+    public function content_type(){
+        return $this->belongsTo(ContentType::class);
     }
-    public function articles(){
-        return $this->hasMany(Article::class,'classification_id',id);
+
+    public function content(){
+        return $this->hasMany(Content::class);
     }
-    public function achievements(){
-        return $this->hasMany(Achievement::class,'classification_id',id);
-    }
-    public function initiative(){
-        return $this->hasMany(Initiative::class,'classification_id',id);
-    }
+
 }

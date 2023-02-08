@@ -14,7 +14,7 @@
 
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="name" name="name" >
-                        <label for="floatingInput" >{{__('dashboard.contentType')}}</label>
+                        <label for="floatingInput" >{{__('enjaz.contentType')}}</label>
                         <div class="text-danger" id="editNameError"></div>
                     </div>
                     <div class="modal-footer">
