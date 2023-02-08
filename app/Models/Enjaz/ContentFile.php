@@ -8,17 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class ContentFile extends Model
 {
     use HasFactory;
+
+    protected $table = "content_files";
+
     protected $fillable = [
         'name',
         'description',
-        'extention',
+        'extension',
         'size',
         'mime',
         'path',
         'content_id',
+        'created_at', 'updated_at'
     ];
 
     public function content(){
-        return $this->belongsTo(Content::class, 'content_id','id');
+        return $this->belongsTo(Content::class);
     }
 }

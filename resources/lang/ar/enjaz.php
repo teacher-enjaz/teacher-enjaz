@@ -102,5 +102,8 @@ return [
     'draft' => 'مسودة',
     'awardTag' => 'جائزة',
     'obtainedDate' => 'تاريخ الحصول على الجائزة',
+    'content_types' => 'أنواع محتوى ملف الإنجاز',
+    'addContentTypes' => 'إضافة نوع جديد',
+    'contentType' => 'نوع المحتوى',
 ];
 

@@ -23,14 +23,6 @@ class GraduatedCountry extends Model
         'status'=> 'boolean'
     ];
 
-    /**
-     * return subject status
-     */
-    public function getActive()
-    {
-        return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
-    }
-
     public function user_qualification()
     {
         return $this->hasMany(UserQualification::class);

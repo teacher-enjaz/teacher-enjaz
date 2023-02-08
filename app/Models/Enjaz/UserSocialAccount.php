@@ -6,24 +6,24 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SocialAccounts extends Model
+class UserSocialAccount extends Model
 {
     use HasFactory;
 
     /**
      * @var string
      */
-    protected $table="social_accounts";
+    protected $table="user_social_accounts";
 
     protected $fillable = [
         'user_id',
-        'social_platforms_id',
+        'social_platform_id',
         'link',
         'status',
         'created_at','updated_at'
     ];
-    public function socialPlatforms(){
-        return $this->belongsTo(SocialPlatforms::class);
+    public function social_platform(){
+        return $this->belongsTo(SocialPlatform::class);
     }
     public function user()
     {
@@ -35,12 +35,4 @@ class SocialAccounts extends Model
     protected $casts = [
         'status'=> 'boolean'
     ];
-
-    /**
-     * return subject status
-     */
-    public function getActive()
-    {
-        return  $this->status == 1 ? __('enjaz.published') : __('enjaz.unpublished') ;
-    }
 }

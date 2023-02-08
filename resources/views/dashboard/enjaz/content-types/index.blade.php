@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.enjaz-layouts.layout')
 
-@section('title'){{__('dashboard.content_types')}} | {{__('enjaz.teacherEnjaz')}}@endsection
+@section('title'){{__('enjaz.content_types')}} | {{__('enjaz.teacherEnjaz')}}@endsection
 
 @section('content')
     <div class="container file_view mt-5 profile cpanel">
@@ -8,7 +8,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 col-9 d-flex flex-column justify-content-sm-center justify-content-md-center text-center"
                      style="background-color: #109f99; color: white !important; border-radius: 0px 0px 56px 56px;
-                     position: relative; top: -36px;">
+                     position: relative; top: -32px;">
                     <h4 class="my-auto text-white size-18 py-2" >{{__('enjaz.enjazCpanel')}}</h4>
                 </div>
             </div>
@@ -23,9 +23,9 @@
                             <!-- experience data start -->
                             <!-- Page Heading -->
                             <div class="section-title mb-2 ">
-                                <h1 class="h3 mb-0 text-gray-800">{{__('dashboard.content_types')}}</h1>
+                                <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.content_types')}}</h1>
                                 <p class="section-hint">
-                                    {{__('dashboard.addContentTypesEnjazCpanel')}}
+                                    {{__('enjaz.addContentTypes')}}
                                 </p>
                             </div>
 
@@ -48,7 +48,7 @@
                             <!-- DataTales Example -->
                             <div class="card shadow my-4 p-0">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.courses')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.content_types')}}</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -58,35 +58,38 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>{{__('dashboard.name')}}</th>
+                                                <th>{{__('dashboard.status')}}</th>
                                                 <th>{{__('enjaz.actions')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if($types->count() > 0)
-                                                @foreach($types as $index=>$type)
+                                            @if($content_types->count() > 0)
+                                                @foreach($content_types as $index=>$content_type)
                                                     <tr>
                                                         <td>{{$index + 1}}</td>
-                                                        <td>{{$type->name}}</td>
-                                                        <td class="d-flex justify-content-center">
+                                                        <td>{{$content_type->name}}</td>
+                                                        <td>
                                                             <div class="toggle-flip">
                                                                 <label>
-                                                                    <input type="checkbox" data-id="{{$type->id}}"
-                                                                           {{ $type->status ? 'checked' : '' }}
-                                                                           class="type-status">
+                                                                    <input type="checkbox" data-id="{{$content_type->id}}"
+                                                                           {{ $content_type->status ? 'checked' : '' }}
+                                                                           class="content-type-status">
                                                                     <span class="flip-indecator"
                                                                           data-toggle-on="{{__('enjaz.published')}}"
                                                                           data-toggle-off="{{__('enjaz.unpublished')}}">
                                                                     </span>
                                                                 </label>
                                                             </div>
+                                                        </td>
+                                                        <td class="d-flex justify-content-center">
                                                             <a href="" class="edit-btn ms-1" data-bs-toggle="modal"
-                                                               data-id="{{$type->id}}"
+                                                               data-id="{{$content_type->id}}"
                                                                data-bs-target="#edit-content-types-eModal" id="edit"
                                                                data-bs-html="true" title="{{__('enjaz.update')}}">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                             <a class="delete-btn mb-2 delete-trashed" type="button"
-                                                               href="{{route('content-types.destroy',$type->id)}}">
+                                                               href="{{route('content-types.destroy',$content_type->id)}}">
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </td>

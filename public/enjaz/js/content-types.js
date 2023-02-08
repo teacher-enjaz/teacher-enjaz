@@ -13,7 +13,6 @@ $(document).ready(function(){
     $('#contentTypeForm').ajaxForm({
         success:function(response)
         {
-            console.log('success')
             if(response)
             {
                 Swal.fire({
@@ -36,7 +35,6 @@ $(document).ready(function(){
             }
         },
         error: function (response) {
-            console.log('error')
             $('#nameError').text('');
             $('#nameError').text(response.responseJSON.errors.name);
         }
@@ -45,11 +43,10 @@ $(document).ready(function(){
     $('body').on('click', '.edit-btn', function (e)
     {
         e.preventDefault();
-        var type_id = $(this).data('id');
-        console.log(type_id);
-        var action = 'content-types/update/'+type_id;
+        var content_type_id = $(this).data('id');
+        var action = 'content-types/update/'+content_type_id;
         $('#editContentTypeForm').attr('action',action);
-        $.get('content-types/edit/' + type_id , function (data)
+        $.get('content-types/edit/' + content_type_id , function (data)
         {
             $('#name').val(data.name);
         })
@@ -58,7 +55,6 @@ $(document).ready(function(){
     $('#editContentTypeForm').ajaxForm({
         success:function(response)
         {
-            console.log(response);
             if(response)
             {
                 Swal.fire({
@@ -80,19 +76,18 @@ $(document).ready(function(){
             }
         },
         error: function (response) {
-            console.log('consol');
             $('#editNameError').text('');
             $('#editNameError').text(response.responseJSON.errors.name);
         }
     });
     /************************* chasnge status *******************************/
-    $('.type-status').change(function() {
+    $('.content-type-status').change(function() {
         var status = $(this).prop('checked') === true ? 1 : 0;
-        var type_id = $(this).data('id');
+        var content_type_id = $(this).data('id');
         $.ajax({
             type: "GET",
             dataType: "application/json",
-            url: 'content-types/status/'+status+'/'+type_id,
+            url: 'content-types/status/'+status+'/'+content_type_id,
             success: function(data){
                 console.log(data.success)
             }

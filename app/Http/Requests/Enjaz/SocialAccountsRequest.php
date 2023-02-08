@@ -27,7 +27,7 @@ class SocialAccountsRequest extends FormRequest
     public function rules()
     {
         return [
-            'social_platforms_id'=> 'required',
+            'social_platform_id'=> 'required',
             'link'=> 'required|url',
 
         ];

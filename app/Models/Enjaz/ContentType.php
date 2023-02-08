@@ -8,15 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class ContentType extends Model
 {
     use HasFactory;
+
+    protected $table = "content_types";
+
     protected $fillable = [
         'name',
         'status',
+        'created_at', 'updated_at'
     ];
-    public function contents(){
-        return $this->hasMany(Content::class,'content_type_id',id);
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'status'=> 'boolean'
+    ];
+
+    public function content(){
+        return $this->hasMany(Content::class);
     }
 
-    public function classifications(){
-        return $this->hasMany(Classification::class,'content_type_id',id);
+    public function classification(){
+        return $this->hasMany(Classification::class);
     }
 }

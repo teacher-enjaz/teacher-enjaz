@@ -37,7 +37,7 @@ $(document).ready(function(){
         error: function (response) {
             $('#namePlatformError').text('');
             $('#linkError').text('');
-            $('#namePlatformError').text(response.responseJSON.errors.social_platforms_id);
+            $('#namePlatformError').text(response.responseJSON.errors.social_platform_id);
             $('#linkError').text(response.responseJSON.errors.link);//.link the name of field in Form
         }
     });
@@ -51,7 +51,7 @@ $(document).ready(function(){
         $.get('social-accounts/edit/' + account_id , function (data) //بروح للراوت الي موجو بملف الويب وبروح بعدها للفنكشن الي موجودة بالكونترولر بترجع بيانات بشكل جيسون باخدها عن طريق الباراميتر data الي بداخل الفنشكن هنا ووببدا اعبي البيانات بداخل المودال تبع الedit
         {
             $('#id').val(data.id);
-            $('#option'+data.social_platforms_id).attr('selected','selected');
+            $('#option'+data.social_platform_id).attr('selected','selected');
             $('#link').val(data.link);//id لinput  بعطيه فاليو من الجيسون
             var image = document.getElementById('image-platform');
             image.src = '/storage/socialPlatforms/'+data.image;
@@ -84,18 +84,18 @@ $(document).ready(function(){
         error: function (response) {
             $('#editPlatformError').text('');
             $('#editLinkError').text('');
-            $('#editPlatformError').text(response.responseJSON.errors.social_platforms_id);
+            $('#editPlatformError').text(response.responseJSON.errors.social_platform_id);
             $('#editLinkError').text(response.responseJSON.errors.link);
         }
     });
     /************************* chasnge status *******************************/
     $('.account-status').change(function() {
         var status = $(this).prop('checked') === true ? 1 : 0;
-        var socialAccounts = $(this).data('id');
+        var social_account_id = $(this).data('id');
         $.ajax({
             type: "GET",
             dataType: "application/json",
-            url: 'social-accounts/status/'+status+'/'+socialAccounts,
+            url: 'social-accounts/status/'+status+'/'+social_account_id,
             success: function(data){
                 console.log(data.success)
             }

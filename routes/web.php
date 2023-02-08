@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
-use App\Http\Controllers\Dashboard\Enjaz\ContentTypesController;
+use App\Http\Controllers\Dashboard\Enjaz\ContentTypeController;
 use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
 use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
 use \App\Http\Controllers\Dashboard\Enjaz\CoursesController;
@@ -11,8 +11,8 @@ use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
 use App\Http\Controllers\Dashboard\Enjaz\UserAwardController;
-use App\Http\Controllers\Dashboard\Enjaz\SocialAccountsController;
-use App\Http\Controllers\Dashboard\Enjaz\SocialPlatformsController;
+use App\Http\Controllers\Dashboard\Enjaz\UserSocialAccountController;
+use App\Http\Controllers\Dashboard\Enjaz\SocialPlatformController;
 use App\Http\Controllers\Dashboard\Enjaz\UserLanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\UserQualificationController;
 use Illuminate\Support\Facades\Route;
@@ -68,31 +68,32 @@ Route::group(
 
         Route::group(['prefix' => 'social-platforms'], function () {
 
-            Route::get('/', [SocialPlatformsController::class, 'index'])->name('social-platforms.index');
+            Route::get('/', [SocialPlatformController::class, 'index'])->name('social-platforms.index');
 
-            Route::post('store', [SocialPlatformsController::class, 'store'])->name('social-platforms.store');
+            Route::post('store', [SocialPlatformController::class, 'store'])->name('social-platforms.store');
 
-            Route::get('edit/{id}', [SocialPlatformsController::class, 'edit'])->name('social-platforms.edit');
+            Route::get('edit/{id}', [SocialPlatformController::class, 'edit'])->name('social-platforms.edit');
 
-            Route::put('update/{id}', [SocialPlatformsController::class, 'update'])->name('social-platforms.update');
+            Route::put('update/{id}', [SocialPlatformController::class, 'update'])->name('social-platforms.update');
 
-            Route::get('destroy/{id}', [SocialPlatformsController::class, 'destroy'])->name('social-platforms.destroy');
+            Route::get('destroy/{id}', [SocialPlatformController::class, 'destroy'])->name('social-platforms.destroy');
 
-            Route::get('status/{status}/{id}', [SocialPlatformsController::class, 'status']);
+            Route::get('status/{status}/{id}', [SocialPlatformController::class, 'status']);
         });
+
         Route::group(['prefix' => 'social-accounts'], function () {
 
-            Route::get('/', [SocialAccountsController::class, 'index'])->name('social-accounts.index');
+            Route::get('/', [UserSocialAccountController::class, 'index'])->name('social-accounts.index');
 
-            Route::post('store', [SocialAccountsController::class, 'store'])->name('social-accounts.store');
+            Route::post('store', [UserSocialAccountController::class, 'store'])->name('social-accounts.store');
 
-            Route::get('edit/{id}', [SocialAccountsController::class, 'edit'])->name('social-accounts.edit');
+            Route::get('edit/{id}', [UserSocialAccountController::class, 'edit'])->name('social-accounts.edit');
 
-            Route::put('update/{id}', [SocialAccountsController::class, 'update'])->name('social-accounts.update');
+            Route::put('update/{id}', [UserSocialAccountController::class, 'update'])->name('social-accounts.update');
 
-            Route::get('destroy/{id}', [SocialAccountsController::class, 'destroy'])->name('social-accounts.destroy');
+            Route::get('destroy/{id}', [UserSocialAccountController::class, 'destroy'])->name('social-accounts.destroy');
 
-            Route::get('status/{status}/{id}', [SocialAccountsController::class, 'status']);
+            Route::get('status/{status}/{id}', [UserSocialAccountController::class, 'status']);
         });
 
         Route::group(['prefix' => 'user-qualifications'], function () {
@@ -139,7 +140,7 @@ Route::group(
 
             Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
-        
+
         Route::group(['prefix' => 'enjaz-cpanel'], function () {
 
             Route::get('/', [BioController::class, 'index'])->name('bios.index');
@@ -170,22 +171,19 @@ Route::group(
         });
         Route::group(['prefix' => 'content-types'], function () {
 
-            Route::get('/', [ContentTypesController::class, 'index'])->name('content-types.index');
+            Route::get('/', [ContentTypeController::class, 'index'])->name('content-types.index');
 
-            Route::get('create', [ContentTypesController::class, 'create'])->name('content-types.create');
+            Route::post('store', [ContentTypeController::class, 'store'])->name('content-types.store');
 
-            Route::post('store', [ContentTypesController::class, 'store'])->name('content-types.store');
+            Route::get('edit/{id}', [ContentTypeController::class, 'edit'])->name('content-types.edit');
 
-            Route::get('edit/{id}', [ContentTypesController::class, 'edit'])->name('content-types.edit');
+            Route::put('update/{id}', [ContentTypeController::class, 'update'])->name('content-types.update');
 
-            Route::put('update/{id}', [ContentTypesController::class, 'update'])->name('content-types.update');
+            Route::get('destroy/{id}', [ContentTypeController::class, 'destroy'])->name('content-types.destroy');
 
-            Route::get('destroy/{id}', [ContentTypesController::class, 'destroy'])->name('content-types.destroy');
-
-            Route::get('status/{status}/{id}', [ContentTypesController::class, 'status']);
+            Route::get('status/{status}/{id}', [ContentTypeController::class, 'status']);
 
         });
-
         Route::group(['prefix' => 'user-awards'], function () {
 
             Route::get('/', [UserAwardController::class, 'index'])->name('user-awards.index');
@@ -193,8 +191,6 @@ Route::group(
             Route::post('store', [UserAwardController::class, 'store'])->name('user-awards.store');
 
             Route::get('edit/{id}', [UserAwardController::class, 'edit'])->name('user-awards.edit');
-
-            Route::post('store', [BioController::class, 'store'])->name('bios.store');
 
             Route::put('update/{id}', [UserAwardController::class, 'update'])->name('user-awards.update');
 

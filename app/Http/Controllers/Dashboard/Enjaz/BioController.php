@@ -17,7 +17,7 @@ class BioController extends Controller
     {
         // $bio= Bio::where('user_id' , Auth::id())->first();
         $bio= Bio::where('user_id' , 1)->first();
-        return view('dashboard.enjaz.cpanel',compact('bio'));
+        return view('dashboard.enjaz.bios.index',compact('bio'));
     }
     /**
      * Store a newly created resource in storage.

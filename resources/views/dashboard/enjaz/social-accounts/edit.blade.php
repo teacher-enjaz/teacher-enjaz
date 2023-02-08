@@ -12,7 +12,7 @@
                     <input type="hidden" name="id" id="id" value="">
 
                     <div class="form-floating mb-3 ms-3">
-                        <select class="form-select" aria-label="Floating label select example" name="social_platforms_id">
+                        <select class="form-select" aria-label="Floating label select example" name="social_platform_id">
                             <option label="{{__('enjaz.select')}}"></option>
                             @if($platforms->count() > 0)
                                 @foreach($platforms as $platform)

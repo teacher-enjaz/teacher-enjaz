@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\SocialPlatformsRequest;
 use App\Http\Requests\Enjaz\UpdateSocialPlatformsRequest;
 use App\Http\Traits\GeneralTrait;
-use App\Models\Enjaz\SocialPlatforms;
+use App\Models\Enjaz\SocialPlatform;
 use Illuminate\Support\Facades\File;
 
 
-class SocialPlatformsController extends Controller
+class SocialPlatformController extends Controller
 {
     use GeneralTrait;
     /**
@@ -20,20 +20,9 @@ class SocialPlatformsController extends Controller
      */
     public function index()
     {
-        $socialPlatforms = SocialPlatforms::orderBy('created_at','desc')->get();
+        $socialPlatforms = SocialPlatform::orderBy('created_at','desc')->get();
         return view('dashboard.enjaz.social-platforms.index',compact('socialPlatforms'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
 
     /**
      * @param SocialPlatformsRequest $request
@@ -44,7 +33,7 @@ class SocialPlatformsController extends Controller
         $request->request->add([
             'user_id' => 1,//Auth::id(),
         ]);
-        $platform = SocialPlatforms::create($request->except('_token'));
+        $platform = SocialPlatform::create($request->except('_token'));
         if ($request->has('image'))
         {
             $icon = $this->saveNewImage($request->image,'socialPlatforms');
@@ -76,7 +65,7 @@ class SocialPlatformsController extends Controller
      */
     public function edit($id)
     {
-        $platform = SocialPlatforms::find($id);
+        $platform = SocialPlatform::find($id);
         if(!$platform)
             return redirect()->route('social-platforms.index')->with('error', __('enjaz.error'));
 
@@ -92,7 +81,7 @@ class SocialPlatformsController extends Controller
      */
     public function update(SocialPlatformsRequest $request, $id)
     {
-        $platform = SocialPlatforms::find($id);
+        $platform = SocialPlatform::find($id);
 
         if(!$platform)
             return redirect()->route('social-platforms.index')->with('error', __('enjaz.error'));
@@ -100,8 +89,8 @@ class SocialPlatformsController extends Controller
 
         if ($request->hasFile('image'))
         {
-          $path = 'storage/socialPlatforms/'.$platform->image;
-            if(File::exists($path)){
+            $path = 'storage/socialPlatforms/'.$platform->image;
+            if(File::exists($path))
                 File::delete($path);
             $icon = $this->saveNewImage($request->image,'socialPlatforms');
             $platform->image = $icon;
@@ -118,11 +107,11 @@ class SocialPlatformsController extends Controller
      */
     public function destroy($id)
     {
-        $platform = SocialPlatforms::find($id);
+        $platform = SocialPlatform::find($id);
         $path = 'storage/socialPlatforms/'.$platform->image;
-        if(File::exists($path)){
+        if(File::exists($path))
             File::delete($path);
-        }
+
         if (!$platform)
             return redirect()->route('social-platforms.index')->with('error', __('enjaz.error'));
         $platform->delete();
@@ -131,7 +120,7 @@ class SocialPlatformsController extends Controller
 
     public function status($status,$platforms_id)
     {
-        $platform = SocialPlatforms::find($platforms_id);
+        $platform = SocialPlatform::find($platforms_id);
         $platform->status = $status;
         $platform->save();
         return response()->json(['success'=>'Lesson status change successfully.']);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContentsTable extends Migration
+class CreateClassificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,10 @@ class CreateContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('classifications', function (Blueprint $table) {
             $table->id();
-            $table->string('title',255);
-            $table->boolean('allow_comments')->default(1);
-            $table->integer('likes');
-            $table->integer('views');
+            $table->string('name',255);
             $table->boolean('status')->default(1);
-            $table->foreignId('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-            $table->foreignId('classification_id')
-                ->references('id')
-                ->on('classifications')
-                ->onDelete('cascade');
             $table->foreignId('content_type_id')
                 ->references('id')
                 ->on('content_types')
@@ -43,6 +32,6 @@ class CreateContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('classifications');
     }
 }

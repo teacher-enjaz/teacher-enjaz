@@ -4,31 +4,19 @@ namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\ContentTypeRequest;
-use App\Models\Enjaz\Content;
 use App\Models\Enjaz\ContentType;
-use Illuminate\Http\Request;
 
-class ContentTypesController extends Controller
+class ContentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $types = ContentType::orderBy('created_at','desc')->get();
-        return view('dashboard.enjaz.content-types.index',compact('types'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $content_types = ContentType::orderBy('created_at','desc')->get();
+        return view('dashboard.enjaz.content-types.index',compact('content_types'));
     }
 
     /**
@@ -58,9 +46,10 @@ class ContentTypesController extends Controller
      */
     public function edit($id)
     {
-        $type = ContentType::find($id);
-        if(!$type) return redirect()->route('content-types.index')->with('error',__('enjaz.error'));
-        return response()->json($type);
+        $content_type = ContentType::find($id);
+        if(!$content_type)
+            return redirect()->route('content-types.index')->with('error',__('enjaz.error'));
+        return response()->json($content_type);
     }
 
     /**
@@ -85,23 +74,23 @@ class ContentTypesController extends Controller
      */
     public function destroy($id)
     {
-        $type = ContentType::find($id);
-        if (!$type)
+        $content_type = ContentType::find($id);
+        if (!$content_type)
             return redirect()->route('content-types.index')->with('error', __('enjaz.error'));
-        $type->delete();
+        $content_type->delete();
         return redirect()->route('content-types.index')->with('success', __('enjaz.successDelete'));
     }
 
     /**
      * @param $status
-     * @param $type
+     * @param $content_type_id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function status($status,$type_id)
+    public function status($status,$content_type_id)
     {
-        $type = ContentType::find($type_id);
-        $type->status = $status;
-        $type->save();
+        $content_type = ContentType::find($content_type_id);
+        $content_type->status = $status;
+        $content_type->save();
         return response()->json(['success'=>'Course Status changed successfully.']);
     }
 }
