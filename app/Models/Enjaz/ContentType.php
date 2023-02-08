@@ -13,7 +13,7 @@ class ContentType extends Model
         'status',
     ];
     public function contents(){
-        return $this->hasMany(Content::class,'type_id',id);
+        return $this->hasMany(Content::class,'content_type_id',id);
     }
 
     public function classifications(){

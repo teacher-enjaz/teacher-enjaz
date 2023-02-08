@@ -4,9 +4,8 @@ namespace App\Http\Requests\Enjaz;
 
 use Illuminate\Foundation\Http\FormRequest;
 use function __;
-use Illuminate\Validation\Rule;
 
-class SocialPlatformsRequest extends FormRequest
+class ContentTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +27,6 @@ class SocialPlatformsRequest extends FormRequest
     {
         return [
             'name'=> 'required|string|max:255|min:3',
-            'image' => ['required_without:id', Rule::when($this->image != null,'image|mimes:jpeg,png,jpg,gif,svg,webp')]
         ];
     }
     public function messages()
@@ -39,7 +37,8 @@ class SocialPlatformsRequest extends FormRequest
                 'string' =>  __('validation.string'),
                 'max' => __('validation.max.string'),
                 'min' => __('validation.min.string'),
-                'image'=>__('validation.image'),
+                'integer'=>__('validation.integer'),
+                'date'=>__('validation.date'),
             ];
     }
 }

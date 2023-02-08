@@ -4,7 +4,7 @@
     <div class="row pb-3 d-flex justify-content-around" >
         <div class="col-12 col-md-4 d-flex wow fadeInUp" data-wow-delay=".2ms" data-wow-duration="1000ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 0ms; animation-name: fadeInUp;">
             <div class="">
-                <img src="{{asset('assent/imgs/logo_Nx.png')}}" alt="">
+                <img src="{{asset('enjaz/assent/imgs/logo_Nx.png')}}" alt="">
             </div>
             <div class=" me-3 pt-2 ">
                 <h6 class="text-white mb-3 size-14">وزارة التربية والتعليم العالي- فلسطين</h6>
@@ -34,10 +34,9 @@
         <div class="col-12 col-md-3">
             <a rel="license" style="text-decoration: none;" class="col-12 text-center font-24 mt-2" target="_blank"
                href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ar?fbclid=IwAR2FE8fCEntGuRkthCFx8tDhfXQVpknWNGLaLi7OIxyWMNR36XzBB7hIikg" title="Creative Commons Attribution 4.0 International license">
-                <span id="cc-logo" class="icon" data-toggle="tooltip" data-placement="top" data-original-title=" حقوق المشاع الإبداعي"><img class="img-fluid" width="35px" alt="cc logo" src="{{asset('assent/imgs/nd_white_x2@2x.png')}}"></span>
-                <span id="cc-icon-nd" class="icon mx-1" data-toggle="tooltip" data-placement="top" data-original-title="يجب عليك نسب العمل لبوابة روافد التعليمية بطريقة مناسبة"><img class="img-fluid" width="35px" src="{{asset('assent/imgs/nc_white_x2@2x.png')}}"></span>
-                <span id="cc-attribution" class="icon mx-1" data-toggle="tooltip" data-placement="top" data-original-title="لا يمكنك استخدام محتويات بوابة روافد لأغراض تجارية"><img class="img-fluid" width="35px" src="{{asset('assent/imgs/attribution_icon_white_x2@2x.png')}}"></span>
-
+                <span id="cc-logo" class="icon" data-toggle="tooltip" data-placement="top" data-original-title=" حقوق المشاع الإبداعي"><img class="img-fluid" width="35px" alt="cc logo" src="{{asset('enjaz/assent/imgs/nd_white_x2@2x.png')}}"></span>
+                <span id="cc-icon-nd" class="icon mx-1" data-toggle="tooltip" data-placement="top" data-original-title="يجب عليك نسب العمل لبوابة روافد التعليمية بطريقة مناسبة"><img class="img-fluid" width="35px" src="{{asset('enjaz/assent/imgs/nc_white_x2@2x.png')}}"></span>
+                <span id="cc-attribution" class="icon mx-1" data-toggle="tooltip" data-placement="top" data-original-title="لا يمكنك استخدام محتويات بوابة روافد لأغراض تجارية"><img class="img-fluid" width="35px" src="{{asset('enjaz/assent/imgs/attribution_icon_white_x2@2x.png')}}"></span>
             </a>
         </div>
         <div class="col-12 col-md-4 link-social">

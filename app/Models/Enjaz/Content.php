@@ -10,18 +10,19 @@ class Content extends Model
     use HasFactory;
     protected $fillable = [
         'title',
-        'type_id',
+        'content_type_id',
         'user_id',
+        'classification_id',
         'comments_allowed',
-        'veiws',
+        'views',
         'likes',
         'status',
     ];
     public function user(){
-        return $this->belongsTo(User::class,'user_id',id);
+        return $this->belongsTo(User::class,'user_id','id');
     }
     public function contentType(){
-        return $this->belongsTo(ContentType::class,'type_id',id);
+        return $this->belongsTo(ContentType::class,'content_type_id','id');
     }
     public function achievement(){
         return $this->hasOne(Achievement::class,'content_id','id');
