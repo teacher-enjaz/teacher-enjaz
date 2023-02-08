@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg shadow-none ">
         <div class="container justify-content-cente">
             <a class="col-12 col-md-3 my-2  justify-content-md-start justify-content-center  navbar-brand d-flex" href="#">
-                <img src="{{asset('assent/imgs/logo.png')}}" class="ms-2 img-logo  ">
+                <img src="{{asset('enjaz/assent/imgs/logo.png')}}" class="ms-2 img-logo  ">
                 <h4 class="color_home size-20 mb-0 " >بوابة روافد التعليمية <br>
                     <small class="size-12 color-black"> الموقع التعليمي الأول في فلسطين </small>
                 </h4>
@@ -16,7 +16,7 @@
             </form>
             <div class="col-12 col-md-3 d-flex justify-content-center">
                 <a href="#" class="d-flex  btn_web rounded-pill py-1 ">
-                    <img src="{{asset('assent/imgs/final22-01.png')}}"  class="my-auto me-3 position-relative" style="width:13% !important; right: 0" >
+                    <img src="{{asset('enjaz/assent/imgs/final22-01.png')}}"  class="my-auto me-3 position-relative" style="width:13% !important; right: 0" >
                     <h1 class="size-16 text-center me-4 text my-auto"  style=" display: grid;">
                         قناة روافد التعليمية
                     </h1>
@@ -27,7 +27,7 @@
 
                 <div class="d-flex">
                     <div class="nav-link  text-center " aria-current="page" >
-                        <img src="{{asset('assent/imgs/avatar.png')}}" class="img-user" alt="">
+                        <img src="{{asset('enjaz/assent/imgs/avatar.png')}}" class="img-user" alt="">
                     </div>
                     <div class="my-auto">
                         <a href="#" class="text-brouwn mb-0 size-14">خالد محمد فارس</a>

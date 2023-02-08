@@ -16,7 +16,6 @@ class ContentFile extends Model
         'mime',
         'path',
         'content_id',
-
     ];
 
     public function content(){

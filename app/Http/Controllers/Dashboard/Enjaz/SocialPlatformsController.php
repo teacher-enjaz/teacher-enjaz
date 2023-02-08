@@ -7,6 +7,7 @@ use App\Http\Requests\Enjaz\SocialPlatformsRequest;
 use App\Http\Requests\Enjaz\UpdateSocialPlatformsRequest;
 use App\Http\Traits\GeneralTrait;
 use App\Models\Enjaz\SocialPlatforms;
+use Illuminate\Support\Facades\File;
 
 
 class SocialPlatformsController extends Controller
@@ -92,12 +93,16 @@ class SocialPlatformsController extends Controller
     public function update(SocialPlatformsRequest $request, $id)
     {
         $platform = SocialPlatforms::find($id);
+
         if(!$platform)
             return redirect()->route('social-platforms.index')->with('error', __('enjaz.error'));
         $platform->name = $request->name;
 
         if ($request->hasFile('image'))
         {
+          $path = 'storage/socialPlatforms/'.$platform->image;
+            if(File::exists($path)){
+                File::delete($path);
             $icon = $this->saveNewImage($request->image,'socialPlatforms');
             $platform->image = $icon;
         }
@@ -114,6 +119,10 @@ class SocialPlatformsController extends Controller
     public function destroy($id)
     {
         $platform = SocialPlatforms::find($id);
+        $path = 'storage/socialPlatforms/'.$platform->image;
+        if(File::exists($path)){
+            File::delete($path);
+        }
         if (!$platform)
             return redirect()->route('social-platforms.index')->with('error', __('enjaz.error'));
         $platform->delete();

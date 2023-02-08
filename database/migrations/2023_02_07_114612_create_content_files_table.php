@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSocialAccountsTable extends Migration
+class CreateContentFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateSocialAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_accounts', function (Blueprint $table) {
+        Schema::create('content_files', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('provider_id')->unique();
-            $table->string('provider_name');
-            $table->timestamps();
-            $table->softDeletes();
-            $table->foreign('user_id')
+            $table->foreignId('classification_id')
                 ->references('id')
-                ->on('users')
+                ->on('classifications')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +30,6 @@ class CreateSocialAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_accounts');
+        Schema::dropIfExists('content_files');
     }
 }

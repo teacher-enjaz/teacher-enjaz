@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.enjaz-layouts.layout')
 
-@section('title'){{__('enjaz.qualifications')}} | {{__('enjaz.teacherEnjaz')}}@endsection
+@section('title'){{__('dashboard.content_types')}} | {{__('enjaz.teacherEnjaz')}}@endsection
 
 @section('content')
     <div class="container file_view mt-5 profile cpanel">
@@ -23,15 +23,16 @@
                             <!-- experience data start -->
                             <!-- Page Heading -->
                             <div class="section-title mb-2 ">
-                                <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.qualifications')}}</h1>
+                                <h1 class="h3 mb-0 text-gray-800">{{__('dashboard.content_types')}}</h1>
                                 <p class="section-hint">
-                                    {{__('enjaz.addUserQualification')}}
+                                    {{__('dashboard.addContentTypesEnjazCpanel')}}
                                 </p>
                             </div>
+
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="" class="custom-btn add-btn mt-2 create-btn"
                                    data-bs-toggle="modal"
-                                   data-bs-target="#add-qualification-eModal">
+                                   data-bs-target="#add-content-types-eModal">
                                     <i class="fas fa-plus"></i>
                                 </a>
                                 <div class="toggle-flip toggle-flip-section ms-4">
@@ -47,53 +48,45 @@
                             <!-- DataTales Example -->
                             <div class="card shadow my-4 p-0">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.qualifications')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.courses')}}</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover table-bordered display" id="sampleTable"
-                                             width="100%" cellspacing="0" style="border-collapse:collapse;">
+                                               width="100%" cellspacing="0" style="border-collapse:collapse;">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>{{__('enjaz.qualification')}}</th>
-                                                <th>{{__('enjaz.specialization')}}</th>
-                                                <th>{{__('enjaz.university')}}</th>
-                                                <th>{{__('enjaz.graduated_country')}}</th>
-                                                <th>{{__('enjaz.graduated_year')}}</th>
+                                                <th>{{__('dashboard.name')}}</th>
                                                 <th>{{__('enjaz.actions')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if($user_qualifications->count() > 0)
-                                                @foreach($user_qualifications as $index=>$user_qualification)
+                                            @if($types->count() > 0)
+                                                @foreach($types as $index=>$type)
                                                     <tr>
                                                         <td>{{$index + 1}}</td>
-                                                        <td>{{$user_qualification->qualification->name}}</td>
-                                                        <td>{{$user_qualification->specialization->name}}</td>
-                                                        <td>{{$user_qualification->university->name}}</td>
-                                                        <td>{{$user_qualification->graduated_country->name}}</td>
-                                                        <td>{{$user_qualification->graduation_year}}</td>
+                                                        <td>{{$type->name}}</td>
                                                         <td class="d-flex justify-content-center">
                                                             <div class="toggle-flip">
                                                                 <label>
-                                                                    <input type="checkbox" data-id="{{$user_qualification->id}}"
-                                                                           {{ $user_qualification->status ? 'checked' : '' }}
-                                                                           class="user-qualification-status">
+                                                                    <input type="checkbox" data-id="{{$type->id}}"
+                                                                           {{ $type->status ? 'checked' : '' }}
+                                                                           class="type-status">
                                                                     <span class="flip-indecator"
                                                                           data-toggle-on="{{__('enjaz.published')}}"
                                                                           data-toggle-off="{{__('enjaz.unpublished')}}">
-                                                                        </span>
+                                                                    </span>
                                                                 </label>
                                                             </div>
                                                             <a href="" class="edit-btn ms-1" data-bs-toggle="modal"
-                                                               data-id="{{$user_qualification->id}}"
-                                                               data-bs-target="#edit-qualification-eModal" id="edit"
+                                                               data-id="{{$type->id}}"
+                                                               data-bs-target="#edit-content-types-eModal" id="edit"
                                                                data-bs-html="true" title="{{__('enjaz.update')}}">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                             <a class="delete-btn mb-2 delete-trashed" type="button"
-                                                               href="{{route('user-qualifications.destroy',$user_qualification->id)}}">
+                                                               href="{{route('content-types.destroy',$type->id)}}">
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </td>
@@ -112,11 +105,11 @@
             </div>
         </div>
     </div>
-    @include('dashboard.enjaz.user-qualifications.create')
-    @include('dashboard.enjaz.user-qualifications.edit')
+    @include('dashboard.enjaz.content-types.create')
+    @include('dashboard.enjaz.content-types.edit')
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('template/js/plugins/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/js/generalScript.js')}}"></script>
-    <script src="{{asset('enjaz/js/user-qualification.js')}}"></script>
+    <script src="{{asset('enjaz/js/content-types.js')}}"></script>
 @endsection

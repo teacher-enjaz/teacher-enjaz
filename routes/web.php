@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
+use App\Http\Controllers\Dashboard\Enjaz\ContentTypesController;
 use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
 use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
 use \App\Http\Controllers\Dashboard\Enjaz\CoursesController;
@@ -165,6 +166,23 @@ Route::group(
             Route::get('destroy/{id}', [UserLanguageController::class, 'destroy'])->name('user-languages.destroy');
 
             Route::get('status/{status}/{id}', [UserLanguageController::class, 'status']);
+
+        });
+        Route::group(['prefix' => 'content-types'], function () {
+
+            Route::get('/', [ContentTypesController::class, 'index'])->name('content-types.index');
+
+            Route::get('create', [ContentTypesController::class, 'create'])->name('content-types.create');
+
+            Route::post('store', [ContentTypesController::class, 'store'])->name('content-types.store');
+
+            Route::get('edit/{id}', [ContentTypesController::class, 'edit'])->name('content-types.edit');
+
+            Route::put('update/{id}', [ContentTypesController::class, 'update'])->name('content-types.update');
+
+            Route::get('destroy/{id}', [ContentTypesController::class, 'destroy'])->name('content-types.destroy');
+
+            Route::get('status/{status}/{id}', [ContentTypesController::class, 'status']);
 
         });
 
