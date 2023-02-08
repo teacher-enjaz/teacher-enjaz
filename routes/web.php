@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Enjaz\ExperienceController;
 use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
+use App\Http\Controllers\Dashboard\Enjaz\UserAwardController;
 use App\Http\Controllers\Dashboard\Enjaz\SocialAccountsController;
 use App\Http\Controllers\Dashboard\Enjaz\SocialPlatformsController;
 use App\Http\Controllers\Dashboard\Enjaz\UserLanguageController;
@@ -137,7 +138,17 @@ Route::group(
 
             Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
+        
+        Route::group(['prefix' => 'enjaz-cpanel'], function () {
 
+            Route::get('/', [BioController::class, 'index'])->name('bios.index');
+
+            Route::post('store', [BioController::class, 'store'])->name('bios.store');
+
+            Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
+
+            Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
+        });
 
         Route::group(['prefix' => 'user-languages'], function () {
 
@@ -157,16 +168,21 @@ Route::group(
 
         });
 
-        Route::group(['prefix' => 'enjaz-cpanel'], function () {
+        Route::group(['prefix' => 'user-awards'], function () {
 
-            Route::get('/', [BioController::class, 'index'])->name('bios.index');
+            Route::get('/', [UserAwardController::class, 'index'])->name('user-awards.index');
+
+            Route::post('store', [UserAwardController::class, 'store'])->name('user-awards.store');
+
+            Route::get('edit/{id}', [UserAwardController::class, 'edit'])->name('user-awards.edit');
 
             Route::post('store', [BioController::class, 'store'])->name('bios.store');
 
-            Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
+            Route::put('update/{id}', [UserAwardController::class, 'update'])->name('user-awards.update');
 
-            Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
+            Route::get('destroy/{id}', [UserAwardController::class, 'destroy'])->name('user-awards.destroy');
 
+            Route::get('status/{status}/{id}', [UserAwardController::class, 'status']);
         });
     });
 

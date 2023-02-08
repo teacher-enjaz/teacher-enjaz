@@ -1,6 +1,4 @@
 <?php
-
-
 return [
     'teacherEnjaz' => 'ملف إنجاز المعلم',
     'createExperience' => 'إضافة خبرة جديدة',
@@ -71,7 +69,6 @@ return [
     'addMembership' => 'إضافة عضوية',
     'addOrganization' => 'أضف مؤسسة جديدة',
     'editMembership' => 'تعديل عضوية',
-
     'socialPlatforms' => 'منصات التواصل الاجتماعي',
     'addPlatformsEnjazCpanel' => 'اضف منصة تواصل اجتماعي جديدة',
     'addAccountsEnjazCpanel' => 'اضف حساب تواصل اجتماعي جديدة',
@@ -85,7 +82,25 @@ return [
     'personalData' => 'البيانات الشخصية',
     'addBio' => 'أضف النبذة الشخصية',
     'editBio' => 'تعديل النبذة الشخصية',
-   'summarizeBio' => 'لخص ما يميزك في كلمات موجزة',
+    'summarizeBio' => 'لخص ما يميزك في كلمات موجزة',
     'bio' => 'النبذة',
+    'awardsCompetitions' => 'الجوائز والمسابقات',
+    'addCompetitions' => 'أضف تكريماتك',
+    'addCompetitionsModal' => 'إضافة جائزة/ مسابقة',
+    'editCompetitionsModal' => 'تعديل جائزة/ مسابقة',
+    'awardName' => 'اسم الجائزة',
+    'award' => 'الجائزة/المسابقة',
+    'awardDonor' => 'الجهة المانحة',
+    'awardDescription' => 'وصف الجائزة',
+    'commentAllowed' => 'السماح بالتعليقات',
+    'addImage' => 'أضف صورة',
+    'uploadImage' => 'تحميل صورة',
+    'youtubeLink' => 'رابط يوتيوب',
+    'addYoutubeLink' => 'أضف رابط لفيديو استلام الجائزة',
+    'publish' => 'نشر',
+    'saveAsDraft' => 'حفظ كمسودة',
+    'draft' => 'مسودة',
+    'awardTag' => 'جائزة',
+    'obtainedDate' => 'تاريخ الحصول على الجائزة',
 ];
 
