@@ -27,8 +27,9 @@ class SocialPlatformsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required|string|max:255|min:3',
-            'image' => ['required_without:id', Rule::when($this->image != null,'image|mimes:jpeg,png,jpg,gif,svg,webp')]
+            'name' => 'required|string|max:255|min:3',
+            'image' => ['required_without:id',
+                Rule::when($this->image != null,'image|mimes:jpeg,png,jpg,gif,svg,webp')]
         ];
     }
     public function messages()

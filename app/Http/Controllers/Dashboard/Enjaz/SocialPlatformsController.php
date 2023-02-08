@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\SocialPlatformsRequest;
+use App\Http\Requests\Enjaz\UpdateSocialPlatformsRequest;
 use App\Http\Traits\GeneralTrait;
 use App\Models\Enjaz\SocialPlatforms;
 use Illuminate\Support\Facades\File;
@@ -95,19 +96,17 @@ class SocialPlatformsController extends Controller
 
         if(!$platform)
             return redirect()->route('social-platforms.index')->with('error', __('enjaz.error'));
-        $platform->update(['name'=>$request->name]);
+        $platform->name = $request->name;
 
-        if ($request->has('image') && $request['image']!=null)
+        if ($request->hasFile('image'))
         {
-            $path = 'storage/socialPlatforms/'.$platform->image;
+          $path = 'storage/socialPlatforms/'.$platform->image;
             if(File::exists($path)){
                 File::delete($path);
-                $icon = $this->saveNewImage($request->image,'socialPlatforms');
-                $platform->image = $icon;
-                $platform->update();
-            }
+            $icon = $this->saveNewImage($request->image,'socialPlatforms');
+            $platform->image = $icon;
         }
-
+        $platform->update();
         return redirect()->route('social-platforms.index')->with('success', __('enjaz.successUpdate'));
     }
 

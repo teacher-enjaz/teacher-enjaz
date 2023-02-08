@@ -9,6 +9,8 @@ $(document).ready(function(){
         e.preventDefault();
         $('#namePlatformError').text('');
         $('#imagePlatformError').text('');
+        $('#editImageError').text('');
+        $('#editNameError').text('');
     });
     /************************** store Experience **********************/
     $('#platformForm').ajaxForm({
@@ -54,6 +56,9 @@ $(document).ready(function(){
             $('#name').val(data.name); //id لinput  بعطيه فاليو من الجيسون
             var image = document.getElementById('image-platform');
             image.src = '/storage/socialPlatforms/'+data.image;
+
+            $('#editImageError').text('');
+            $('#editNameError').text('');
         })
     });
 
