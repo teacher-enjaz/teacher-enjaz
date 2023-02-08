@@ -2,11 +2,10 @@
     <div class="modal-dialog  modal-lg modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header ">
-                <h5 class="modal-title" id="exampleModalLabel">{{__('enjaz.addEnjazCpanel')}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{__('enjaz.editExperience')}}</h5>
                 <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3 m-5 mt-0" >
-                <div id="custom-alert" class="alert alert-danger" style="display: none;"></div>
                 <form id="editExperienceForm" name="experienceForm" method="POST" action="">
                     @csrf
                     @method('PUT')
@@ -21,9 +20,15 @@
                                         {{$job->name}}</option>
                                 @endforeach
                             @endif
+                            <option value="-1">{{__('enjaz.others')}}</option>
                         </select>
-                        <label for="floatingSelect">{{__('enjaz.job')}}</label>
+                        <label for="floatingSelect">{{__('enjaz.addJob')}}</label>
                         <div class="text-danger" id="editJobError"></div>
+                    </div>
+                    <div class="form-floating mb-3 ms-3" id="edit_job_name" style="display: none">
+                        <input type="text" class="form-control" id="" name="name">
+                        <label for="floatingInput" >{{__('enjaz.addOrganization')}}</label>
+                        <div class="text-danger" id="editJobNameError"></div>
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <input type="text" class="form-control" id="organization" name="organization" value="">

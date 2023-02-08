@@ -51,12 +51,12 @@ $(document).ready(function(){
     $('body').on('click', '.edit-btn', function (e)
     {
         e.preventDefault();
-        var course_id = $(this).data('id'); //باخدها من data_id
+        var course_id = $(this).data('id');
         var action = 'courses/update/'+course_id;
-        $('#editCourseForm').attr('action',action);//بضيف امكشن لفورم التعديل في المودال
-        $.get('courses/edit/' + course_id , function (data) //بروح للراوت الي موجو بملف الويب وبروح بعدها للفنكشن الي موجودة بالكونترولر بترجع بيانات بشكل جيسون باخدها عن طريق الباراميتر data الي بداخل الفنشكن هنا ووببدا اعبي البيانات بداخل المودال تبع الedit
+        $('#editCourseForm').attr('action',action);
+        $.get('courses/edit/' + course_id , function (data)
         {
-            $('#name').val(data.name); //id لinput  بعطيه فاليو من الجيسون
+            $('#name').val(data.name);
             $('#training_center').val(data.training_center);
             $('#hours').val(data.hours);
             $('#end_date').val(data.end_date);

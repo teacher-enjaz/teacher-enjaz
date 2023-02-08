@@ -1,2 +1,9 @@
 <?php
-symlink('/home/newrawafed/new.rawafed.edu.ps/storage/app/public','/home/newrawafed/public_html/storage/');
+
+$targetFolder = 'http://127.0.0.1:8000/storage/app/public';
+$linkFolder = 'http://127.0.0.1:8000/public/storage';
+$targetFolder = '/127:0:0:1:8000/storage/app/public';
+$linkFolder = '/127:0:0:1:8000/public/storage';
+symlink($targetFolder,$linkFolder);
+echo 'Symlink process successfully completed';
+?>

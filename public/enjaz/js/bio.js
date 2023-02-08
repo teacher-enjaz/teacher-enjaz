@@ -9,6 +9,7 @@ $(document).ready(function(){
     {
         e.preventDefault();
         $('#infoError').text('');
+        $('#editInfoError').text('');
     });
     /************************** store Experience **********************/
     $('#bioForm').ajaxForm({
@@ -45,10 +46,9 @@ $(document).ready(function(){
     {
         e.preventDefault();
         var bio_id = $(this).data('id');
-        console.log(bio_id);
-
         var action = 'enjaz-cpanel/update/'+bio_id;
         $('#editBioForm').attr('action',action);
+
         //fill values in input fields
         $.get('enjaz-cpanel/edit/' + bio_id , function (data)
         {
@@ -89,17 +89,4 @@ $(document).ready(function(){
 
         }
     });
-    // /************************* chasnge status *******************************/
-    // $('.membership-status').change(function() {
-    //     var status = $(this).prop('checked') === true ? 1 : 0;
-    //     var membership_id = $(this).data('id');
-    //     $.ajax({
-    //         type: "GET",
-    //         dataType: "application/json",
-    //         url: 'memberships/status/'+status+'/'+membership_id,
-    //         success: function(data){
-    //             console.log(data.success)
-    //         }
-    //     });
-    // });
 });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContentFilesTable extends Migration
+class CreateLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateContentFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('content_files', function (Blueprint $table) {
-
+        Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
-            $table->text('description');
-            $table->string('extention',255);
-            $table->float('size');
-            $table->string('mime',255);
-            $table->text('path');
-            $table->foreignId('content_id')->references('id')->on('contents')->onDelete('cascade');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateContentFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content_files');
+        Schema::dropIfExists('languages');
     }
 }
