@@ -98,6 +98,7 @@ return [
     'youtubeLink' => 'رابط يوتيوب',
     'addYoutubeLink' => 'أضف رابط لفيديو استلام الجائزة',
     'publish' => 'نشر',
+    'unPublish' => 'إلغاء نشر',
     'saveAsDraft' => 'حفظ كمسودة',
     'draft' => 'مسودة',
     'awardTag' => 'جائزة',

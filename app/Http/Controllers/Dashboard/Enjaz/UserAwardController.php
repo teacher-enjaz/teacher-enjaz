@@ -50,7 +50,7 @@ class UserAwardController extends Controller
            }
            else if ($request->has('publish'))
            {
-               $request['status'] = 'منشورة';
+               $request['status'] = 'منشور';
            }
            $user_award = UserAward::create($request->except('_token'));
 
@@ -103,11 +103,13 @@ class UserAwardController extends Controller
         }
         else if ($request->has('publish'))
         {
-            $request['status'] = 'منشورة';
+            $request['status'] = 'منشور';
         }
         $userAward->award_id = $request->award_id;
         $userAward->youtube_link = $request->youtube_link;
         $userAward->obtained_date = $request->obtained_date;
+
+        $userAward->status = $request['status'];
         if ($request->hasFile('image'))
         {
             $icon = $this->saveNewImage($request->image,'awards');
@@ -117,5 +119,32 @@ class UserAwardController extends Controller
         return redirect()->route('user-awards.index')->with('success', __('enjaz.successAdd'));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $user_award = UserAward::find($id);
+        if (!$user_award)
+            return redirect()->route('user-awards.index')->with('error', __('enjaz.error'));
+        $user_award->delete();
+        return redirect()->route('user-awards.index')->with('success', __('enjaz.successDelete'));
+    }
 
+    /**
+     * change status
+     * @param $status
+     * @param $user_award_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status($status,$user_award_id)
+    {
+        $user_award = UserAward::find($user_award_id);
+        $user_award->status = $status;
+        $user_award->save();
+        return response()->json(['success'=>'Award status change successfully.']);
+    }
 }

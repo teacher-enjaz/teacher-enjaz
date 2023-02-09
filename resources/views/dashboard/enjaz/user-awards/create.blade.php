@@ -68,7 +68,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn custom-btn draft-btn" id="draftBtn" name="saveDraft">{{__('enjaz.saveAsDraft')}}</button>
-                        <button type="submit" class="btn custom-btn" id="saveBtn">{{__('enjaz.publish')}} </button>
+                        <button type="submit" class="btn custom-btn" id="saveBtn" name="publish">{{__('enjaz.publish')}} </button>
                     </div>
                 </form>
             </div>

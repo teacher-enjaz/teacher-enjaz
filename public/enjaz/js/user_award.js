@@ -88,53 +88,8 @@ $(document).ready(function(){
             $('#youtubeLinkError').text(response.responseJSON.errors.youtube_link);
         }
     });
-    // // edit award ajax request
-    // $(document).on('click', '.edit-btn', function(e) {
-    //     e.preventDefault();
-    //     let id = $(this).attr('id');
-    //     $.ajax({
-    //         url: '{{ route("user-awards.edit") }}',
-    //         method: 'get',
-    //         data: {
-    //             id: id,
-    //             _token: '{{ csrf_token() }}'
-    //         },
-    //         success: function(response) {
-    //             $("#award_id").val(response.award_id);
-    //             $("#obtained_date").val(response.obtained_date);
-    //             $("#image").html(
-    //                 `<img src="storage/images/${response.image}" width="100" class="img-fluid img-thumbnail">`);
-    //         }
-    //     });
-    // });
-    // // update award ajax request
-    // $("#editAwardForm").submit(function(e) {
-    //     e.preventDefault();
-    //     const fd = new FormData(this);
-    //     $.ajax({
-    //         url: '{{ route("user-awards.update") }}',
-    //         method: 'post',
-    //         data: fd,
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         dataType: 'json',
-    //         success: function(response) {
-    //             if (response.status == 200) {
-    //                 Swal.fire(
-    //                     'Updated!',
-    //                     'Award Updated Successfully!',
-    //                     'success'
-    //                 )
-    //                 fetchAllEmployees();
-    //             }
-    //             $("#edit-btn").text('Update Award');
-    //             $("#editAwardForm")[0].reset();
-    //             $("#edit-award-eModal").modal('hide');
-    //         }
-    //     });
-    // });
-    // /************************** Update Experience **********************/
+
+    /************************** Update Experience **********************/
     $('body').on('click', '.edit-btn', function (e)
     {
         e.preventDefault();
@@ -205,16 +160,30 @@ $(document).ready(function(){
         }
     });
     /************************* chasnge status *******************************/
-    /*$('.membership-status').change(function() {
-        var status = $(this).prop('checked') === true ? 1 : 0;
-        var membership_id = $(this).data('id');
+    $('.user-award-status').change(function() {
+        var status = $(this).prop('checked') === true ? 'مسودة' : 'منشور';
+        var user_award_id = $(this).data('id');
+        const element = document.querySelector("#status-tag");
+
+        if(status === 'منشور'){
+            element.style.background = "#ffc107";
+            element.style.color = "rgb(70, 55, 55)";
+            element.innerHTML = status;
+        }
+        if(status === 'مسودة'){
+            element.style.background = "#ce3d4ee6";
+            element.innerHTML = status;
+        }
+
         $.ajax({
             type: "GET",
             dataType: "application/json",
-            url: 'memberships/status/'+status+'/'+membership_id,
+            url: 'user-awards/status/'+status+'/'+user_award_id,
             success: function(data){
-                console.log(data.success)
+                console.log(data.success);
+
+
             }
         });
-    });*/
+    });
 });
