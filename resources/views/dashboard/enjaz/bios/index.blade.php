@@ -12,7 +12,7 @@
         </div>
         <div class="d-flex">
             @include('dashboard.layouts.enjaz-sidebar')
-            <div class="main-content" style="width: 90%;">
+            <div class="main-content" style="max-width: 90%; width:80%">
                 <div class=" d-flex justify-content-center">
                     <div class="container-fluid ">
                         <!-- personal data  -->
@@ -46,7 +46,7 @@
                                                 </a>
                                             @endif
                                         </div>
-                                        <p class="w-100 text-end">
+                                        <p class=" text-end">
                                             @if($bio)
                                                 {{$bio->info}}
                                             @else
