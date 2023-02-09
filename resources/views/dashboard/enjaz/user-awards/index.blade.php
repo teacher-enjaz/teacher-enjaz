@@ -72,22 +72,29 @@
                                                         </div>
                                                         <div class="aricel-data-1 d-flex justify-content-between mt-3">
                                                             <div  class="publisher">
-                                                                <span>{{$user_award->award->description}}</span>
+                                                                {{--<span>{{substr(strip_tags($user_award->award->description), 0, 100)}}</span>--}}
+                                                                <span>{{Str::of($user_award->award->description)->limit(80)}}</span>
                                                             </div>
                                                         </div>
                                                         <hr>
                                                         <div class="procedures d-flex justify-content-between  mt-3">
-                                                            <div class="status align-middle">
-                                                                <p>{{$user_award->status}}</p>
+                                                            <div class="align-middle status">
+                                                                <p id="status-tag" style="background-color: {{$user_award->status ==  __('enjaz.draft') ? "#ce3d4ee6":"#ffc107"}}">{{$user_award->status}}</p>
                                                             </div>
                                                             <div class="procedure d-flex justify-content-center">
-                                                                <div class="toggle-flip ms-1">
+                                                                <div class="toggle-flip">
                                                                     <label>
-                                                                        <input type="checkbox" {{$user_award->status == 'منشور'? 'checked':''}}>
-                                                                        <span class="flip-indecator"
-                                                                              data-toggle-on="نشر"
-                                                                              data-toggle-off="إلغاء النشر ">
-                                                                        </span>
+                                                                        <input class="user-award-status" type="checkbox" data-id="{{$user_award->id}}"
+                                                                            {{ $user_award->status == __('enjaz.draft') ? 'checked' : '' }}>
+                                                                        @if($user_award->status == __('enjaz.published'))
+                                                                            <span class="flip-indecator" data-toggle-on="{{__('enjaz.publish')}}"
+                                                                                  data-toggle-off="{{__('enjaz.unPublish')}}" style="font-size: small">
+                                                                            </span>
+                                                                        @else
+                                                                            <span class="flip-indecator" data-toggle-on="{{__('enjaz.publish')}}"
+                                                                                  data-toggle-off="{{__('enjaz.unPublish')}}" style="font-size: small">
+                                                                            </span>
+                                                                        @endif
                                                                     </label>
                                                                 </div>
                                                                 <a href="#" data-id="{{$user_award->id}}" class="edit-btn edit-btn"
@@ -96,9 +103,9 @@
                                                                    title="{{__('enjaz.update')}} ">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a href="" class="delete-btn">
-                                                                    <i class="fas fa-trash-alt" data-bs-toggle="tooltip" data-bs-html="true" title="حذف ">
-                                                                    </i>
+                                                                <a class="delete-btn mb-2 delete-trashed" type="button"
+                                                                   href="{{route('user-awards.destroy',$user_award->id)}}">
+                                                                    <i class="fa fa-trash"></i>
                                                                 </a>
                                                             </div>
                                                         </div>
