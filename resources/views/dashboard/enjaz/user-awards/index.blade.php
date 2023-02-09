@@ -72,7 +72,6 @@
                                                         </div>
                                                         <div class="aricel-data-1 d-flex justify-content-between mt-3">
                                                             <div  class="publisher">
-                                                                {{--<span>{{substr(strip_tags($user_award->award->description), 0, 100)}}</span>--}}
                                                                 <span>{{Str::of($user_award->award->description)->limit(80)}}</span>
                                                             </div>
                                                         </div>
