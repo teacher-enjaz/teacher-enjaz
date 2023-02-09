@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Enjaz\ArticleController;
 use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentTypeController;
@@ -197,6 +198,20 @@ Route::group(
             Route::get('destroy/{id}', [UserAwardController::class, 'destroy'])->name('user-awards.destroy');
 
             Route::get('status/{status}/{id}', [UserAwardController::class, 'status']);
+        });
+        Route::group(['prefix' => 'articles'], function () {
+
+            Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+
+            Route::post('store', [ArticleController::class, 'store'])->name('articles.store');
+
+            Route::get('edit/{id}', [ArticleController::class, 'edit'])->name('articles.edit');
+
+            Route::put('update/{id}', [ArticleController::class, 'update'])->name('articles.update');
+
+            Route::get('destroy/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
+            Route::get('status/{status}/{id}', [ArticleController::class, 'status']);
         });
     });
 

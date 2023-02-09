@@ -17,8 +17,8 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->string('title',255);
             $table->boolean('allow_comments')->default(1);
-            $table->integer('likes');
-            $table->integer('views');
+            $table->integer('likes')->default(0);
+            $table->integer('views')->default(0);
             $table->boolean('status')->default(1);
             $table->foreignId('user_id')
                 ->references('id')
