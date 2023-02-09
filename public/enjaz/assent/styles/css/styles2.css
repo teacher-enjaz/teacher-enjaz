@@ -4,7 +4,7 @@
 
 .xdata{
     top: 6.3rem !important;
-    
+
   }
   .main-data{margin-right: 0.5rem !important;}
   .image-profile img{
@@ -13,14 +13,14 @@
     border-radius: 85px;
     padding: 3px;
     border: 2px solid var(--light);
-    
+
   }
   h3 .hello{
     font-size: 24px;
     margin: 15px 0;
   }
   h3.hello span{
-  
+
     font-weight: 600;
     color: #0b6f6b;
   }
@@ -72,14 +72,13 @@
     width: 150px;
     height: 150px;
   }
-  
+
   .image-upload{
     font-size: 1.5rem;
     color: #fff !important;
     background-color: #707070 !important;
     width: 2.3rem;
     height: 2.3rem;
-    border-radius: 50%;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -100,8 +99,10 @@
     color: #0b6f6b;
   }
   .about-text p{
-    font-size: 16px;
-    line-height: 25px;
+      font-size: 16px;
+      line-height: 25px;
+      word-wrap: break-word;
+      width: 90% !important;
   }
   .section-title h1{
     color: #ce3d4ee6;
@@ -114,7 +115,7 @@
   .personal-info .info-item{
     flex: 0 0 50%;
     max-width: 50%;
-    
+
   }
   .personal-info .info-item p{
     margin-left: 5rem !important;
@@ -123,14 +124,14 @@
     font-size: 16px;
     color: var(--text-black-900);
     border-bottom: 1px solid var(--bg-black-50);
-  
+
   }
   .personal-info .info-item p span{
     font-weight: 400;
     color: var(--text-black-700);
     margin-left: 4px;
     display: inline-block;
-    
+
   }
   .personal-info .buttons{
     margin-top: 40px;
@@ -143,7 +144,7 @@
     position: relative;
     padding-right: 2rem !important;
     padding-bottom: 2rem !important;
-  
+
   }
   .timeline .timeline-item:last-child{
     padding-bottom: 0px !important;
@@ -166,13 +167,13 @@
     border-radius: 50%;
     background-color: var(--green-engaz);
   }
-  
+
   .timeline .timeline-date{
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 12px;;
     color: var(--text-black-700);
-  
+
   }
   .timeline .timeline-date i{
     margin-left: 5px;
@@ -183,7 +184,7 @@
     margin-bottom: 15px;
     color: var(--text-black-900);
   }
-  
+
   .custom-btn.add-btn {
     padding: 9px 14px!important;
     border-radius: 10px !important;
@@ -199,8 +200,8 @@
    display: flex;
    justify-content: center;
    align-items: center;
-  
-  
+
+
   }
   .delete-btn i{color: #f00 !important;}
   .edit-btn i{color: #ffc107 !important;}
@@ -214,12 +215,12 @@
    justify-content: center;
    align-items: center;
    margin-left: 3px;
-  
-    
+
+
   }
   .delete-btn:hover,.edit-btn:hover{color: #fff !important;}
   .custom-select {
-   
+
     padding-right: 33px !important;
   }
   .initiative-img img{
@@ -232,21 +233,21 @@
   .card:hover{
     transform: scale(1.05);
   } */
-  
+
   .add-initiative-eModal .attachments .section-attachment{
     border-left: 2px solid var(--green-engaz) !important;
   }
   .add-initiative-eModal .attachments .section-attachment.v{
     border-left:none !important;
   }
-  
+
   .add-initiative-eModal .attachments .section-attachment .scetion-title{
     color: var(--green-engaz) !important;
   }
   .add-initiative-eModal .attachments .section-attachment .attachment-button {
     width: 11rem !important;
     background-color: #fff !important;
-  
+
   }
   .add-initiative-eModal .attachments .section-attachment .attachment-button label{
     color: var(--green-engaz) ;
@@ -257,7 +258,7 @@
     padding: 3px !important;
     padding-left: 13px !important;
     padding-right: 13px !important;
-  
+
   }
   td,th{
     vertical-align: middle !important;
@@ -278,7 +279,7 @@
     vertical-align: baseline;
   }
 
-  
+
 @-webkit-keyframes progress-bar-stripes {
     from {
       background-position: 1rem 0;
@@ -287,7 +288,7 @@
       background-position: 0 0;
     }
   }
-  
+
   @keyframes progress-bar-stripes {
     from {
       background-position: 1rem 0;
@@ -296,7 +297,7 @@
       background-position: 0 0;
     }
   }
-  
+
   .progress {
     display: flex;
     height: 0.4rem !important;
@@ -306,7 +307,7 @@
     background-color: #eaecf4;
     border-radius: 0.35rem;
   }
-  
+
   .progress-bar {
     display: flex;
     flex-direction: column;
@@ -318,23 +319,23 @@
     background-color: var(--green-engaz);
     transition: width 0.6s ease;
   }
-  
+
   @media (prefers-reduced-motion: reduce) {
     .progress-bar {
       transition: none;
     }
   }
-  
+
   .progress-bar-striped {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-size: 1rem 1rem;
   }
-  
+
   .progress-bar-animated {
     -webkit-animation: 1s linear infinite progress-bar-stripes;
     animation: 1s linear infinite progress-bar-stripes;
   }
-  
+
   @media (prefers-reduced-motion: reduce) {
     .progress-bar-animated {
       -webkit-animation: none;
@@ -354,7 +355,7 @@
       background-position: 0 0;
     }
   }
-  
+
   @keyframes progress-bar-stripes {
     from {
       background-position: 1rem 0;
@@ -362,7 +363,7 @@
     to {
       background-position: 0 0;
     }
-  }    
+  }
   .cpanel .dropdown:hover .dropdown-content, .active{
     display:block !important;
     transition:all 0.5s ease-in-out !important;
@@ -633,15 +634,15 @@ color: #6c757d !important;
 }
 .cpanel .dropdown:hover .title-cpanel, .active{
   display: flex !important;
-      
+
 }
   .ul-aside i{
     margin-left: 0px !important;
   }
- 
+
   .cpanel .dropdown .title-cpanel i{
-   
-  
+
+
 }
 }
 .view-aside{
@@ -676,7 +677,7 @@ color: #6c757d !important;
 .stat{
   border-bottom: 1px solid #c4c4c4;
   margin-top:5px !important;
- 
+
 }
 .stat p{
   font-size: 14px !important;

@@ -15,7 +15,7 @@
         </div>
         <div class="d-flex">
             @include('dashboard.layouts.enjaz-sidebar')
-            <div class="main-content" style="width: 90%;">
+            <div class="main-content" style="max-width: 90%;width: 80%">
                 <div class=" d-flex justify-content-center">
                     <div class="container-fluid ">
                         <!-- educational data  -->
@@ -90,7 +90,7 @@
                                                                         </span>
                                                                     </label>
                                                                 </div>
-                                                                <a href=""  data-id="{{$user_award->id}}" class="edit-btn edit-btn"
+                                                                <a href="#" data-id="{{$user_award->id}}" class="edit-btn edit-btn"
                                                                    data-bs-toggle="modal" data-bs-target="#edit-award-eModal"
                                                                    data-bs-toggle="tooltip" data-bs-html="true"
                                                                    title="{{__('enjaz.update')}} ">
