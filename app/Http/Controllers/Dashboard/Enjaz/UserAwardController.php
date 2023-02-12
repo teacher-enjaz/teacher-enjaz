@@ -7,6 +7,7 @@ use App\Http\Requests\Enjaz\UserAwardRequest;
 use App\Models\Enjaz\Award;
 use App\Models\Enjaz\UserAward;
 use App\Http\Traits\GeneralTrait;
+use Illuminate\Support\Facades\DB;
 
 class UserAwardController extends Controller
 {
@@ -31,37 +32,46 @@ class UserAwardController extends Controller
      */
     public function store(UserAwardRequest $request)
     {
-           $request->request->add([
-               'user_id' => 1,//Auth::id(),
-               'status' => "مسودة"
-           ]);
-           if($request->award_id == -1)
-           {
-               $award = Award::create([
-                   'name' => $request->name,
-                   'donor' => $request->donor,
-                   'description' => $request->description
-               ]);
-               $request['award_id'] = $award->id;
-           }
-           if ($request->has('saveDraft'))
-           {
-               $request['status'] = "مسودة";
-           }
-           else if ($request->has('publish'))
-           {
-               $request['status'] = 'منشور';
-           }
-           $user_award = UserAward::create($request->except('_token'));
+        try
+        {
+            DB::beginTransaction();
+            $request->request->add([
+                'user_id' => 1,//Auth::id(),
+                'status' => "مسودة"
+            ]);
+            if($request->award_id == -1)
+            {
+                $award = Award::create([
+                    'name' => $request->name,
+                    'donor' => $request->donor,
+                    'description' => $request->description
+                ]);
+                $request['award_id'] = $award->id;
+            }
+            if ($request->has('saveDraft'))
+            {
+                $request['status'] = "مسودة";
+            }
+            else if ($request->has('publish'))
+            {
+                $request['status'] = 'منشور';
+            }
+            $user_award = UserAward::create($request->except('_token'));
 
-           if ($request->hasFile('image'))
-           {
-               $image = $this->saveNewImage($request->image,'awards');
-               $user_award->image = $image;
-           }
-           $user_award->save();
-           return redirect()->route('user-awards.index')->with('success', __('enjaz.successAdd'));
-
+            if ($request->hasFile('image'))
+            {
+                $image = $this->saveNewImage($request->image,'awards');
+                $user_award->image = $image;
+            }
+            $user_award->save();
+            DB::commit();
+            return redirect()->route('user-awards.index')->with('success', __('enjaz.successAdd'));
+        }
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            return redirect()->back()->with(['error' =>$e]);
+        }
     }
     /**
      * Show the form for editing the specified resource.
@@ -88,35 +98,40 @@ class UserAwardController extends Controller
     public function update(UserAwardRequest $request, $id)
     {
         $userAward = UserAward::with('award')->find($id);
-        if($request->award_id == -1)
+        try
         {
-            $award = Award::create([
-                'name' => $request->name,
-                'donor' => $request->donor,
-                'description' => $request->description
-            ]);
-            $request['award_id'] = $award->id;
-        }
-        if ($request->has('saveDraft'))
-        {
-            $request['status'] = "مسودة";
-        }
-        else if ($request->has('publish'))
-        {
-            $request['status'] = 'منشور';
-        }
-        $userAward->award_id = $request->award_id;
-        $userAward->youtube_link = $request->youtube_link;
-        $userAward->obtained_date = $request->obtained_date;
+            DB::beginTransaction();
+            if ($request->award_id == -1) {
+                $award = Award::create([
+                    'name' => $request->name,
+                    'donor' => $request->donor,
+                    'description' => $request->description
+                ]);
+                $request['award_id'] = $award->id;
+            }
+            if ($request->has('saveDraft')) {
+                $request['status'] = "مسودة";
+            } else if ($request->has('publish')) {
+                $request['status'] = 'منشور';
+            }
+            $userAward->award_id = $request->award_id;
+            $userAward->youtube_link = $request->youtube_link;
+            $userAward->obtained_date = $request->obtained_date;
 
-        $userAward->status = $request['status'];
-        if ($request->hasFile('image'))
-        {
-            $icon = $this->saveNewImage($request->image,'awards');
-            $userAward->image = $icon;
+            $userAward->status = $request['status'];
+            if ($request->hasFile('image')) {
+                $icon = $this->saveNewImage($request->image, 'awards');
+                $userAward->image = $icon;
+            }
+            $userAward->update();
+            DB::commit();
+            return redirect()->route('user-awards.index')->with('success', __('enjaz.successAdd'));
         }
-        $userAward->update();
-        return redirect()->route('user-awards.index')->with('success', __('enjaz.successAdd'));
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            return redirect()->back()->with(['error' =>$e]);
+        }
     }
 
     /**
