@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('enjaz/assent/styles/css/styles.css')}}" id="styles"/>
     <link rel="stylesheet" href="{{asset('enjaz/assent/styles/css/styles2.css')}}" id="style"/>
     <link rel="stylesheet" href="{{asset('enjaz/assent/js/jquery1.dataTables.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
     <style>
             /* The snackbar - position it at the bottom and in the middle of the screen */
         #snackbar {

@@ -191,8 +191,8 @@
             </div>
         </div>
     </div>
-    @include('dashboard.enjaz.bios.create');
-    @include('dashboard.enjaz.bios.edit');
+    @include('dashboard.enjaz.bios.create')
+    @include('dashboard.enjaz.bios.edit')
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('template/js/plugins/jquery.dataTables.min.js')}}"></script>

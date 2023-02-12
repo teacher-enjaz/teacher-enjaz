@@ -106,5 +106,13 @@ return [
     'content_types' => 'أنواع محتوى ملف الإنجاز',
     'addContentTypes' => 'إضافة نوع جديد',
     'contentType' => 'نوع المحتوى',
+    'articles' => 'المقالات',
+    'article' => 'مقالة',
+    'addArticle' => 'إضافة مقالة',
+    'articleTitle' => 'عنوان المقالة',
+    'classification' => 'التصنيف',
+    'addClassification' => 'إضافة تصنيف',
+    'allowComments' => ' السماح بالتعليقات',
+    'cancelPublish' => 'إلغاء النشر',
 ];
 
