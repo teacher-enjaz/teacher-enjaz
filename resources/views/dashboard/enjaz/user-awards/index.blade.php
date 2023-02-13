@@ -78,7 +78,7 @@
                                                         <hr>
                                                         <div class="procedures d-flex justify-content-between  mt-3">
                                                             <div class="align-middle status">
-                                                                <p id="status-tag" style="background-color: {{$user_award->status ==  __('enjaz.draft') ? "#ce3d4ee6":"#ffc107"}}">{{$user_award->status}}</p>
+                                                                <p id="status-tag{{$user_award->id}}" style="background-color: {{$user_award->status ==  __('enjaz.draft') ? "#ce3d4ee6":"#ffc107"}}">{{$user_award->status}}</p>
                                                             </div>
                                                             <div class="procedure d-flex justify-content-center">
                                                                 <div class="toggle-flip">
