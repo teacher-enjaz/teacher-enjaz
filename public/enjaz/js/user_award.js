@@ -163,7 +163,7 @@ $(document).ready(function(){
     $('.user-award-status').change(function() {
         var status = $(this).prop('checked') === true ? 'مسودة' : 'منشور';
         var user_award_id = $(this).data('id');
-        const element = document.querySelector("#status-tag");
+        const element = document.querySelector("#status-tag"+user_award_id);
 
         if(status === 'منشور'){
             element.style.background = "#ffc107";
