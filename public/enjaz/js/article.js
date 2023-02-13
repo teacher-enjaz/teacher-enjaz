@@ -13,12 +13,13 @@ $(document).ready(function(){
         else
             $('#classification_name').hide();
     })
-    /*$('select[id="job_id"]').on('change',function (e) {
+    $('select[name="classification_id"]').on('change',function (e) {
         if($(this).val() === '-1')
-            $('#edit_job_name').show();
+            $('#edit_classification_name').show();
         else
-            $('#edit_job_name').hide();
-    })*/
+            $('#edit_classification_name').hide();
+    })
+
     $('body').on('click', '.create-btn', function (e)
     {
         e.preventDefault();
@@ -28,7 +29,7 @@ $(document).ready(function(){
         $('#detailsError').text('');
         $('#imageArticleError').text('');
     });
-    /************************** store Experience **********************/
+    /************************** store article **********************/
     $('#articleForm').ajaxForm({
         success:function(response)
         {
@@ -66,31 +67,33 @@ $(document).ready(function(){
             $('#imageArticleError').text(response.responseJSON.errors.image);
         }
     });
-    /*/!************************** Update Experience **********************!/
+    /************************** Update article **********************/
     $('body').on('click', '.edit-btn', function (e)
     {
         e.preventDefault();
-        var experience_id = $(this).data('id');
-        var action = 'experiences/update/'+experience_id;
-        $('#editExperienceForm').attr('action',action);
-        $.get('experiences/edit/' + experience_id , function (data)
+        var content_id = $(this).data('id');
+        var action = 'articles/update/'+content_id;
+        $('#editArticleForm').attr('action',action);
+        $.get('articles/edit/' + content_id , function (data)
         {
             $('#id').val(data.id);
-            $('#option'+data.job_id).attr('selected','selected');
-            $('#organization').val(data.organization);
-            $('#from').val(data.from);
-            $('#to').val(data.to);
-            $('#notes').val(data.notes);
+            $('#title').val(data.title);
+            $('#option'+data.classification_id).attr('selected','selected');
+            $("#edit-summernote").summernote("code",data.article.details);
 
-            $('#editJobError').text('');
-            $('#editOrganizationError').text('');
-            $('#editFromError').text('');
-            $('#editToError').text('');
-            $('#editNoteError').text('');
+             if(data.allow_comments === 1 )
+                 $('#allow_comments').attr('checked','checked')
+             else
+                 $('#allow_comments').removeAttr('checked')
+            var image = document.getElementById('image-article');
+            image.src = data.content_file[0].AttPath;
+             $('#id').text('');
+             $('#title').text('');
+             $('#edit-summernote').text('');
         })
     });
 
-    $('#editExperienceForm').ajaxForm({
+    $('#editArticleForm').ajaxForm({
         success:function(response)
         {
             if(response)
@@ -106,40 +109,53 @@ $(document).ready(function(){
                     closeOnCancel: true
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#add-experience-eModal').hide();
-                        $('#add-experience-eModal').trigger('reset');
+                        $('#edit-article-eModal').hide();
+                        $('#edit-article-eModal').trigger('reset');
                         window.location.reload();
                     }
                 });
             }
         },
         error: function (response) {
-            $('#editJobError').text('');
-            $('#editJobNameError').text('');
-            $('#editOrganizationError').text('');
-            $('#editFromError').text('');
-            $('#editToError').text('');
-            $('#editNoteError').text('');
+            $('#editTitleError').text('');
+            $('#editClassificationIdError').text('');
+            $('#editNameError').text('');
+            $('#editDetailsError').text('');
+            $('#editImageArticleError').text('');
 
-            $('#editJobError').text(response.responseJSON.errors.job_id);
-            $('#editJobNameError').text(response.responseJSON.errors.name);
-            $('#editOrganizationError').text(response.responseJSON.errors.organization);
-            $('#editFromError').text(response.responseJSON.errors.from);
-            $('#editToError').text(response.responseJSON.errors.to);
-            $('#editNoteError').text(response.responseJSON.errors.notes);
+            $('#editTitleError').text(response.responseJSON.errors.title);
+            $('#editClassificationIdError').text(response.responseJSON.errors.classification_id);
+            $('#editNameError').text(response.responseJSON.errors.name);
+            $('#editDetailsError').text(response.responseJSON.errors.details);
+            $('#editImageArticleError').text(response.responseJSON.errors.image);
         }
     });
-    /!************************* chasnge status *******************************!/
-    $('.experience-status').change(function() {
-        var status = $(this).prop('checked') === true ? 1 : 0;
-        var experience_id = $(this).data('id');
+    /************************* change status *******************************/
+
+    $('.user-article-status').change(function() {
+        var status = $(this).prop('checked') === true ? 'مسودة' : 'منشور';
+        var content_id = $(this).data('id');
+        const element = document.querySelector("#status-tag"+content_id);
+
+        if(status === 'منشور'){
+            element.style.background = "#ffc107";
+            element.style.color = "rgb(70, 55, 55)";
+            element.innerHTML = status;
+        }
+        if(status === 'مسودة'){
+            element.style.background = "#ce3d4ee6";
+            element.innerHTML = status;
+        }
+
         $.ajax({
             type: "GET",
             dataType: "application/json",
-            url: 'experiences/status/'+status+'/'+experience_id,
+            url: 'articles/status/'+status+'/'+content_id,
             success: function(data){
-                console.log(data.success)
+                console.log(data.success);
+
+
             }
         });
-    });*/
+    });
 });
