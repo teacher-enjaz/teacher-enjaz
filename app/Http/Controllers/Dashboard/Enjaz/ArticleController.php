@@ -15,6 +15,7 @@ use App\Models\enjaz\Experience;
 use App\Models\Enjaz\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
 {
@@ -28,8 +29,7 @@ class ArticleController extends Controller
         $content_type = ContentType::where('name','مقالات')->first();
          $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
 
-        $contents = Content::where('content_type_id',$content_type->id)->
-            with('classification','article','content_file','user:id,name_ar')->get();
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','article','content_file','user:id,name_ar')->paginate(2);
         return view('dashboard.enjaz.articles.index',compact('classifications','contents'));
     }
 
@@ -54,6 +54,14 @@ class ArticleController extends Controller
             {
                 $classification = Classification::create(['name' => $request->name,'content_type_id' => $content_type->id]);
                 $request['classification_id'] = $classification->id;
+            }
+            if ($request->has('saveDraft'))
+            {
+                $request['status'] = "مسودة";
+            }
+            else if ($request->has('publish'))
+            {
+                $request['status'] = 'منشور';
             }
             $content = Content::create($request->except('_token'));
             $request->request->add([
@@ -90,13 +98,12 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function edit($id)
-    {
-        $experience = Experience::find($id);//where('id',$id)->with('job:id,name')->first();
-        if(!$experience)
-            return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
+    public function edit($id){
+        $content = Content::where('id',$id)->with('classification','article','content_file','user:id,name_ar')->first();
+        if(!$content)
+            return redirect()->route('articles.index')->with('error', __('enjaz.error'));
 
-        return response()->json($experience);
+        return response()->json($content);
     }
 
     /**
@@ -106,27 +113,46 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ExperienceRequest $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
+        $content = Content::where('id',$id)->with('classification','article','content_file','user:id,name_ar')->first();
+        if ($request->has('editSaveDraft') && $request->editSaveDraft == null)
+        {
+            $request->request->add([
+                'status' => "مسودة",
+            ]);
+        }
+        else if ($request->has('editPublish') && $request->editPublish == null)
+        {
+            $request->request->add([
+                'status' => "منشور",
+            ]);
+        }
         /**
          * use DB transaction to store in multiple tables
          */
         try
         {
             DB::beginTransaction();
-            $experience = Experience::find($id);
-            if(!$experience)
-                return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
 
-            if($request->job_id == -1)
+            if($request->classification_id == -1)
             {
-                $job = Job::create(['name' => $request->name]);
-                $request['job_id'] = $job->id;
+                $classification = Classification::create(['name' => $request->name,'content_type_id' => $content->content_type_id]);
+                $request['classification_id'] = $classification->id;
             }
-            $experience->update($request->except('_token'));
+            $content->update($request->except('_token'));
+            $content->article->update($request->except('_token'));
+
+            if ($request->has('image') && $request->image != null)
+            {
+                if(File::exists($content->content_file->first()->AttPath))
+                    File::delete(public_path($content->content_file->first()->AttPath));
+
+                ContentFile::updateContentFile($request,'articles',$content->content_file->first()->id);
+            }
 
             DB::commit();
-            return redirect()->route('experiences.index')->with('success', __('enjaz.successUpdate'));
+            return redirect()->route('articles.index')->with('success', __('enjaz.successUpdate'));
         }
         catch (\Exception $e)
         {
@@ -143,24 +169,24 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $experience = Experience::find($id);
-        if (!$experience)
-            return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
-        $experience->delete();
-        return redirect()->route('experiences.index')->with('success', __('enjaz.successDelete'));
+        $content = Content::find($id);
+        if (!$content)
+            return redirect()->route('articles.index')->with('error', __('enjaz.error'));
+        $content->delete();
+        return redirect()->route('articles.index')->with('success', __('enjaz.successDelete'));
     }
 
     /**
      * change status
      * @param $status
-     * @param $experience_id
+     * @param $content_id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function status($status,$experience_id)
+    public function status($status,$content_id)
     {
-        $experience = Experience::find($experience_id);
-        $experience->status = $status;
-        $experience->save();
-        return response()->json(['success'=>'Experience status change successfully.']);
+        $content = Content::find($content_id);
+        $content->status = $status;
+        $content->save();
+        return response()->json(['success'=>'Content status change successfully.']);
     }
 }

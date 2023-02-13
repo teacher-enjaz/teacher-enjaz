@@ -46,6 +46,22 @@ class ContentFile extends Model
         $request['image']->storeAs(ContentFile::getSaveFilePath($folder,$content_file),ContentFile::getFileName($content_file));
 
     }
+    public function updateContentFile($request,$folder,$id)
+    {
+        $name = time() . rand(1, 100) . '.' . $request->image->extension();
+        $content_file = ContentFile::find($id);
+        $content_file->update
+        ([
+            'name' => $name,
+            'description' => $request->title,
+            'extension' => $request->image->extension(),
+            'size' => $request->image->getSize(),
+            'mime' => $request->image->getMimeType(),
+            'path' => $folder,
+        ]);
+        $request['image']->storeAs(ContentFile::getSaveFilePath($folder,$content_file),ContentFile::getFileName($content_file));
+
+    }
 
     public static function getSaveFilePath($category, ContentFile $content_file)
     {

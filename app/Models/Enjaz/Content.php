@@ -24,13 +24,6 @@ class Content extends Model
         'created_at', 'updated_at'
     ];
 
-    /**
-     * @var string[]
-     */
-    protected $casts = [
-        'status'=> 'boolean'
-    ];
-
     public function user(){
         return $this->belongsTo(User::class);
     }

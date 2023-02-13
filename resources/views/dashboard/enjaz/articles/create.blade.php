@@ -37,7 +37,6 @@
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <div class="lang form-check">
-
                             <input class="form-check-input" name="allow_comments" type="checkbox" value="1" id="flexCheckDefault" checked>
                             <label class="form-check-label mx-4" for="flexCheckDefault">
                                 {{__('enjaz.allowComments')}}
@@ -50,8 +49,8 @@
                         <div class="text-danger" id="imageArticleError"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn custom-btn draft-btn">{{__('enjaz.saveAsDraft')}}</button>
-                        <button type="button" class="btn custom-btn">{{__('enjaz.publish')}}</button>
+                        <button type="submit" class="btn custom-btn draft-btn" name="saveDraft">{{__('enjaz.saveAsDraft')}}</button>
+                        <button type="submit" class="btn custom-btn" name="publish">{{__('enjaz.publish')}}</button>
                     </div>
                 </form>
             </div>
