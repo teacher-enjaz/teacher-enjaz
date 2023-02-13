@@ -46,12 +46,11 @@
                             <div class="row">
                                 @if($contents->count() > 0)
                                     @foreach($contents as $index=>$content)
-                                        <div class="col-12 col-md-4 ">
-
+                                        <div class="col-12 col-md-4 " style="width: 33.33%;height: max-content">
                                             <div class="card articel-card shadow my-4 p-0">
                                                 <div class="card-header py-3">
                                                     <a href="single_initiative.html">
-                                                        <h6 class="m-0 font-weight-bold text-primary">{{$content->title}}</h6>
+                                                        <h6 class=" m-0 font-weight-bold text-primary">{{$content->title}}</h6>
                                                     </a>
                                                 </div>
                                                 <div class="card-body p-0 pb-2">
@@ -85,19 +84,30 @@
 
                                                         <div class="procedures d-flex justify-content-between  mt-3">
                                                             <div class="status align-middle">
-                                                                <p>{{__('enjaz.draft')}}</p>
+                                                                <p id="status-tag{{$content->id}}" style="background-color: {{$content->status ==  __('enjaz.draft') ? "#ce3d4ee6":"#ffc107"}}">{{$content->status}}</p>
                                                             </div>
                                                             <div class="procedure d-flex justify-content-center">
                                                                 <div class="toggle-flip ms-1">
                                                                     <label>
-                                                                        <input type="checkbox" checked>
-                                                                        <span class="flip-indecator" data-toggle-on="{{__('enjaz.publish')}}" data-toggle-off="{{__('enjaz.cancelPublish')}}"></span>
+                                                                        <input class="user-article-status" type="checkbox" data-id="{{$content->id}}"
+                                                                            {{ $content->status == __('enjaz.draft') ? 'checked' : '' }}>
+                                                                        @if($content->status == __('enjaz.published'))
+                                                                            <span class="flip-indecator" data-toggle-on="{{__('enjaz.publish')}}"
+                                                                                  data-toggle-off="{{__('enjaz.unPublished')}}" style="font-size: small">
+                                                                            </span>
+                                                                        @else
+                                                                            <span class="flip-indecator" data-toggle-on="{{__('enjaz.publish')}}"
+                                                                                  data-toggle-off="{{__('enjaz.unPublished')}}" style="font-size: small">
+                                                                            </span>
+                                                                        @endif
                                                                     </label>
                                                                 </div>
-                                                                <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#edit-article-eModal" data-bs-toggle="tooltip" data-bs-html="true" title="{{__('enjaz.update')}}">
+                                                                <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#edit-article-eModal" data-bs-toggle="tooltip" data-id="{{$content->id}}" data-bs-html="true" title="{{__('enjaz.update')}}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a href="" class="delete-btn"><i class="fas fa-trash-alt" data-bs-toggle="tooltip" data-bs-html="true" title="حذف "></i></a>
+                                                                <a href="{{route('articles.destroy',$content->id)}}" class="delete-btn delete-trashed" type="button">
+                                                                    <i class="fas fa-trash-alt" data-bs-toggle="tooltip" data-bs-html="true" title="{{__('enjaz.delete')}}"></i>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -109,6 +119,7 @@
 
                                         </div>
                                     @endforeach
+                                    {!! $contents->links('dashboard.layouts.enjaz-layouts.pagination-links') !!}
                                 @endif
                             </div>
                             <!-- articles data end -->
@@ -119,7 +130,7 @@
         </div>
     </div>
     @include('dashboard.enjaz.articles.create')
-    {{--@include('dashboard.enjaz.bios.edit')--}}
+    @include('dashboard.enjaz.articles.edit')
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('template/js/plugins/jquery.dataTables.min.js')}}"></script>
