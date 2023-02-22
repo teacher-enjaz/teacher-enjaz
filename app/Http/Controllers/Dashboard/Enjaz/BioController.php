@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\BioRequest;
+use App\Models\Enjaz\Article;
 use App\Models\Enjaz\Bio;
+use App\Models\Enjaz\Content;
+use App\Models\Enjaz\ContentType;
+use App\Models\Enjaz\Experience;
+use App\Models\Enjaz\UserQualification;
+use App\Models\User;
 
 class BioController extends Controller
 {
@@ -17,7 +23,15 @@ class BioController extends Controller
     {
         // $bio= Bio::where('user_id' , Auth::id())->first();
         $bio= Bio::where('user_id' , 1)->first();
-        return view('dashboard.enjaz.bios.index',compact('bio'));
+        $user_qualifications = UserQualification::where('user_id' , 1)
+            ->with(['qualification','university','specialization'])
+            ->orderBy('graduation_year', 'desc')->first();
+        $experience = Experience::where(['user_id'=> 1,'to'=> null])->first();
+        $user = User::where('id' ,$bio->user_id )->first();//Auth::user();
+        $article_count = Content::where('user_id',$bio->user_id)
+            ->where('content_type_id',ContentType::where('name','المقالات')->first()->id)
+            ->count();
+        return view('dashboard.enjaz.bios.index',compact('bio','user_qualifications','experience','user','article_count'));
     }
     /**
      * Store a newly created resource in storage.

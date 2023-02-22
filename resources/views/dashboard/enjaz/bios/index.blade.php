@@ -25,11 +25,13 @@
                                 <div class="about-text padd-15">
                                     <h3>
                                         <span>
-                                            مدرس لغة عربية
+                                            {{$experience->job->name}}
+                                            @if($experience->job->name == 'معلم')
+                                                <span class="slash">/</span>
+                                                {{$experience->user->teacher->school->name_ar}}
+                                            @endif
                                             <span class="slash">/</span>
-                                            مدرسة خالد الحسن الثانوية
-                                            <span class="slash">/</span>
-                                            مديرية خان يونس
+                                            {{$experience->user->teacher->directorate->name_ar}}
                                         </span>
                                     </h3>
                                     <div class="bio mt-3 " >
@@ -61,22 +63,22 @@
                                     <div class="personal-info padd-15">
                                         <div class="row">
                                             <div class="info-item padd-15">
-                                                <p> رقم الهوية : <span>3362826</span></p>
+                                                <p> رقم الهوية : <span>{{$user->identity_no}}</span></p>
                                             </div>
                                             <div class="info-item padd-15">
-                                                <p>  العمر : <span>46</span></p>
+                                                <p>  العمر : <span>{{\Carbon\Carbon::parse($user->birth_date)->age}}</span></p>
                                             </div>
                                             <div class="info-item padd-15">
-                                                <p>  التخصص الجامعي : <span>اللغة العربية و أساليب تدريسها</span></p>
+                                                <p>  التخصص الجامعي : <span>{{$user_qualifications->specialization->name}}</span></p>
                                             </div>
                                             <div class="info-item padd-15">
-                                                <p>  الدرجة : <span>البكالوريس</span></p>
+                                                <p>  الدرجة : <span>{{$user_qualifications->qualification->name}}</span></p>
                                             </div>
                                             <div class="info-item padd-15">
-                                                <p>  الجامعة  : <span> جامعة الأقصى</span></p>
+                                                <p>  الجامعة  : <span>{{$user_qualifications->university->name}}</span></p>
                                             </div>
                                             <div class="info-item padd-15">
-                                                <p>  البريد الالكتروني  : <span> mohammed23@gmail.com </span></p>
+                                                <p>  البريد الالكتروني  : <span>{{$user->email}}</span></p>
                                             </div>
 
                                         </div>
@@ -93,7 +95,7 @@
                                             <div class="static d-flex justify-content-between align-items-center">
                                                 <i class="fas fa-eye"></i>
                                                 <p>
-                                                    40
+                                                    {{$user->profile_views}}
                                                 </p>
                                             </div>
                                         </div>
@@ -108,7 +110,7 @@
                                             <div class="static d-flex justify-content-between align-items-center">
                                                 <i class="fa fa-newspaper"></i>
                                                 <p>
-                                                    4
+                                                    {{$article_count}}
                                                 </p>
                                             </div>
                                         </div>
