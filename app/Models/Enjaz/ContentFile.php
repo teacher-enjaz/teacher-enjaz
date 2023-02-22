@@ -12,6 +12,7 @@ class ContentFile extends Model
     protected $table = "content_files";
 
     protected $fillable = [
+        'id',
         'name',
         'description',
         'extension',
@@ -45,6 +46,69 @@ class ContentFile extends Model
         ]);
         $request['image']->storeAs(ContentFile::getSaveFilePath($folder,$content_file),ContentFile::getFileName($content_file));
 
+    }
+    public function createContentImages($request,$folder)
+    {
+        for ($i = 0; $i < count($request->new_image);$i++) {
+            if ($request->new_image[$i] != null) {
+                $name = time() . rand(1, 100) . '.' . $request->new_image[$i]->extension();
+                $content_file = ContentFile::create
+                ([
+                    'name' => $name,
+                    'description' => $name,
+                    'extension' => $request->new_image[$i]->extension(),
+                    'size' => $request->new_image[$i]->getSize(),
+                    'mime' => "image",
+                    'path' => $folder,
+                    'content_id' => $request->content_id,
+                ]);
+                $request->new_image[$i]->storeAs(ContentFile::getSaveFilePath($folder, $content_file), ContentFile::getFileName($content_file));
+            }
+        }
+    }
+    public function createContentFiles($request,$folder)
+    {
+        for ($i = 0; $i < count($request->new_file);$i++) {
+            if ($request->new_file[$i] != null) {
+                $name = time() . rand(1, 100) . '.' . $request->new_file[$i]->extension();
+                $content_file = ContentFile::create
+                ([
+                    'name' => $name,
+                    'description' => $name,
+                    'extension' => $request->new_file[$i]->extension(),
+                    'size' => $request->new_file[$i]->getSize(),
+                    'mime' => "file",
+                    'path' => $folder,
+                    'content_id' => $request->content_id,
+                ]);
+                $request->new_file[$i]->storeAs(ContentFile::getSaveFilePath($folder, $content_file), ContentFile::getFileName($content_file));
+            }
+        }
+    }
+    public function createContentVideos($request)
+    {
+        for ($i = 0; $i < count($request->new_youtube);$i++) {
+            if ($request->new_youtube[$i] != null) {
+                ContentFile::create
+                ([
+                    'name' => $request->new_youtube[$i],
+                    'description' => $request->new_youtube[$i],
+                    'extension' => null,
+                    'size' => 0,
+                    'mime' => 'youtube',
+                    'path' => 'youtube',
+                    'content_id' => $request->content_id,
+                ]);
+            }
+        }
+    }
+    public function updateContentVideo($request,$id)
+    {
+        ContentFile::where('id',$id)->update
+        ([
+            'name' => $request->name,
+            'description' => $request->name,
+        ]);
     }
     public function updateContentFile($request,$folder,$id)
     {

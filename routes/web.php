@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Enjaz\AchievementController;
 use App\Http\Controllers\Dashboard\Enjaz\ArticleController;
 use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentController;
@@ -212,6 +213,22 @@ Route::group(
             Route::get('destroy/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
             Route::get('status/{status}/{id}', [ArticleController::class, 'status']);
+        });
+        Route::group(['prefix' => 'achievements'], function () {
+
+            Route::get('/', [AchievementController::class, 'index'])->name('achievements.index');
+
+            Route::post('store', [AchievementController::class, 'store'])->name('achievements.store');
+
+            Route::get('edit/{id}', [AchievementController::class, 'edit'])->name('achievements.edit');
+
+            Route::put('update/{id}', [AchievementController::class, 'update'])->name('achievements.update');
+
+            Route::get('destroy/{id}', [AchievementController::class, 'destroy'])->name('achievements.destroy');
+
+            Route::get('status/{status}/{id}', [ArticleController::class, 'status']);
+
+            Route::get('deleteFromDB/{id}', [AchievementController::class, 'deleteFromDB']);
         });
     });
 

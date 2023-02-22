@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <div class="lang form-check">
-                            <input class="form-check-input" name="allow_comments" type="checkbox" value="1" id="flexCheckDefault" checked>
+                            <input class="form-check-input" name="allow_comments" type="checkbox" id="allow_comments" checked>
                             <label class="form-check-label mx-4" for="flexCheckDefault">
                                 {{__('enjaz.allowComments')}}
                             </label>
