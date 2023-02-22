@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $content_type = ContentType::where('name','مقالات')->first();
+        $content_type = ContentType::where('name','المقالات')->first();
          $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
 
         $contents = Content::where('content_type_id',$content_type->id)->with('classification','article','content_file','user:id,name_ar')->paginate(2);
@@ -42,7 +42,7 @@ class ArticleController extends Controller
         /**
          * use DB transaction to store in multiple tables
          */
-        $content_type = ContentType::where('name','مقالات')->first();
+        $content_type = ContentType::where('name','المقالات')->first();
         try
         {
             DB::beginTransaction();

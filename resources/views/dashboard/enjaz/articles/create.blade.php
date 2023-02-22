@@ -1,11 +1,11 @@
 <div class="modal fade add-initiative-eModal arrticles-modal" id="add-article-eModal" tabindex="-1" aria-labelledby="add-edu-eModal" aria-hidden="true">
-    <div class="modal-dialog  modal-lg modal-dialog-centered ">
+    <div class="modal-dialog  modal-lg modal-dialog-centered " style="overflow-y: initial !important">
         <div class="modal-content">
             <div class="modal-header ">
                 <h5 class="modal-title" id="exampleModalLabel">{{__('enjaz.addArticle')}}</h5>
                 <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-3 m-5 mt-0" >
+            <div class="modal-body p-3 m-5 mt-0" style="overflow-y: auto; height: 80vh;">
                 <form id="articleForm" name="articleForm" method="POST" action="{{route('articles.store')}}">
                     @csrf
                     <div class="form-floating mb-3 ms-3">

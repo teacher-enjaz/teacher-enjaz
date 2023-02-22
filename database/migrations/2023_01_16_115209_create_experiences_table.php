@@ -21,6 +21,7 @@ class CreateExperiencesTable extends Migration
             $table->date('to');
             $table->string('notes')->nullable();
             $table->boolean('status')->default(1);
+            $table->boolean('is_present')->default(0);
             $table->foreignId('job_id')
                 ->references('id')
                 ->on('jobs')

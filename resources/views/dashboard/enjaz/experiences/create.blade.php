@@ -31,17 +31,25 @@
                         <label for="floatingInput" >{{__('enjaz.organization')}}</label>
                         <div class="text-danger" id="organizationError"></div>
                     </div>
+                    <div class="form-floating mb-3 ms-3">
+                        <div class="lang form-check">
+                            <input class="form-check-input" type="checkbox" id="is_present" name="is_present">
+                            <label class="form-check-label mx-4" for="flexCheckDefault">
+                                مازلت أعمل في هذه الوظيفة
+                            </label>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-floating mb-3 ms-3">
-                                <input type="date" class="form-control" id="" name="from">
+                                <input type="date" class="form-control" name="from">
                                 <label for="floatingInput" >{{__('enjaz.from')}}</label>
                                 <div class="text-danger" id="fromError"></div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="form-floating mb-3 ms-3">
-                                <input type="date" class="form-control" id="" name="to">
+                            <div class="form-floating mb-3 ms-3" id="to_div">
+                                <input type="date" class="form-control" name="to">
                                 <label for="floatingInput" >{{__('enjaz.to')}}</label>
                                 <div class="text-danger" id="toError"></div>
                             </div>

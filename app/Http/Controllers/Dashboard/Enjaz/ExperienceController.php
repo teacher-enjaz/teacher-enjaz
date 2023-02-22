@@ -36,9 +36,21 @@ class ExperienceController extends Controller
         try
         {
             DB::beginTransaction();
+            if (!$request->has('is_present')) {
+                $is_present = 0;
+                $to = $request->to;
+            }
+            else {
+                $is_present = 1;
+                $to = null;
+            }
+
             $request->request->add([
                 'user_id' => 1,//Auth::id(),
+                'is_present' => $is_present,//Auth::id(),
+                'to' => $to,//Auth::id(),
             ]);
+
             if($request->job_id == -1)
             {
                 $job = Job::create(['name' => $request->name]);
@@ -100,7 +112,18 @@ class ExperienceController extends Controller
             $experience = Experience::find($id);
             if(!$experience)
                 return redirect()->route('experiences.index')->with('error', __('enjaz.error'));
-
+            if (!$request->has('is_present')) {
+                $is_present = 0;
+                $to = $request->to;
+            }
+            else {
+                $is_present = 1;
+                $to = null;
+            }
+            $request->request->add([
+                'is_present' => $is_present,//Auth::id(),
+                'to' => $to,//Auth::id(),
+            ]);
             if($request->job_id == -1)
             {
                 $job = Job::create(['name' => $request->name]);

@@ -28,7 +28,6 @@
                     </div>
                     <div class="form-floating mb-3 ms-3">
                         <div class="lang form-check">
-
                             <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault" name="is_native">
                             <label class="form-check-label mx-4" for="flexCheckDefault">
                                 {{__('enjaz.native')}}

@@ -26,6 +26,28 @@ $(document).ready(function(){
         $('#editToError').text('');
         $('#editNoteError').text('');
     });
+
+    // If the checkbox is checked, display the output text
+    document.getElementById("is_present").onchange = function () {
+        if (document.getElementById("is_present").checked === true){
+            document.getElementById('to_div').style.display = 'none';
+        }
+        else
+        {
+            document.getElementById('to_div').style.display = 'block';
+        }
+    }
+
+    document.getElementById("isPresent").onchange = function () {
+        if (document.getElementById("isPresent").checked === true){
+            document.getElementById('toDiv').style.display = 'none';
+        }
+        else
+        {
+            document.getElementById('toDiv').style.display = 'block';
+        }
+    }
+
     /************************** store Experience **********************/
     $('#experienceForm').ajaxForm({
         success:function(response)
@@ -77,12 +99,17 @@ $(document).ready(function(){
         $('#editExperienceForm').attr('action',action);
         $.get('experiences/edit/' + experience_id , function (data)
         {
+            console.log(data);
             $('#id').val(data.id);
             $('#option'+data.job_id).attr('selected','selected');
             $('#organization').val(data.organization);
             $('#from').val(data.from);
-            $('#to').val(data.to);
             $('#notes').val(data.notes);
+            if(data.is_present) {
+                $("#isPresent").attr("checked", "checked");
+                document.getElementById('toDiv').style.display = 'none';
+            }
+            $('#to').val(data.to);
 
             $('#editJobError').text('');
             $('#editOrganizationError').text('');
