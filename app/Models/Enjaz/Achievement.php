@@ -2,27 +2,25 @@
 
 namespace App\Models\Enjaz;
 
-use App\Models\Enjaz\Content;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Achievement extends Model
 {
     use HasFactory;
+
+    protected $table = "achievements";
+
     protected $fillable = [
         'description',
         'start_date',
         'end_date',
-        'status',
-        'slug',
         'content_id',
-        'classification_id',
+        'created_at',
+        'updated_at',
 
     ];
     public function content(){
-        return $this->belongsTo(Content::class, 'content_id','id');
-    }
-    public function classification(){
-        return $this->belongsTo(Classification::class, 'content_id','id');
+        return $this->belongsTo(Content::class);
     }
 }

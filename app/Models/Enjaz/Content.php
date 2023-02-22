@@ -21,7 +21,15 @@ class Content extends Model
         'views',
         'likes',
         'status',
-        'created_at', 'updated_at'
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'allow_comments'=> 'boolean'
     ];
 
     public function user(){
@@ -44,10 +52,10 @@ class Content extends Model
         return $this->hasOne(Article::class);
     }
 
-    /*public function achievement(){
-        return $this->hasOne(Achievement::class,'content_id','id');
+    public function achievement(){
+        return $this->hasOne(Achievement::class);
     }
-    public function initiative(){
+    /*public function initiative(){
         return $this->hasOne(Initiative::class,'content_id','id');
     }*/
 

@@ -223,5 +223,20 @@
             })
         });
     </script>
+    <script>
+        $('#allow_comments').on('click',function () {
+            var checkBox = document.getElementById('allow_comments');
+            if(checkBox.checked === true)
+            {
+                $('#allow_comments').val("1")
+                $('#allow_comments').attr('checked','checked')
+            }
+            else
+            {
+                $('#allow_comments').val("0")
+                $('#allow_comments').removeAttr('checked')
+            }
+        })
+    </script>
 </body>
 </html>
