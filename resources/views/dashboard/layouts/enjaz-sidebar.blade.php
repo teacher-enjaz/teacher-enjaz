@@ -145,6 +145,16 @@
                         </a>
                     </div>
                 </li>
+                <li class="col-12 col-md-12 mb-2 justify-content-center">
+                    <div class="dropdown d-flex justify-content-start">
+                        <a href="{{route('achievements.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                            <span>
+                              <i class="fa fa-sun mx-auto"></i>
+                                <span class="text-a">{{__('enjaz.achievements')}}</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
                 {{--<li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
                         <a href="skills.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
@@ -215,16 +225,7 @@
                         </a>
                     </div>
                 </li>
-                <li class="col-12 col-md-12 mb-2 justify-content-center">
-                    <div class="dropdown d-flex justify-content-start">
-                        <a href="achievements.html" class="d-flex align-content-start title-cpanel p-1 pe-3">
-                            <span>
-                              <i class="fa fa-sun mx-auto"></i>
-                                <span class="text-a">الإنجازات</span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
+
                 <li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
                         <a href="awards.html" class="d-flex align-content-start title-cpanel p-1 pe-3">

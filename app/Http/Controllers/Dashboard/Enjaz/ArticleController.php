@@ -27,8 +27,7 @@ class ArticleController extends Controller
     public function index()
     {
         $content_type = ContentType::where('name','مقالات')->first();
-         $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
-
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
         $contents = Content::where('content_type_id',$content_type->id)->with('classification','article','content_file','user:id,name_ar')->paginate(2);
         return view('dashboard.enjaz.articles.index',compact('classifications','contents'));
     }
@@ -63,6 +62,11 @@ class ArticleController extends Controller
             {
                 $request['status'] = 'منشور';
             }
+            if (!$request->has('allow_comments'))
+                $request->request->add(['allow_comments' => 0]);
+            else
+                $request->request->add(['allow_comments' => 1]);
+
             $content = Content::create($request->except('_token'));
             $request->request->add([
                 'content_id' => $content->id,
@@ -169,9 +173,17 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $content = Content::find($id);
+        $content = Content::where('id',$id)->with('content_file')->first();
         if (!$content)
             return redirect()->route('articles.index')->with('error', __('enjaz.error'));
+        foreach ($content->content_file as $content_file)
+        {
+            $path=ContentFile::getFilePath('articles',$content_file);
+
+            if(File::exists(public_path($path))){
+                File::delete(public_path($path));
+            }
+        }
         $content->delete();
         return redirect()->route('articles.index')->with('success', __('enjaz.successDelete'));
     }
