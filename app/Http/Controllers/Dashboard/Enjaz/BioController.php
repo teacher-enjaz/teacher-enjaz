@@ -27,8 +27,8 @@ class BioController extends Controller
             ->with(['qualification','university','specialization'])
             ->orderBy('graduation_year', 'desc')->first();
         $experience = Experience::where(['user_id'=> 1,'to'=> null])->first();
-        $user = User::where('id' ,$bio->user_id )->first();//Auth::user();
-        $article_count = Content::where('user_id',$bio->user_id)
+        $user = User::where('id' ,1/*$bio->user_id*/ )->first();//Auth::user();
+        $article_count = Content::where('user_id',1)
             ->where('content_type_id',ContentType::where('name','المقالات')->first()->id)
             ->count();
         return view('dashboard.enjaz.bios.index',compact('bio','user_qualifications','experience','user','article_count'));

@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
 use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
 use \App\Http\Controllers\Dashboard\Enjaz\CoursesController;
 use App\Http\Controllers\Dashboard\Enjaz\ExperienceController;
+use App\Http\Controllers\Dashboard\Enjaz\InitiativeController;
 use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
@@ -210,7 +211,7 @@ Route::group(
 
             Route::put('update/{id}', [ArticleController::class, 'update'])->name('articles.update');
 
-            Route::get('destroy/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+            Route::get('destroy/{id}/{folder}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
             Route::get('status/{status}/{id}', [ArticleController::class, 'status']);
         });
@@ -224,11 +225,25 @@ Route::group(
 
             Route::put('update/{id}', [AchievementController::class, 'update'])->name('achievements.update');
 
-            Route::get('destroy/{id}', [AchievementController::class, 'destroy'])->name('achievements.destroy');
+            Route::get('destroy/{id}/{folder}', [ArticleController::class, 'destroy'])->name('achievements.destroy');
 
             Route::get('status/{status}/{id}', [ArticleController::class, 'status']);
 
-            Route::get('deleteFromDB/{id}', [AchievementController::class, 'deleteFromDB']);
+            Route::get('deleteFromDB/{id}/{folder}', [AchievementController::class, 'deleteFromDB']);
+        });
+        Route::group(['prefix' => 'initiatives'], function () {
+
+            Route::get('/', [InitiativeController::class, 'index'])->name('initiatives.index');
+
+            Route::post('store', [InitiativeController::class, 'store'])->name('initiatives.store');
+
+            Route::get('edit/{id}', [InitiativeController::class, 'edit'])->name('initiatives.edit');
+
+            Route::put('update/{id}', [InitiativeController::class, 'update'])->name('initiatives.update');
+
+            Route::get('destroy/{id}/{folder}', [ArticleController::class, 'destroy'])->name('initiatives.destroy');
+
+            Route::get('status/{status}/{id}', [ArticleController::class, 'status']);
         });
     });
 
