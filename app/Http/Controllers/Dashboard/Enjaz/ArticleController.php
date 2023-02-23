@@ -164,28 +164,27 @@ class ArticleController extends Controller
             return redirect()->back()->with(['error' =>$e]);
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id,$folder)
     {
         $content = Content::where('id',$id)->with('content_file')->first();
         if (!$content)
-            return redirect()->route('articles.index')->with('error', __('enjaz.error'));
-        foreach ($content->content_file as $content_file)
-        {
-            $path=ContentFile::getFilePath('articles',$content_file);
+            return redirect()->back()->with('error', __('enjaz.error'));
 
+        $files = $content->content_file->whereNotNull('extension');
+        foreach($files as $file){
+            $path=ContentFile::getFilePath($folder,$file);
             if(File::exists(public_path($path))){
                 File::delete(public_path($path));
             }
         }
         $content->delete();
-        return redirect()->route('articles.index')->with('success', __('enjaz.successDelete'));
+        return redirect()->back()->with('success', __('enjaz.successDelete'));
     }
 
     /**

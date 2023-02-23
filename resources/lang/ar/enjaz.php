@@ -131,5 +131,14 @@ return [
     'prevImage' => 'الصور المرفقة سابقاً',
     'prevFile' => 'الملفات المرفقة سابقاً',
     'prevYoutube' => 'روابط اليوتيوب المرفقة سابقاً',
+    'initiatives' => 'المبادرات',
+    'addInitiatives' => ' أضف كل ما بادرت به لتضيف قيمة',
+    'initiative' => ' مبادرة',
+    'addInitiative' => ' إضافة مبادرة',
+    'target_group' => 'الفئة المستهدفة',
+    'teams' => 'فريق المبادرة',
+    'initiativeDescription' => 'وصف المبادرة',
+    'attachments' => 'المرفقات',
+    'editInitiative' => 'تعديل مبادرة',
 ];
 

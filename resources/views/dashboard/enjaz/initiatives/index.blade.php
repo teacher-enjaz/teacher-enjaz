@@ -1,4 +1,48 @@
 @extends('dashboard.layouts.enjaz-layouts.layout')
+@section('style')
+    <style>
+        output{
+            width: 100%;
+            min-height: 150px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        output .image{
+            height: 150px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        output .image img{
+            height: 100%;
+            width: 100%;
+        }
+
+        output .image span {
+            position: absolute;
+            top: -4px;
+            right: 4px;
+            cursor: pointer;
+            font-size: 22px;
+            color: white;
+        }
+
+        output .image span:hover {
+            opacity: 0.8;
+        }
+
+        output .span--hidden{
+            visibility: hidden;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container file_view mt-5 profile cpanel">
         <div class="d-flex flex-column video-show mt-3 order-0 card-body">
@@ -17,16 +61,16 @@
                     <div class="container-fluid ">
                         <!-- educational data  -->
                         <section class="row section">
-                            <!-- articels data start -->
+                            <!-- achievements data start -->
                             <!-- Page Heading -->
                             <div class="section-title mb-2 ">
-                                <h1 class="h3 mb-0 text-gray-800">  المقالات    </h1>
+                                <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.initiatives')}}</h1>
                                 <p class="section-hint">
-                                    أضف مقالات في تخصصك لتعم المعرفة
+                                    {{__('enjaz.addInitiatives')}}
                                 </p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center ">
-                                <a href="" class="custom-btn create-btn add-btn mt-4 " data-bs-toggle="modal" data-bs-target="#add-article-eModal">
+                                <a href="" class="custom-btn create-btn add-btn mt-4 " data-bs-toggle="modal" data-bs-target="#add-initiative-eModal">
                                     <i class="fas fa-plus"></i>
                                 </a>
                                 <div class="toggle-flip toggle-flip-section ms-4">
@@ -36,27 +80,21 @@
                                     </label>
                                 </div>
                             </div>
-
                             <!-- DataTales Example -->
-                            <div class="row mt-2 d-flex justify-content-end">
-                                <div class="input-group rounded " style="width: 33.3333% !important;" >
-                                    <input type="search" class="form-control rounded" placeholder="ابحث عن مقالة ...." aria-label="Search" aria-describedby="search-addon" />
-                                </div>
-                            </div>
                             <div class="row">
                                 @if($contents->count() > 0)
                                     @foreach($contents as $index=>$content)
-                                        <div class="col-12 col-md-4 " style="width: 33.33%;height: max-content">
+                                        <div class="col-12 col-md-4 ">
                                             <div class="card articel-card shadow my-4 p-0">
                                                 <div class="card-header py-3">
                                                     <a href="single_initiative.html">
-                                                        <h6 class=" m-0 font-weight-bold text-primary">{{$content->title}}</h6>
+                                                        <h6 class="m-0 font-weight-bold text-primary"> {{$content->title}}   </h6>
                                                     </a>
                                                 </div>
                                                 <div class="card-body p-0 pb-2">
-                                                    <a href="">
+                                                    <a href="#">
                                                         <div class="initiative-img d-flex justify-content-center shadow-dark">
-                                                            <img src="{{url($content->content_file->first()->AttPath)}}" alt="" class="image-fluid" style="max-width: 250px;width: 33.33%;max-height: 200px;height: 200px">
+                                                            <img src="{{url($content->content_file->whereIN('extension',['jpeg','png','jpg','gif','svg','webp'])->first()->AttPath)}}" alt="" class="image-fluid">
                                                         </div>
                                                     </a>
                                                     <div class="initiative-footer  px-4 mt-2">
@@ -81,8 +119,7 @@
                                                             </div>
                                                         </div>
                                                         <hr>
-
-                                                        <div class="procedures d-flex justify-content-between  mt-3">
+                                                        <div class="procedures d-flex justify-content-between mt-3">
                                                             <div class="status align-middle">
                                                                 <p id="status-tag{{$content->id}}" style="background-color: {{$content->status ==  __('enjaz.draft') ? "#ce3d4ee6":"#ffc107"}}">{{$content->status}}</p>
                                                             </div>
@@ -102,10 +139,10 @@
                                                                         @endif
                                                                     </label>
                                                                 </div>
-                                                                <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#edit-article-eModal" data-bs-toggle="tooltip" data-id="{{$content->id}}" data-bs-html="true" title="{{__('enjaz.update')}}">
+                                                                <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#edit-initiative-eModal" data-bs-toggle="tooltip" data-id="{{$content->id}}" data-bs-html="true" title="{{__('enjaz.update')}}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a href="{{route('articles.destroy',['id'=>$content->id,'folder'=>'articles'])}}" class="delete-btn delete-trashed" type="button">
+                                                                <a href="{{route('initiatives.destroy',['id'=>$content->id,'folder'=>'initiatives'])}}" class="delete-btn delete-trashed" type="button">
                                                                     <i class="fas fa-trash-alt" data-bs-toggle="tooltip" data-bs-html="true" title="{{__('enjaz.delete')}}"></i>
                                                                 </a>
                                                             </div>
@@ -113,10 +150,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="category">
-                                                    <span>{{__('enjaz.article')}}</span>
+                                                    <span>{{__('enjaz.initiative')}}</span>
                                                 </div>
                                             </div>
-
                                         </div>
                                     @endforeach
                                     {!! $contents->links('dashboard.layouts.enjaz-layouts.pagination-links') !!}
@@ -129,13 +165,12 @@
             </div>
         </div>
     </div>
-    @include('dashboard.enjaz.articles.create')
-    @include('dashboard.enjaz.articles.edit')
+    @include('dashboard.enjaz.initiatives.create')
+    @include('dashboard.enjaz.initiatives.edit')
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('template/js/plugins/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/js/generalScript.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script src="{{asset('enjaz/js/article.js')}}"></script>
+    <script src="{{asset('enjaz/js/initiative.js')}}"></script>
 @endsection
 

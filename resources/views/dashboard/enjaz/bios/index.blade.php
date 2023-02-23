@@ -25,13 +25,13 @@
                                 <div class="about-text padd-15">
                                     <h3>
                                         <span>
-                                            {{$experience->job->name}}
+                                           {{-- {{$experience->job->name}}
                                             @if($experience->job->name == 'معلم')
                                                 <span class="slash">/</span>
                                                 {{$experience->user->teacher->school->name_ar}}
                                             @endif
                                             <span class="slash">/</span>
-                                            {{$experience->user->teacher->directorate->name_ar}}
+                                            {{$experience->user->teacher->directorate->name_ar}}--}}
                                         </span>
                                     </h3>
                                     <div class="bio mt-3 " >

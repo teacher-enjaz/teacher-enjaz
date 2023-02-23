@@ -310,5 +310,7 @@ return [
         'file_description.*' => 'الوصف',
         'new_youtube.*' => 'رابط اليوتيوب',
         'old_youtube.*' => 'رابط اليوتيوب',
+        'target_group' => 'الفئة المستهدفة ',
+        'team' => 'فريق المبادرة',
     ],
 ];
