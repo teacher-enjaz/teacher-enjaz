@@ -300,7 +300,7 @@
 
   .progress {
     display: flex;
-    height: 0.4rem !important;
+    height: 0.7rem !important;
     overflow: hidden;
     line-height: 0;
     font-size: 0.75rem;
@@ -716,4 +716,12 @@ color: #6c757d !important;
   background-color: #fff !important;
   color: red !important;
   background-color: #B6C134 !important;
+}
+.files .add , .files .add-file , .files .add-link{
+    color: #14B1AB;
+    font-size: 30px;
+}
+.files .remove , .files .remove-file , .files .remove-link{
+    color: red;
+    font-size: 30px;
 }
