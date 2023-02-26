@@ -24,17 +24,25 @@
                             <div class="row">
                                 <div class="about-text padd-15">
                                     <h3>
-                                        <span>
-                                            {{$experience->job->name}}
-                                            @if($experience->job->name == 'معلم')
-                                                <span class="slash">/</span>
-                                                {{$experience->user->teacher->school->name_ar}}
-                                            @endif
-                                            <span class="slash">/</span>
-                                            {{$experience->user->teacher->directorate->name_ar}}
-                                        </span>
+                                        @if($experience)
+                                            <span>
+                                                {{$experience->job->name}}
+                                                @if($experience->job->name == 'معلم')
+                                                    <span class="slash">/</span>
+                                                        {{$experience->user->teacher->school->name_ar}}
+                                                    <span class="slash">/</span>
+                                                        {{$experience->user->teacher->directorate->name_ar}}
+                                                @elseif($experience->job->name == 'مشرف تربوي')
+                                                        <span class="slash">/</span>
+                                                        {{$experience->user->supervisor->directorate->name_ar}}
+                                                    @else
+                                                    <span class="slash">/</span>
+                                                    {{$experience->user->admin->directorate->name_ar}}
+                                                @endif
+                                            </span>
+                                        @endif
                                     </h3>
-                                    <div class="bio mt-3 " >
+                                    <div class="bio mt-3">
                                         <div class="d-flex">
                                             <h4>نبذة</h4>
                                             @if($bio)
@@ -52,7 +60,7 @@
                                             @if($bio)
                                                 {{$bio->info}}
                                             @else
-                                            أضف نبذة عنك
+                                                أضف نبذة عنك
                                             @endif
                                         </p>
                                     </div>
@@ -68,15 +76,17 @@
                                             <div class="info-item padd-15">
                                                 <p>  العمر : <span>{{\Carbon\Carbon::parse($user->birth_date)->age}}</span></p>
                                             </div>
-                                            <div class="info-item padd-15">
-                                                <p>  التخصص الجامعي : <span>{{$user_qualifications->specialization->name}}</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>  الدرجة : <span>{{$user_qualifications->qualification->name}}</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>  الجامعة  : <span>{{$user_qualifications->university->name}}</span></p>
-                                            </div>
+                                            @if($user_qualifications)
+                                                <div class="info-item padd-15">
+                                                    <p>  التخصص الجامعي : <span>{{$user_qualifications->specialization->name}}</span></p>
+                                                </div>
+                                                <div class="info-item padd-15">
+                                                    <p>  الدرجة : <span>{{$user_qualifications->qualification->name}}</span></p>
+                                                </div>
+                                                <div class="info-item padd-15">
+                                                    <p>  الجامعة  : <span>{{$user_qualifications->university->name}}</span></p>
+                                                </div>
+                                            @endif
                                             <div class="info-item padd-15">
                                                 <p>  البريد الالكتروني  : <span>{{$user->email}}</span></p>
                                             </div>
@@ -183,8 +193,8 @@
                             </div>
                             <div class="row" style="margin-bottom: 3rem">
                                 <div class="buttons  d-flex justify-content-center">
-                                    <a href="#" class="custom-btn ms-1"><i class="fas fa-download"></i> السيرة الذاتية</a>
-
+                                    <a href="{{route('bios.exportPdf')}}" class="custom-btn ms-1"><i class="fas fa-download"></i> السيرة الذاتية</a>
+                                    <a href="{{route('bios.show')}}" target="_blank" class="custom-btn ms-1"><i class="fas fa-download"></i> عرض</a>
                                 </div>
                             </div>
                         </section>

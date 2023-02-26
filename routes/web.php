@@ -3,13 +3,9 @@
 use App\Http\Controllers\Dashboard\Enjaz\AchievementController;
 use App\Http\Controllers\Dashboard\Enjaz\ArticleController;
 use App\Http\Controllers\Dashboard\Enjaz\BioController;
-use App\Http\Controllers\Dashboard\Enjaz\ContentController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentTypeController;
-use App\Http\Controllers\Dashboard\Enjaz\CPanelController;
-use App\Http\Controllers\Dashboard\Enjaz\EnjazPanelController;
 use \App\Http\Controllers\Dashboard\Enjaz\CoursesController;
 use App\Http\Controllers\Dashboard\Enjaz\ExperienceController;
-use App\Http\Controllers\Dashboard\Enjaz\LanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
 use App\Http\Controllers\Dashboard\Enjaz\UserAwardController;
@@ -17,6 +13,7 @@ use App\Http\Controllers\Dashboard\Enjaz\UserSocialAccountController;
 use App\Http\Controllers\Dashboard\Enjaz\SocialPlatformController;
 use App\Http\Controllers\Dashboard\Enjaz\UserLanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\UserQualificationController;
+use App\Http\Controllers\Enjaz\IndexController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -36,6 +33,12 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function ()
     {
+        /*************************** Teacher Enjaz View Routes **********************************************/
+        Route::group(['prefix' => 'enjaz'], function () {
+
+            Route::get('/',[IndexController::class,'index'])->name('enjaz.index');
+
+        });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/
         Route::group(['prefix' => 'experiences'], function () {
@@ -152,6 +155,10 @@ Route::group(
             Route::get('edit/{id}', [BioController::class, 'edit'])->name('bios.edit');
 
             Route::put('update/{id}', [BioController::class, 'update'])->name('bios.update');
+
+            Route::get('export-bio-pdf', [BioController::class, 'exportPdf'])->name('bios.exportPdf');
+
+            Route::get('show', [BioController::class, 'show'])->name('bios.show');
         });
 
         Route::group(['prefix' => 'user-languages'], function () {

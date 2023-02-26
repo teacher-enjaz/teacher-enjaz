@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enjaz\BioRequest;
-use App\Models\Enjaz\Article;
 use App\Models\Enjaz\Bio;
 use App\Models\Enjaz\Content;
 use App\Models\Enjaz\ContentType;
@@ -14,6 +13,7 @@ use App\Models\User;
 
 class BioController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -21,14 +21,18 @@ class BioController extends Controller
      */
     public function index()
     {
+        //$id = Auth::id();
         // $bio= Bio::where('user_id' , Auth::id())->first();
-        $bio= Bio::where('user_id' , 1)->first();
+        $bio = Bio::where('user_id' , 1)->first();
         $user_qualifications = UserQualification::where('user_id' , 1)
             ->with(['qualification','university','specialization'])
             ->orderBy('graduation_year', 'desc')->first();
-        $experience = Experience::where(['user_id'=> 1,'to'=> null])->first();
-        $user = User::where('id' ,$bio->user_id )->first();//Auth::user();
-        $article_count = Content::where('user_id',$bio->user_id)
+        $experience = Experience::where(['user_id'=> 1,'is_present'=> 1])->first();
+        if(!$experience)
+            $experience = Experience::where(['user_id'=> 1,'is_present'=> 0])->orderBy('to','desc')->first();
+
+        $user = User::where('id' ,1)->first();//Auth::user();
+        $article_count = Content::where('user_id',1)
             ->where('content_type_id',ContentType::where('name','المقالات')->first()->id)
             ->count();
         return view('dashboard.enjaz.bios.index',compact('bio','user_qualifications','experience','user','article_count'));
@@ -56,9 +60,9 @@ class BioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('dashboard.enjaz.bios.cv');
     }
 
     /**
@@ -93,4 +97,11 @@ class BioController extends Controller
 
         return redirect()->route('bios.index')->with('success', __('enjaz.successUpdate'));
     }
+
+    /*public function exportPdf()
+    {
+        $pdf = PDF::loadView('dashboard.enjaz.bios.cv');
+        return $pdf->stream('cv.pdf');
+        //return $pdf->download('cv.pdf');
+    }*/
 }

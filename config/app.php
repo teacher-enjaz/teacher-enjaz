@@ -178,9 +178,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
-
-    ],
+        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        //'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        ],
 
     /*
     |--------------------------------------------------------------------------
@@ -194,7 +195,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -233,6 +233,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
-
 ];

@@ -15,10 +15,9 @@
                     </a>
                 </h4>
                 <div class="col-12 col-md-12 d-flex flex-row justify-content-evenly my-2">
-                    <a href="#" class="mr-2 view-as">
+                    <a href="{{route('enjaz.index')}}" target="_blank" class="mr-2 view-as">
                         <span href="#" class="" data-bs-toggle="tooltip" data-bs-html="true"
                               title="https://rawafed.edu.ps/ar/khaled-fares">
-
                           <i class="fa fa-eye mx-auto"></i>
                           عرض  ملف الإنجاز
                         </span>

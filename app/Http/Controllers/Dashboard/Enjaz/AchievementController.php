@@ -23,7 +23,7 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        $content_type = ContentType::where('name','إنجازات')->first();
+        $content_type = ContentType::where('name','الإنجازات')->first();
         $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
         $contents = Content::where('content_type_id',$content_type->id)->with('classification','achievement','content_file','user:id,name_ar')->paginate(6);
         return view('dashboard.enjaz.achievements.index',compact('classifications','contents'));
@@ -38,7 +38,7 @@ class AchievementController extends Controller
         /**
          * use DB transaction to store in multiple tables
          */
-        $content_type = ContentType::where('name','إنجازات')->first();
+        $content_type = ContentType::where('name','الإنجازات')->first();
         try
         {
             DB::beginTransaction();
