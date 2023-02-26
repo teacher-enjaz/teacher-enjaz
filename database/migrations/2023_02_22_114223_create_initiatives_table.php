@@ -19,7 +19,7 @@ class CreateInitiativesTable extends Migration
                 ->references('id')
                 ->on('contents')
                 ->onDelete('cascade');
-            $table->string('target-group',255);
+            $table->string('target_group',255);
             $table->string('team',255);
             $table->longText('description');
             $table->date('start_date');
