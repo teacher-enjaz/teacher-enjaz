@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\Enjaz\BioController;
 use App\Http\Controllers\Dashboard\Enjaz\ContentTypeController;
 use \App\Http\Controllers\Dashboard\Enjaz\CoursesController;
 use App\Http\Controllers\Dashboard\Enjaz\ExperienceController;
+use App\Http\Controllers\Dashboard\Enjaz\InitiativeController;
 use App\Http\Controllers\Dashboard\Enjaz\MembershipController;
 use App\Http\Controllers\Dashboard\Enjaz\SkillController;
 use App\Http\Controllers\Dashboard\Enjaz\UserAwardController;
