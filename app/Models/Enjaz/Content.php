@@ -55,9 +55,9 @@ class Content extends Model
     public function achievement(){
         return $this->hasOne(Achievement::class);
     }
-    /*public function initiative(){
-        return $this->hasOne(Initiative::class,'content_id','id');
-    }*/
+    public function initiative(){
+        return $this->hasOne(Initiative::class);
+    }
 
     /*public function comments(){
         return $this->hasMany(Comment::class,'content_id','id');

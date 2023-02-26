@@ -154,6 +154,16 @@
                         </a>
                     </div>
                 </li>
+                <li class="col-12 col-md-12 mb-2 justify-content-center">
+                    <div class="dropdown d-flex justify-content-start">
+                        <a href="{{route('initiatives.index')}}" class="d-flex align-content-start title-cpanel p-1 pe-3">
+                            <span>
+                              <i class="fa fa-feather mx-auto"></i>
+                                <span class="text-a">{{__('enjaz.initiatives')}}</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
                 {{--<li class="col-12 col-md-12 mb-2 justify-content-center">
                     <div class="dropdown d-flex justify-content-start">
                         <a href="skills.html" class="d-flex align-content-start title-cpanel p-1 pe-3">

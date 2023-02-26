@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Dashboard\Enjaz;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Enjaz\AchievementRequest;
-use App\Http\Requests\Enjaz\UpdateAchievementRequest;
-use App\Models\Enjaz\Achievement;
+use App\Http\Requests\Enjaz\InitiativeRequest;
+use App\Http\Requests\Enjaz\UpdateInitiativeRequest;
 use App\Models\Enjaz\Classification;
 use App\Models\Enjaz\Content;
 use App\Models\Enjaz\ContentFile;
 use App\Models\Enjaz\ContentType;
+use App\Models\Enjaz\Initiative;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
-class AchievementController extends Controller
+class InitiativeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,22 +23,23 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        $content_type = ContentType::where('name','الإنجازات')->first();
+        $content_type = ContentType::where('name','المبادرات')->first();
         $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
-        $contents = Content::where('content_type_id',$content_type->id)->with('classification','achievement','content_file','user:id,name_ar')->paginate(6);
-        return view('dashboard.enjaz.achievements.index',compact('classifications','contents'));
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','initiative','content_file','user:id,name_ar')->paginate(6);
+        return view('dashboard.enjaz.initiatives.index',compact('classifications','contents'));
     }
 
     /**
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(AchievementRequest $request)
+
+    public function store(InitiativeRequest $request)
     {
         /**
          * use DB transaction to store in multiple tables
          */
-        $content_type = ContentType::where('name','الإنجازات')->first();
+        $content_type = ContentType::where('name','المبادرات')->first();
         try
         {
             DB::beginTransaction();
@@ -70,22 +71,22 @@ class AchievementController extends Controller
                 'content_id' => $content->id,
             ]);
 
-            Achievement::create($request->except('_token'));
+            Initiative::create($request->except('_token'));
 
             if ($request->new_image[0] != null)
             {
-                ContentFile::createContentImages($request, 'achievements');
+                ContentFile::createContentImages($request, 'initiatives');
             }
             if ($request->new_file[0] != null)
             {
-                ContentFile::createContentFiles($request, 'achievements');
+                ContentFile::createContentFiles($request, 'initiatives');
             }
             if ($request->new_youtube[0] != null)
             {
                 ContentFile::createContentVideos($request);
             }
             DB::commit();
-            return redirect()->route('achievements.index')->with('success', __('enjaz.successAdd'));
+            return redirect()->route('initiatives.index')->with('success', __('enjaz.successAdd'));
         }
         catch (\Exception $e)
         {
@@ -103,24 +104,25 @@ class AchievementController extends Controller
      */
     public function edit($id){
 
-        $content = Content::where('id',$id)->with('classification','achievement','content_file','user:id,name_ar')->first();
+        $content = Content::where('id',$id)->with('classification','initiative','content_file','user:id,name_ar')->first();
         $imageCount = $content->content_file->where('mime','image')->count();
         $fileCount = $content->content_file->where('mime','file')->count();
         if(!$content)
-            return redirect()->route('achievements.index')->with('error', __('enjaz.error'));
+            return redirect()->route('initiatives.index')->with('error', __('enjaz.error'));
 
         return response()->json(['data'=>$content,'count'=>$imageCount,'files'=>$fileCount]);
     }
+
     /**
-     * @param UpdateAchievementRequest $request
+     * @param UpdateInitiativeRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateAchievementRequest $request,$id)
+    public function update(UpdateInitiativeRequest $request,$id)
     {
         $content = Content::find($id);
         if(!$content)
-            return redirect()->route('achievements.index')->with('error', __('enjaz.error'));
+            return redirect()->route('initiatives.index')->with('error', __('enjaz.error'));
         /**
          * use DB transaction to store in multiple tables
          */
@@ -149,11 +151,11 @@ class AchievementController extends Controller
 
 
             $content->update($request->except('_token'));
-            $updatedContent = Content::where('id',$id)->with('achievement','content_file')->first();
+            $updatedContent = Content::where('id',$id)->with('initiative','content_file')->first();
 
             $request->request->add(['content_id' => $updatedContent->id]);
 
-            $updatedContent->achievement->update($request->except('_token'));
+            $updatedContent->initiative->update($request->except('_token'));
 
             $index=1;
             foreach($content->content_file as $file)
@@ -170,35 +172,21 @@ class AchievementController extends Controller
             }
 
             if ($request->new_image[0] != null)
-                ContentFile::createContentImages($request, 'achievements');
+                ContentFile::createContentImages($request, 'initiatives');
 
             if ($request->new_file[0] != null)
-                ContentFile::createContentFiles($request, 'achievements');
+                ContentFile::createContentFiles($request, 'initiatives');
 
             if ($request->new_youtube != null)
                 ContentFile::createContentVideos($request);
 
         DB::commit();
-        return redirect()->route('achievements.index')->with('success', __('enjaz.successAdd'));
+        return redirect()->route('initiatives.index')->with('success', __('enjaz.successAdd'));
         }
         catch (\Exception $e)
         {
             DB::rollback();
             return redirect()->back()->with(['error' =>$e]);
         }
-    }
-
-    public function deleteFromDB($id,$folder)
-    {
-        $content_file = ContentFile::where('id',$id)->first();
-        if (!$content_file)
-            return redirect()->back()->with('error', __('enjaz.error'));
-
-        $path=ContentFile::getFilePath($folder,$content_file);
-
-        if(File::exists(public_path($path))){
-            File::delete(public_path($path));
-        }
-        $content_file->delete();
     }
 }

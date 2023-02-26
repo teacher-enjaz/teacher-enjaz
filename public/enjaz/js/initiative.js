@@ -157,7 +157,7 @@ $(document).ready(function(){
         }
     });
     /************************** store article **********************/
-    $('#achievementForm').ajaxForm({
+    $('#initiativesForm').ajaxForm({
         success:function(response)
         {
             if(response)
@@ -173,8 +173,8 @@ $(document).ready(function(){
                     closeOnCancel: true
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#add-achievement-eModal').hide();
-                        $('#add-achievement-eModal').trigger('reset');
+                        $('#add-initiative-eModal').hide();
+                        $('#add-initiative-eModal').trigger('reset');
                         window.location.reload();
                     }
                 });
@@ -182,6 +182,8 @@ $(document).ready(function(){
         },
         error: function (response) {
             $('#titleError').text('');
+            $('#targetGroupError').text('');
+            $('#teamError').text('');
             $('#classificationIdError').text('');
             $('#nameError').text('');
             $('#descriptionError').text('');
@@ -195,6 +197,8 @@ $(document).ready(function(){
                 $('#youtubeError'+i).text('')
             }
             $('#titleError').text(response.responseJSON.errors.title);
+            $('#targetGroupError').text(response.responseJSON.errors.target_group);
+            $('#teamError').text(response.responseJSON.errors.team);
             $('#classificationIdError').text(response.responseJSON.errors.classification_id);
             $('#nameError').text(response.responseJSON.errors.name);
             $('#descriptionError').text(response.responseJSON.errors.description);
@@ -217,19 +221,21 @@ $(document).ready(function(){
         e.preventDefault();
         youtubeCount=0;
         var content_id = $(this).data('id');
-        var action = 'achievements/update/'+content_id;
-        $('#editAchievementForm').attr('action',action);
+        var action = 'initiatives/update/'+content_id;
+        $('#editInitiativeForm').attr('action',action);
 
-        $.get('achievements/edit/' + content_id , function (data)
+        $.get('initiatives/edit/' + content_id , function (data)
         {
             imageCount=data.count;
             fileCount=data.files;
             youtube="";image="";file="";
             $('#id').val(data.data.id);
             $('#edit_title').val(data.data.title);
-            $('#edit_description').val(data.data.achievement.description);
-            $('#edit_start_date').val(data.data.achievement.start_date);
-            $('#edit_end_date').val(data.data.achievement.end_date);
+            $('#edit_target_group').val(data.data.initiative.target_group);
+            $('#edit_team').val(data.data.initiative.team);
+            $('#edit_description').val(data.data.initiative.description);
+            $('#edit_start_date').val(data.data.initiative.start_date);
+            $('#edit_end_date').val(data.data.initiative.end_date);
             $('#option'+data.data.classification_id).attr('selected','selected');
 
             if(data.data.allow_comments === 1 )
@@ -270,7 +276,7 @@ $(document).ready(function(){
             $('#prev_youTubes').append(youtube)
         });
     });
-    $('#editAchievementForm').ajaxForm({
+    $('#editInitiativeForm').ajaxForm({
         success:function(response)
         {
             if(response)
@@ -286,8 +292,8 @@ $(document).ready(function(){
                     closeOnCancel: true
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#edit-achievement-eModal').hide();
-                        $('#edit-achievement-eModal').trigger('reset');
+                        $('#edit-initiative-eModal').hide();
+                        $('#edit-initiative-eModal').trigger('reset');
                         window.location.reload();
                     }
                 });
@@ -296,6 +302,8 @@ $(document).ready(function(){
         error: function (response)
         {
             $('#editTitleError').text('');
+            $('#editTargetGroupError').text('');
+            $('#editTeamError').text('');
             $('#editDescriptionError').text('');
             $('#editStartDateError').text('');
             $('#editEndDateError').text('');
@@ -313,6 +321,8 @@ $(document).ready(function(){
                 $('#youtubeError'+i).text('');
             }
             $('#editTitleError').text(response.responseJSON.errors.title);
+            $('#editTargetGroupError').text(response.responseJSON.errors.target_group);
+            $('#editTeamError').text(response.responseJSON.errors.team);
             $('#editDescriptionError').text(response.responseJSON.errors.description);
             $('#editStartDateError').text(response.responseJSON.errors.start_date);
             $('#editEndDateError').text(response.responseJSON.errors.end_date);
@@ -353,12 +363,7 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             dataType: "application/json",
-            url: 'achievements/status/'+status+'/'+content_id,
-            success: function(data){
-                console.log(data.success);
-
-
-            }
+            url: 'initiatives/status/'+status+'/'+content_id,
         });
     });
 
@@ -369,7 +374,7 @@ function deleteFun(id)
     $.ajax({
         type: "GET",
         dataType: "application/json",
-        url: 'achievements/deleteFromDB/'+id+'/achievements',
+        url: 'achievements/deleteFromDB/'+id+'/initiatives',
     });
     if(mime === 'image')
     {

@@ -8,22 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Initiative extends Model
 {
     use HasFactory;
+
+    protected $table = "initiatives";
+
     protected $fillable = [
-        'target_audience',
+        'content_id',
+        'target_group',
         'team',
         'description',
         'start_date',
         'end_date',
-        'status',
-        'slug',
-        'content_id',
-        'classification_id',
-
+        'created_at',
+        'updated_at',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function content(){
-        return $this->belongsTo(Content::class, 'content_id','id');
-    }
-    public function classification(){
-        return $this->belongsTo(Classification::class, 'content_id','id');
+        return $this->belongsTo(Content::class);
     }
 }

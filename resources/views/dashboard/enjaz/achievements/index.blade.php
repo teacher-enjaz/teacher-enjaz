@@ -142,7 +142,7 @@
                                                                 <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#edit-achievement-eModal" data-bs-toggle="tooltip" data-id="{{$content->id}}" data-bs-html="true" title="{{__('enjaz.update')}}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a href="{{route('achievements.destroy',$content->id)}}" class="delete-btn delete-trashed" type="button">
+                                                                <a href="{{route('achievements.destroy',['id'=>$content->id,'folder'=>'achievements'])}}" class="delete-btn delete-trashed" type="button">
                                                                     <i class="fas fa-trash-alt" data-bs-toggle="tooltip" data-bs-html="true" title="{{__('enjaz.delete')}}"></i>
                                                                 </a>
                                                             </div>

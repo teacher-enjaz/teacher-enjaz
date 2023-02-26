@@ -30,7 +30,6 @@ class BioController extends Controller
         $experience = Experience::where(['user_id'=> 1,'is_present'=> 1])->first();
         if(!$experience)
             $experience = Experience::where(['user_id'=> 1,'is_present'=> 0])->orderBy('to','desc')->first();
-
         $user = User::where('id' ,1)->first();//Auth::user();
         $article_count = Content::where('user_id',1)
             ->where('content_type_id',ContentType::where('name','المقالات')->first()->id)
