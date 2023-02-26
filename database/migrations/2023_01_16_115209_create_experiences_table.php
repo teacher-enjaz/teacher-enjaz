@@ -18,7 +18,7 @@ class CreateExperiencesTable extends Migration
             $table->id();
             $table->string('organization',255);
             $table->date('from');
-            $table->date('to');
+            $table->date('to')->nullable();
             $table->string('notes')->nullable();
             $table->boolean('status')->default(1);
             $table->boolean('is_present')->default(0);

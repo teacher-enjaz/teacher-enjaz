@@ -26,7 +26,7 @@
                             <div class="section-title mb-2 ">
                                 <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.experiences')}}</h1>
                                 <p class="section-hint">
-                                    {{__('enjaz.addEnjazCpanel')}}
+                                    {{__('enjaz.addExperience')}}
                                 </p>
                             </div>
 
