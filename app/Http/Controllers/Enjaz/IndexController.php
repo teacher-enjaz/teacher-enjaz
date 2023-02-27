@@ -9,6 +9,8 @@ use App\Models\Enjaz\Membership;
 use App\Models\Enjaz\Skill;
 use App\Models\Enjaz\UserAward;
 use App\Models\Enjaz\UserLanguage;
+use App\Models\Enjaz\UserQualification;
+use App\Models\User;
 
 class IndexController extends Controller
 {
@@ -51,6 +53,11 @@ class IndexController extends Controller
         $viewRender = view('enjaz.experiences',compact('experiences'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
+
+    public function getQualifications(){
+        $qualifications = UserQualification::where(['user_id'=>1,'status'=>1])->with('qualification','university','specialization','graduated_country')->get();
+        $viewRender = view('enjaz.qualifications',compact('qualifications'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
 
     public function getAwards()
     {

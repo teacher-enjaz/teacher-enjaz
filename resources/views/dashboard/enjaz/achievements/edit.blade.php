@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <input class="form-control my-1" type="file" name="new_image[]" id="edit_new_image" multiple>
+                                        <input class="form-control my-1" accept=".jpg,.gif,.png,.jpeg,.svg,.webp" type="file" name="new_image[]" id="edit_new_image" multiple>
                                         <div class='text-danger' id="editImageError"></div>
                                         <div class='text-danger' id="editImageCountError"></div>
                                     </div>
@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <input class="form-control my-1" type="file" name="new_file[]" id="edit_new_file" multiple>
+                                        <input class="form-control my-1" accept=".doc,.docx,.xls,.ppt,.pptx" type="file" name="new_file[]" id="edit_new_file" multiple>
                                         <div class="text-danger" id="editFileError"></div>
                                         <div class='text-danger' id="editFileCountError"></div>
                                     </div>

@@ -23,7 +23,7 @@
                     <span class="text-a"> الجوائز والمسابقات</span></button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link " id="pills-educatinal-data-tab" data-bs-toggle="pill" data-bs-target="#pills-educatinal-data" type="button" role="tab" aria-controls="pills-educatinal-data" aria-selected="false"><i class="fa fa-book mx-auto"  data-bs-toggle="tooltip" data-bs-html="true" title="المؤهلات العلمية "></i>
+                <button class="nav-link " id="pills-qualification-data-tab" data-bs-toggle="pill" data-bs-target="#pills-qualification" type="button" role="tab" aria-controls="pills-qualification" aria-selected="false"><i class="fa fa-book mx-auto"  data-bs-toggle="tooltip" data-bs-html="true" title="المؤهلات العلمية "></i>
                     <span class="text-a">المؤهلات العلمية</span></button>
             </li>
             <li class="nav-item" role="presentation">
@@ -829,39 +829,8 @@
             <div class="tab-pane fade" id="pills-awards" role="tabpanel" aria-labelledby="pills-awards-tab">
 
             </div>
-            <div class="tab-pane fade " id="pills-educatinal-data" role="tabpanel" aria-labelledby="pills-educatinal-data-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">المؤهلات العلمية </h1>
-                </div>
-                <div class="card-body">
-                    <div class="timeline-box">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="circle-dot"></div>
-                                <h5 class="timeline-text">
-                                    بكالوريس
-                                </h5>
-                                <h5 class="timeline-date timeline-text">
-                                    <i class="fas fa-calendar-week"></i> 2003-2007
-                                </h5>
-                                <h4 class="small font-weight-bold timeline-text">  اللغة العربية و أساليب تدريسها</h4>
-                                <h4 class="small font-weight-bold timeline-text">    جامعة الأقصى - فلسطين  </h4>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="circle-dot"></div>
-                                <h5 class="timeline-text">
-                                    ماجستير
-                                </h5>
-                                <h5 class="timeline-date timeline-text">
-                                    <i class="fas fa-calendar-week"></i> 2003-2007
-                                </h5>
-                                <h4 class="small font-weight-bold timeline-text">  اللغة العربية و أساليب تدريسها</h4>
-                                <h4 class="small font-weight-bold timeline-text">    جامعة الأقصى - فلسطين  </h4>
-                            </div>
+            <div class="tab-pane fade " id="pills-qualification" role="tabpanel" aria-labelledby="pills-qualification-data-tab">
 
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="tab-pane fade" id="pills-experiences" role="tabpanel" aria-labelledby="pills-experiences-tab">
 
@@ -944,6 +913,18 @@
                     $('#pills-experiences').empty();
                     $('#pills-experiences').html(data.html);
                 }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: `/enjaz/${name}/getQualifications`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-qualification').empty();
+                    $('#pills-qualification').html(data.html);
+                  }
             });
         })
         $(document).ready(function (e)

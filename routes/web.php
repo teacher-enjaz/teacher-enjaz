@@ -40,17 +40,20 @@ Route::group(
 
             Route::get('{name_en}',[IndexController::class,'index'])->name('enjaz.index');
 
-            Route::get('{name_en}/getMemberships',[IndexController::class,'getMemberships']);
+            Route::get('/{name_en}/getMemberships',[IndexController::class,'getMemberships']);
 
-            Route::get('{name_en}/getLanguages',[IndexController::class,'getLanguages']);
+            Route::get('/{name_en}/getLanguages',[IndexController::class,'getLanguages']);
 
-            Route::get('{name_en}/getSkills',[IndexController::class,'getSkills']);
+            Route::get('/{name_en}/getSkills',[IndexController::class,'getSkills']);
 
-            Route::get('{name_en}/getCourses',[IndexController::class,'getCourses']);
+            Route::get('/{name_en}/getCourses',[IndexController::class,'getCourses']);
 
-            Route::get('{name_en}/getExperiences',[IndexController::class,'getExperiences']);
+            Route::get('/{name_en}/getExperiences',[IndexController::class,'getExperiences']);
+
+            Route::get('/{name_en}/getQualifications',[IndexController::class,'getQualifications']);
 
             Route::get('{name_en}/getAwards',[IndexController::class,'getAwards']);
+
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/
