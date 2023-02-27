@@ -7,14 +7,13 @@ use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
 use App\Models\Enjaz\Membership;
 use App\Models\Enjaz\Skill;
+use App\Models\Enjaz\UserAward;
 use App\Models\Enjaz\UserLanguage;
-use App\Models\User;
 
 class IndexController extends Controller
 {
     public function index($name_en)
     {
-        //$user = User::select('name_en')->where('id',$id)->first();
         return view('enjaz.index',compact('name_en'));
     }
 
@@ -50,6 +49,13 @@ class IndexController extends Controller
     {
         $experiences = Experience::where(['user_id'=>1,'status'=>1])->with('job')->get();
         $viewRender = view('enjaz.experiences',compact('experiences'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+
+    public function getAwards()
+    {
+        $awards = UserAward::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('award')->get();
+        $viewRender = view('enjaz.awards',compact('awards'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 }
