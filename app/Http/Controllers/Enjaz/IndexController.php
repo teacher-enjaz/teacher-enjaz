@@ -54,11 +54,12 @@ class IndexController extends Controller
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
-    public function getQualifications(){
-        $qualifications = UserQualification::where(['user_id'=>1,'status'=>1])->with('qualification','university','specialization','graduated_country')->get();
-        $viewRender = view('enjaz.qualifications',compact('qualifications'))->render();
+    public function getQualifications()
+    {
+        $qualifications = UserQualification::where(['user_id' => 1, 'status' => 1])->with('qualification', 'university', 'specialization', 'graduated_country')->get();
+        $viewRender = view('enjaz.qualifications', compact('qualifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
-
+    }
     public function getAwards()
     {
         $awards = UserAward::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('award')->get();

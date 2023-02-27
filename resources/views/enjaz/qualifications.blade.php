@@ -15,9 +15,8 @@
                         <h5 class="timeline-date timeline-text">
                             <i class="fas fa-calendar-week"></i> {{$qualification->graduation_year}}
                         </h5>
-                        <h4 class="small font-weight-bold timeline-text">{{$qualification->qualification->name}}</h4>
                         <h4 class="small font-weight-bold timeline-text">{{$qualification->specialization->name}}</h4>
-                        <h4 class="small font-weight-bold timeline-text">{{$qualification->graduated_country->name}}</h4>
+                        <h4 class="small font-weight-bold timeline-text">{{$qualification->university->name}} - {{$qualification->graduated_country->name}}</h4>
                     </div>
                 @endforeach
             </div>
