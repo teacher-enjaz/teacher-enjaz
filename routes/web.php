@@ -38,7 +38,7 @@ Route::group(
         /*************************** Teacher Enjaz View Routes **********************************************/
         Route::group(['prefix' => 'enjaz'], function () {
 
-            Route::get('/{name_en}',[IndexController::class,'index'])->name('enjaz.index');
+            Route::get('{name_en}',[IndexController::class,'index'])->name('enjaz.index');
 
             Route::get('/{name_en}/getMemberships',[IndexController::class,'getMemberships']);
 
@@ -51,6 +51,9 @@ Route::group(
             Route::get('/{name_en}/getExperiences',[IndexController::class,'getExperiences']);
 
             Route::get('/{name_en}/getQualifications',[IndexController::class,'getQualifications']);
+
+            Route::get('{name_en}/getAwards',[IndexController::class,'getAwards']);
+
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/

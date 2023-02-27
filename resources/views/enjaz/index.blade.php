@@ -4,8 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="main-content mb-5" id="user" data-name="{{$name_en}}" style="width: 90%;">
-
+    <div class="main-content  mb-5" style="width: 90%;" id="user" data-name="{{$name_en}}">
         <ul class="nav nav-pills mb-3 rounded-pill shadow-dark d-flex justify-content-between" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="pills-articles-tab" data-bs-toggle="pill" data-bs-target="#pills-articles" type="button" role="tab" aria-controls="pills-articles" aria-selected="false"  data-bs-toggle="tooltip" data-bs-html="true" title=" المقالات">  <i class="fa fa-newspaper mx-auto"></i>
@@ -828,120 +827,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-awards" role="tabpanel" aria-labelledby="pills-awards-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">الجوائز والمسابقات </h1>
-                </div>
-                <div class="articles mt-4">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <a href="#">
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-header">
-                                            جائزة المعلم المتميز 2022
-                                        </div>
-                                        <img src="{{asset('enjaz/assent/imgs/award.jpg')}}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">
-                                            <div class="info-1 d-flex justify-content-between">
-                                                <div class="user-name card-text-a">
-                                                    <i class="fas fa-user"></i>
-                                                    خالد محمد فارس
-                                                </div>
-                                                <div class="statics-info card-text-a">
-                                                    <i class="fas fa-eye ms-2"></i>23
-                                                    <i class="fas fa-comment ms-2"></i>10
-                                                    <i class="fas fa-heart ms-2"></i>15
-                                                </div>
-                                            </div>
-                                            <div class="info-2 d-flex justify-content-between">
-                                                <div class="user-name card-text-a">
-                                                    <i class="fas fa-book-open"></i>
-                                                    وزارة التربية و التعليم العالي
-                                                </div>
-                                                <div class="statics-info card-text-a">
-                                                    <i class="fas fa-calendar-week ms-2"></i>
-                                                    20-3-2022
-                                                </div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <a href="#">
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-header">
-                                            جائزة المعلم المتميز 2022
-                                        </div>
-                                        <img src="{{asset('enjaz/assent/imgs/award.jpg')}}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">
-                                            <div class="info-1 d-flex justify-content-between">
-                                                <div class="user-name card-text-a">
-                                                    <i class="fas fa-user"></i>
-                                                    خالد محمد فارس
-                                                </div>
-                                                <div class="statics-info card-text-a">
-                                                    <i class="fas fa-eye ms-2"></i>23
-                                                    <i class="fas fa-comment ms-2"></i>10
-                                                    <i class="fas fa-heart ms-2"></i>15
-                                                </div>
-                                            </div>
-                                            <div class="info-2 d-flex justify-content-between">
-                                                <div class="user-name card-text-a">
-                                                    <i class="fas fa-book-open"></i>
-                                                    وزارة التربية و التعليم العالي
-                                                </div>
-                                                <div class="statics-info card-text-a">
-                                                    <i class="fas fa-calendar-week ms-2"></i>
-                                                    20-3-2022
-                                                </div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <a href="#">
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-header">
-                                            جائزة المعلم المتميز 2022
-                                        </div>
-                                        <img src="{{asset('enjaz/assent/imgs/award.jpg')}}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">
-                                            <div class="info-1 d-flex justify-content-between">
-                                                <div class="user-name card-text-a">
-                                                    <i class="fas fa-user"></i>
-                                                    خالد محمد فارس
-                                                </div>
-                                                <div class="statics-info card-text-a">
-                                                    <i class="fas fa-eye ms-2"></i>23
-                                                    <i class="fas fa-comment ms-2"></i>10
-                                                    <i class="fas fa-heart ms-2"></i>15
-                                                </div>
-                                            </div>
-                                            <div class="info-2 d-flex justify-content-between">
-                                                <div class="user-name card-text-a">
-                                                    <i class="fas fa-book-open"></i>
-                                                    وزارة التربية و التعليم العالي
-                                                </div>
-                                                <div class="statics-info card-text-a">
-                                                    <i class="fas fa-calendar-week ms-2"></i>
-                                                    20-3-2022
-                                                </div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="tab-pane fade " id="pills-qualification" role="tabpanel" aria-labelledby="pills-qualification-data-tab">
 
@@ -1038,6 +924,18 @@
                 success: function (data) {
                     $('#pills-qualification').empty();
                     $('#pills-qualification').html(data.html);
+                  }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: `/enjaz/${name}/getAwards`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-awards').empty();
+                    $('#pills-awards').html(data.html);
                 }
             });
         })

@@ -1,0 +1,45 @@
+<div class="section-title mb-2">
+    <h1 class="h3 mb-0 text-gray-800">{{__('enjaz.awardsCompetitions')}}</h1>
+</div>
+@if($awards->count() > 0)
+    <div class="articles mt-4">
+        <div class="container">
+            <div class="row">
+                @foreach($awards as $award)
+                    <div class="col-12 col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-header">
+                                    {{$award->award->name}}
+                                </div>
+                                <img src="{{asset('enjaz/assent/imgs/award.jpg')}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <div class="info-1 d-flex justify-content-between">
+                                        <div class="user-name card-text-a">
+                                            <i class="fas fa-user"></i>
+                                            {{$award->award->donor}}
+                                        </div>
+                                        <div class="statics-info card-text-a">
+                                            <i class="fas fa-calendar ms-2"></i>{{$award->obtained_date}}
+                                        </div>
+                                    </div>
+                                    <p class="card-text">
+                                    <div class="info-2 d-flex justify-content-between mt-2">
+                                        <div class="user-name card-text-a">
+                                            <div  class="publisher">
+                                                <span>{{$award->award->description}}
+                                                    {{--{{Str::of($award->award->description)->limit(80)}}--}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
