@@ -12,7 +12,7 @@
                                 <div class="card-header">
                                     {{$award->award->name}}
                                 </div>
-                                <img src="{{asset('enjaz/assent/imgs/award.jpg')}}" class="card-img-top" alt="...">
+                                <img src="{{url('storage/awards/'.$award->image)}}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <div class="info-1 d-flex justify-content-between">
                                         <div class="user-name card-text-a">
