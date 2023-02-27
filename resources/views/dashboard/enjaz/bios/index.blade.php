@@ -114,7 +114,7 @@
                                 <div class="col-12 col-md-4" style="padding-right: 0px;">
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3 d-flex justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">عدد المقالات</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.articleCount')}}</h6>
                                         </div>
                                         <div class="card-body px-4 ">
                                             <div class="static d-flex justify-content-between align-items-center">
@@ -129,13 +129,13 @@
                                 <div class="col-12 col-md-4" style="padding-right: 0px;">
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3 d-flex justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">عدد المبادرات</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.initiativeCount')}}</h6>
                                         </div>
                                         <div class="card-body px-4 ">
                                             <div class="static d-flex justify-content-between align-items-center">
                                                 <i class="fa fa-feather"></i>
                                                 <p>
-                                                    6
+                                                    {{$initiative_count}}
                                                 </p>
                                             </div>
                                         </div>
@@ -146,21 +146,19 @@
                                 <div class="col-12 col-md-4" style="padding-right: 0px;">
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3 d-flex justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">عدد الإنجازات</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">{{__('enjaz.achievementCount')}}</h6>
                                         </div>
                                         <div class="card-body px-4 ">
                                             <div class="static d-flex justify-content-between align-items-center">
                                                 <i class="fa fa-sun"></i>
                                                 <p>
-                                                    10
+                                                    {{$achievement_count}}
                                                 </p>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4" style="padding-right: 0px;">
+                                {{--<div class="col-12 col-md-4" style="padding-right: 0px;">
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3 d-flex justify-content-between">
                                             <h6 class="m-0 font-weight-bold text-primary">عدد  الإعجابات</h6>
@@ -189,14 +187,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
-                            <div class="row" style="margin-bottom: 3rem">
+                            {{--<div class="row" style="margin-bottom: 3rem">
                                 <div class="buttons  d-flex justify-content-center">
                                     <a href="{{route('bios.exportPdf')}}" class="custom-btn ms-1"><i class="fas fa-download"></i> السيرة الذاتية</a>
                                     <a href="{{route('bios.show')}}" target="_blank" class="custom-btn ms-1"><i class="fas fa-download"></i> عرض</a>
                                 </div>
-                            </div>
+                            </div>--}}
                         </section>
                     </div>
                 </div>

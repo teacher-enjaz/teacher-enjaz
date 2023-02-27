@@ -27,7 +27,7 @@
                     <span class="text-a">المؤهلات العلمية</span></button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-experinces-tab" data-bs-toggle="pill" data-bs-target="#pills-experinces" type="button" role="tab" aria-controls="pills-experinces" aria-selected="false"> <i class="fa fa-book-open-reader mx-auto"  data-bs-toggle="tooltip" data-bs-html="true" title="الخبرات "></i>
+                <button class="nav-link" id="pills-experiences-tab" data-bs-toggle="pill" data-bs-target="#pills-experiences" type="button" role="tab" aria-controls="pills-experiences" aria-selected="false"> <i class="fa fa-book-open-reader mx-auto"  data-bs-toggle="tooltip" data-bs-html="true" title="الخبرات "></i>
                     <span class="text-a">الخبرات</span></button>
             </li>
             <li class="nav-item" role="presentation">
@@ -976,232 +976,86 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-experinces" role="tabpanel" aria-labelledby="pills-experinces-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">الخبرات العملية  </h1>
-                </div>
-                <div class="card-body ">
-                    <div class="timeline-box experinces">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="circle-dot d-flex justify-content-center">
-                                    <i class="fa fa-book-open-reader"></i>
-                                </div>
-                                <div class="experince-body">
-                                    <h4 class=" experince-title">
-                                        مدرس لغة عربية <sub>2020 - للآن</sub>
-                                    </h4>
+            <div class="tab-pane fade" id="pills-experiences" role="tabpanel" aria-labelledby="pills-experiences-tab">
 
-                                    <h4 class="small font-weight-bold timeline-text"> مدرسة شهداء بني سهيلا الثانوية </h4>
-                                    <h4 class="small font-weight-bold timeline-text">      الصفوف: الصف الحادي عشر - الصف العاشر   </h4>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="circle-dot d-flex justify-content-center">
-                                    <i class="fa fa-book-open-reader"></i>
-                                </div>
-                                <h4 class=" experince-title">
-                                    مدرس لغة عربية <sub>2020 - للآن</sub>
-                                </h4>
-                                <h4 class="small font-weight-bold timeline-text"> مدرسة شهداء بني سهيلا الثانوية </h4>
-                                <h4 class="small font-weight-bold timeline-text">      الصفوف: الصف الحادي عشر - الصف العاشر   </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="tab-pane fade" id="pills-courses" role="tabpanel" aria-labelledby="pills-courses-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">الدورات التدريبية   </h1>
-                </div>
-                <div class="courses">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <i class="fa fa-cube"></i>
-                                <div class="course-card">
-                                    <p>تعليم اللغة العربية لغير الناطقين بها</p>
-                                    <p>معهد الدوحة للتدريب</p>
-                                    <p>30 ساعة</p>
-                                    <p>20-3-2019</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <i class="fa fa-cube"></i>
-                                <div class="course-card">
-                                    <p>تعليم اللغة العربية لغير الناطقين بها</p>
-                                    <p>معهد الدوحة للتدريب</p>
-                                    <p>30 ساعة</p>
-                                    <p>20-3-2019</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <i class="fa fa-cube"></i>
-                                <div class="course-card">
-                                    <p>تعليم اللغة العربية لغير الناطقين بها</p>
-                                    <p>معهد الدوحة للتدريب</p>
-                                    <p>30 ساعة</p>
-                                    <p>20-3-2019</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <i class="fa fa-cube"></i>
-                                <div class="course-card">
-                                    <p>تعليم اللغة العربية لغير الناطقين بها</p>
-                                    <p>معهد الدوحة للتدريب</p>
-                                    <p>30 ساعة</p>
-                                    <p>20-3-2019</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">المهارات  </h1>
-                </div>
-                <div class="skills mt-4">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="skill-name">
-                                    <p>الرسم</p>
-                                </div>
-                                <div class="skill-range d-flex">
-                                    <div class="skill-stars">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="skill-num mx-4">
-                                        3/5
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="skill-name">
-                                    <p>التطريز</p>
-                                </div>
-                                <div class="skill-range d-flex ">
-                                    <div class="skill-stars">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="skill-num mx-4">
-                                        4/5
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="skill-name">
-                                    <p>التخييم</p>
-                                </div>
-                                <div class="skill-range d-flex">
-                                    <div class="skill-stars">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="skill-num mx-4">
-                                        4/5
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="tab-pane fade" id="pills-languages" role="tabpanel" aria-labelledby="pills-languages-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">اللغات  </h1>
-                </div>
-                <div class="skills mt-4">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="skill-name ">
-                                    <p>الغة العربية <sub>لغة أم</sub></p>
-                                </div>
-                                <div class="skill-range d-flex">
-                                    <div class="skill-stars">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="skill-num mx-4">
-                                        4/5
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="skill-name">
-                                    <p>اللغة الانجليزية <sub>لغة مكتسبة</sub></p>
-                                </div>
-                                <div class="skill-range d-flex ">
-                                    <div class="skill-stars">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star "></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="skill-num mx-4">
-                                        3/5
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="tab-pane fade" id="pills-memberships" role="tabpanel" aria-labelledby="pills-memberships-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">العضويات    </h1>
-                </div>
-                <div class="memberships mt-4">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="membership-card card-2">
-                                    <i class="fa fa-address-card text-center"></i>
-                                    <p> مجمع اللغة العربية</p>
-                                    <p>عضو رئيس  </p>
-                                    <p>20-3-2019</p>
-                                    <p>سارية</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="membership-card card-1">
-                                    <i class="fa fa-address-card"></i>
-                                    <p> مجمع اللغة العربية</p>
-                                    <p>عضو رئيس  </p>
-                                    <p>20-3-2019</p>
-                                    <p>سارية</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                                <div class="membership-card card-3">
-                                    <i class="fa fa-address-card"></i>
-                                    <p> مجمع اللغة العربية</p>
-                                    <p>عضو رئيس  </p>
-                                    <p>20-3-2019</p>
-                                    <p>منتهية</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: '/enjaz/getMemberships',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-memberships').empty();
+                    $('#pills-memberships').html(data.html);
+                }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: '/enjaz/getLanguages',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-languages').empty();
+                    $('#pills-languages').html(data.html);
+                }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: '/enjaz/getSkills',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-skills').empty();
+                    $('#pills-skills').html(data.html);
+                }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: '/enjaz/getCourses',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-courses').empty();
+                    $('#pills-courses').html(data.html);
+                }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: '/enjaz/getExperiences',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-experiences').empty();
+                    $('#pills-experiences').html(data.html);
+                }
+            });
+        })
+    </script>
 @endsection

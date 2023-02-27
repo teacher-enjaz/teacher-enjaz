@@ -248,23 +248,24 @@ $(document).ready(function(){
                 if(data.data.content_file[i].mime === 'image')
                 {
                     image +=
-                        `<div class="image w-auto" id="image${data.data.content_file[i].id}">
-                            <img src="${data.data.content_file[i].AttPath}" alt="image" style="height:100px!important;width:100px!important;  " width="100px" height="100px" class="img-thumbnail img-responsive h-75">
-                        ${(imageCount>1) ? `<a href="#" class="DeleteImage" data-mime="image" onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}">&times;</a>` : ""}
+                        `<div class="image  imgCard w-auto" id="image${data.data.content_file[i].id}">
+                            <img src="${data.data.content_file[i].AttPath}" alt="image" style="height:100px!important;width:100px!important;  " width="120px" height="120px" class="imageCustom img-thumbnail img-responsive h-75">
+                        ${(imageCount>1) ? `<div class=""><a href="#" class="DeleteImage middle h-25" data-mime="image"  onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}">&times;</a></div>` : ""}
                         </div>`
                 }
                 else if(data.data.content_file[i].mime === 'file')
                 {
                     file+=
-                        `<div class="file card d-flex flex-row w-auto mx-2 justify-content-between my-2" id="file${data.data.content_file[i].id}">
-                            <a href="${data.data.content_file[i].AttPath}" class="ms-2" target="_blank" > ${data.data.content_file[i].name}</a>
-                            <a href="#" data-mime="file" onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}">&times;</a></div>`;
+                        `<div class="file card d-flex flex-row w-auto align-self-center mx-2 justify-content-between bg-light px-0" id="file${data.data.content_file[i].id}">
+                            <i class="fa fa-file size-26 ms-1 align-self-center px-2 py-2 h-100 rounded-end text-success" style=""></i>
+                            <a href="${data.data.content_file[i].AttPath}" class="ms-2 text-success align-self-center  " target="_blank" > ${data.data.content_file[i].name} </a>
+                            <a href="#" data-mime="file" class="text-light px-2 size-24 align-self-center " onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}"><span class="fa fa-xmark-circle customm-x-close align-self-center my-2 text-gray-200 border rounded-circle" style="color: #b9bbbe "></span></a></div>`;
                 }
                 else if(data.data.content_file[i].mime === 'youtube')
                 {
                     youtubeCount++;
                     youtube+= `<div class="col-12 d-flex" id="youtube${data.data.content_file[i].id}"> <input class="form-control my-1" type="text" name="old_youtube[${youtubeCount}]" id="old_youtube[${youtubeCount}]" value="${data.data.content_file[i].name}">
-                                <a href="#" data-mime="youtube" class="align-self-center size-24 mx-2" onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}">&times;</a></div>
+                                <a href="#" data-mime="youtube" class="align-self-center size-24 mx-2 " onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}"><span class="fa fa-xmark-circle text-danger align-self-center "></span> <!--&times;--></a></div>
                                 <div class="text-danger col-12" id="youtubeError${youtubeCount}"></div>`
                 }
             }

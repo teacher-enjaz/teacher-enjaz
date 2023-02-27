@@ -725,3 +725,58 @@ color: #6c757d !important;
     color: red;
     font-size: 30px;
 }
+
+/********* image in js modal ********/
+
+.imgCard {
+    position: relative;
+    width: 50%;
+}
+
+.imageCustom {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.imgCard:hover .imageCustom {
+    opacity: 0.3;
+    border-color: #04AA6D;
+}
+
+.imgCard:hover .middle {
+    opacity: 1;
+
+}
+.bg-primaryGreen{
+    background-color: #109f99;
+}
+.DeleteImage {
+/background-color: #04AA6D;/
+color: #000000;
+    font-size: 30px;
+/padding: 10px 10px;/
+}
+.DeleteImage:hover{
+    color: #0b6f6b;
+}
+
+.customm-x-close:hover{
+    border-color: #dc3545 !important;
+    color :#dc3545 !important;
+    transition: ease-in-out 0.20s;
+}

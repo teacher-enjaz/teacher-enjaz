@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\Enjaz\UserLanguageController;
 use App\Http\Controllers\Dashboard\Enjaz\UserQualificationController;
 use App\Http\Controllers\Enjaz\IndexController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -37,8 +38,17 @@ Route::group(
         /*************************** Teacher Enjaz View Routes **********************************************/
         Route::group(['prefix' => 'enjaz'], function () {
 
-            Route::get('/',[IndexController::class,'index'])->name('enjaz.index');
+            Route::get('/{name_en}',[IndexController::class,'index'])->name('enjaz.index');
 
+            Route::get('getMemberships',[IndexController::class,'getMemberships']);
+
+            Route::get('getLanguages',[IndexController::class,'getLanguages']);
+
+            Route::get('getSkills',[IndexController::class,'getSkills']);
+
+            Route::get('getCourses',[IndexController::class,'getCourses']);
+
+            Route::get('getExperiences',[IndexController::class,'getExperiences']);
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/

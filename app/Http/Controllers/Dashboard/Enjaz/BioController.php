@@ -34,7 +34,14 @@ class BioController extends Controller
         $article_count = Content::where('user_id',1)
             ->where('content_type_id',ContentType::where('name','المقالات')->first()->id)
             ->count();
-        return view('dashboard.enjaz.bios.index',compact('bio','user_qualifications','experience','user','article_count'));
+        $achievement_count = Content::where('user_id',1)
+            ->where('content_type_id',ContentType::where('name','الإنجازات')->first()->id)
+            ->count();
+        $initiative_count = Content::where('user_id',1)
+            ->where('content_type_id',ContentType::where('name','المبادرات')->first()->id)
+            ->count();
+        return view('dashboard.enjaz.bios.index',
+            compact('bio','user_qualifications','experience','user','article_count','achievement_count','initiative_count'));
     }
     /**
      * Store a newly created resource in storage.
