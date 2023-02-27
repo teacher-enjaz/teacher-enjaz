@@ -140,5 +140,9 @@ return [
     'initiativeDescription' => 'وصف المبادرة',
     'attachments' => 'المرفقات',
     'editInitiative' => 'تعديل مبادرة',
+    'articleCount' => 'عدد المقالات',
+    'achievementCount' => 'عدد الإنجازات',
+    'initiativeCount' => 'عدد المبادرات',
+    'now' => 'مازلت أعمل فيها',
 ];
 
