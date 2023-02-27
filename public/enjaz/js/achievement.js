@@ -249,6 +249,11 @@ $(document).ready(function(){
                 }
                 else if(data.data.content_file[i].mime === 'file')
                 {
+                   /* file+=
+                        `<div class="file card d-flex flex-row w-auto align-self-center mx-2 justify-content-between bg-light px-0" id="file${data.data.content_file[i].id}">
+                            <i class="fa fa-file size-26 ms-2 align-self-center text-light bg-primaryGreen px-2 py-2 h-100 rounded-end"></i>
+                            <a href="${data.data.content_file[i].AttPath}" class="ms-2 text-success align-self-center  " target="_blank" > ${data.data.content_file[i].name} </a>
+                            <a href="#" data-mime="file" class="text-light bg-primaryGreen px-2 rounded-start size-24" onclick="deleteFun(${data.data.content_file[i].id});" type="button" id="remove${data.data.content_file[i].id}">&times;</a></div>`;*/
                     file+=
                         `<div class="file card d-flex flex-row w-auto align-self-center mx-2 justify-content-between bg-light px-0" id="file${data.data.content_file[i].id}">
                             <i class="fa fa-file size-26 ms-1 align-self-center px-2 py-2 h-100 rounded-end text-success" style=""></i>
@@ -276,7 +281,7 @@ $(document).ready(function(){
         {
             if(response)
             {
-                Swal.fire({
+                Swal. fire({
                     title: 'تم التعديل بنجاح',
                     text: "",
                     icon: 'success',

@@ -4,7 +4,8 @@
 @endsection
 
 @section('content')
-    <div class="main-content  mb-5" style="width: 90%;">
+    <div class="main-content mb-5" id="user" data-name="{{$name_en}}" style="width: 90%;">
+
         <ul class="nav nav-pills mb-3 rounded-pill shadow-dark d-flex justify-content-between" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="pills-articles-tab" data-bs-toggle="pill" data-bs-target="#pills-articles" type="button" role="tab" aria-controls="pills-articles" aria-selected="false"  data-bs-toggle="tooltip" data-bs-html="true" title=" المقالات">  <i class="fa fa-newspaper mx-auto"></i>
@@ -23,7 +24,7 @@
                     <span class="text-a"> الجوائز والمسابقات</span></button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link " id="pills-educatinal-data-tab" data-bs-toggle="pill" data-bs-target="#pills-educatinal-data" type="button" role="tab" aria-controls="pills-educatinal-data" aria-selected="false"><i class="fa fa-book mx-auto"  data-bs-toggle="tooltip" data-bs-html="true" title="المؤهلات العلمية "></i>
+                <button class="nav-link " id="pills-qualification-data-tab" data-bs-toggle="pill" data-bs-target="#pills-qualification" type="button" role="tab" aria-controls="pills-qualification" aria-selected="false"><i class="fa fa-book mx-auto"  data-bs-toggle="tooltip" data-bs-html="true" title="المؤهلات العلمية "></i>
                     <span class="text-a">المؤهلات العلمية</span></button>
             </li>
             <li class="nav-item" role="presentation">
@@ -942,39 +943,8 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade " id="pills-educatinal-data" role="tabpanel" aria-labelledby="pills-educatinal-data-tab">
-                <div class="section-title mb-2 ">
-                    <h1 class="h3 mb-0 text-gray-800">المؤهلات العلمية </h1>
-                </div>
-                <div class="card-body">
-                    <div class="timeline-box">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="circle-dot"></div>
-                                <h5 class="timeline-text">
-                                    بكالوريس
-                                </h5>
-                                <h5 class="timeline-date timeline-text">
-                                    <i class="fas fa-calendar-week"></i> 2003-2007
-                                </h5>
-                                <h4 class="small font-weight-bold timeline-text">  اللغة العربية و أساليب تدريسها</h4>
-                                <h4 class="small font-weight-bold timeline-text">    جامعة الأقصى - فلسطين  </h4>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="circle-dot"></div>
-                                <h5 class="timeline-text">
-                                    ماجستير
-                                </h5>
-                                <h5 class="timeline-date timeline-text">
-                                    <i class="fas fa-calendar-week"></i> 2003-2007
-                                </h5>
-                                <h4 class="small font-weight-bold timeline-text">  اللغة العربية و أساليب تدريسها</h4>
-                                <h4 class="small font-weight-bold timeline-text">    جامعة الأقصى - فلسطين  </h4>
-                            </div>
+            <div class="tab-pane fade " id="pills-qualification" role="tabpanel" aria-labelledby="pills-qualification-data-tab">
 
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="tab-pane fade" id="pills-experiences" role="tabpanel" aria-labelledby="pills-experiences-tab">
 
@@ -997,10 +967,12 @@
 
 @section('script')
     <script>
+        let name = $('#user').data('name')
+        console.log(name)
         $(document).ready(function (e)
         {
             $.ajax({
-                url: '/enjaz/getMemberships',
+                url: `/enjaz/${name}/getMemberships`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -1012,7 +984,7 @@
         $(document).ready(function (e)
         {
             $.ajax({
-                url: '/enjaz/getLanguages',
+                url: `/enjaz/${name}/getLanguages`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -1024,7 +996,7 @@
         $(document).ready(function (e)
         {
             $.ajax({
-                url: '/enjaz/getSkills',
+                url: `/enjaz/${name}/getSkills`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -1036,7 +1008,7 @@
         $(document).ready(function (e)
         {
             $.ajax({
-                url: '/enjaz/getCourses',
+                url: `/enjaz/${name}/getCourses`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -1048,12 +1020,24 @@
         $(document).ready(function (e)
         {
             $.ajax({
-                url: '/enjaz/getExperiences',
+                url: `/enjaz/${name}/getExperiences`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
                     $('#pills-experiences').empty();
                     $('#pills-experiences').html(data.html);
+                }
+            });
+        })
+        $(document).ready(function (e)
+        {
+            $.ajax({
+                url: `/enjaz/${name}/getQualifications`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#pills-qualification').empty();
+                    $('#pills-qualification').html(data.html);
                 }
             });
         })

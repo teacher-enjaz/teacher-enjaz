@@ -40,15 +40,17 @@ Route::group(
 
             Route::get('/{name_en}',[IndexController::class,'index'])->name('enjaz.index');
 
-            Route::get('getMemberships',[IndexController::class,'getMemberships']);
+            Route::get('/{name_en}/getMemberships',[IndexController::class,'getMemberships']);
 
-            Route::get('getLanguages',[IndexController::class,'getLanguages']);
+            Route::get('/{name_en}/getLanguages',[IndexController::class,'getLanguages']);
 
-            Route::get('getSkills',[IndexController::class,'getSkills']);
+            Route::get('/{name_en}/getSkills',[IndexController::class,'getSkills']);
 
-            Route::get('getCourses',[IndexController::class,'getCourses']);
+            Route::get('/{name_en}/getCourses',[IndexController::class,'getCourses']);
 
-            Route::get('getExperiences',[IndexController::class,'getExperiences']);
+            Route::get('/{name_en}/getExperiences',[IndexController::class,'getExperiences']);
+
+            Route::get('/{name_en}/getQualifications',[IndexController::class,'getQualifications']);
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/

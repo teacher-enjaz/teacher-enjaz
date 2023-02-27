@@ -33,7 +33,6 @@
             font-size: 22px;
             color: white;
         }
-
         output .image span:hover {
             opacity: 0.8;
         }
@@ -41,6 +40,8 @@
         output .span--hidden{
             visibility: hidden;
         }
+
+
     </style>
 @endsection
 @section('content')
@@ -76,7 +77,7 @@
                                 <div class="toggle-flip toggle-flip-section ms-4">
                                     <label>
                                         <input type="checkbox" checked>
-                                        <span class="flip-indecator" data-toggle-on="عرض في ملف الإنجاز" data-toggle-off=" إخفاء من ملف الإنجاز"></span>
+                                        <span class="flip-indecator" id="jjj" data-toggle-on="عرض في ملف الإنجاز" data-toggle-off=" إخفاء من ملف الإنجاز"></span>
                                     </label>
                                 </div>
                             </div>
