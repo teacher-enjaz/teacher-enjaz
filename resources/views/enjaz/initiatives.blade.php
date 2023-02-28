@@ -7,7 +7,7 @@
             <div class="row">
                 @foreach($contents as $content)
                     <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                        <a href="{{route('enjaz.showInitiative',$content->id)}}">
+                        <a href="{{url('enjaz/'.Str::slug($content->user->name_en).'/showInitiative/'.$content->id)}}">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-header">
                                     {{$content->title}}

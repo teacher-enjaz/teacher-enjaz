@@ -60,9 +60,9 @@ Route::group(
 
             Route::get('showInitiative/{id}',[IndexController::class,'showInitiative'])->name('enjaz.showInitiative');
 
-            Route::get('{name_en}/getArticles',[IndexController::class,'getArticles'])->name('index.article');
+            Route::get('getArticles',[IndexController::class,'getArticles'])->name('index.article');
 
-            Route::get('{name_en}/getDetailsArticles/{id}',[IndexController::class,'getDetailsArticles'])->name('index.details.article');
+            Route::get('getDetailsArticles/{id}',[IndexController::class,'getDetailsArticles'])->name('index.details.article');
 
         });
         /*************************** Teacher Enjaz Routes **********************************************/
