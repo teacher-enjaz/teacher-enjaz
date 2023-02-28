@@ -1,4 +1,4 @@
-@extends('enjaz.layout.layout')
+@extends('enjaz.layout.viewLayout')
 
 @section('title')
 @endsection
