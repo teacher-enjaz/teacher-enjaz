@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Enjaz;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enjaz\Classification;
 use App\Models\Enjaz\Content;
+use App\Models\Enjaz\ContentType;
 use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
 use App\Models\Enjaz\Membership;
@@ -67,6 +69,7 @@ class IndexController extends Controller
         $viewRender = view('enjaz.awards',compact('awards'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
+
     public function getArticles()
     {
         $articles = Content::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('article','user','classification')->get();
@@ -78,5 +81,22 @@ class IndexController extends Controller
             $article = Content::where(['user_id'=>1,'status'=>__('enjaz.published'),'id'=>$id])->with('article','user','classification','content_file')->first();
             $articles = Content::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('article','user','classification','content_file')->orderBy('created_at', 'desc')->take(4)->get();
             return view('enjaz.articleView',compact('article','articles'));
+
+    public function getAchievement()
+    {
+        $content_type = ContentType::where('name','الإنجازات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','achievement','content_file','user:id,name_ar')->paginate(6);
+        $viewRender = view('enjaz.achievements',compact('contents','classifications'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+
+    public function getInitiative()
+    {
+        $content_type = ContentType::where('name','المبادرات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','initiative','content_file','user:id,name_ar')->paginate(6);
+        $viewRender = view('enjaz.initiatives',compact('contents','classifications'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
     }
 }

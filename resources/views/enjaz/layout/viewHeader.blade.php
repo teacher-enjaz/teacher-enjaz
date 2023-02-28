@@ -82,6 +82,4 @@
     </nav>
     <!-- End Top Header -->
 </div>
-<div class="cover">
-    <img src="{{asset('enjaz/assent/imgs/cover.jpg')}}" alt="">
-</div>
+

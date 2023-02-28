@@ -51,7 +51,7 @@
 </section>
 <div class="position-fixed " style="bottom: 58px;right: 26px;">
     <a href="#" class="text-center">
-        <i class="fas fa-arrow-circle-up btn_icon rounded-circle size-24 d-flex justify-content-center align-items-center" style="width: 50px !important; height: 50px !important;">
+        <i class="fa-sharp fa-solid fa-angle-up btn_icon rounded-circle d-flex justify-content-center align-items-center" style="width: 50px !important; height: 50px !important;">
         </i>
     </a>
 </div>
