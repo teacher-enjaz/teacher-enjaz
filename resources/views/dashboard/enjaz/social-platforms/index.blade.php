@@ -68,7 +68,8 @@
                                                 <tr>
                                                     <td>{{$index + 1}}</td>
                                                     <td>{{$platform->name}}</td>
-                                                    <td><img width="100px" height="100px" src="{{url('storage/socialPlatforms',$platform->image)}}"></td>
+                                                    <td>
+                                                        <img src="{{url('storage/socialPlatforms',$platform->image)}}"></td>
                                                     <td class="d-flex justify-content-center">
                                                         <div class="toggle-flip">
                                                             <label>
@@ -77,7 +78,7 @@
                                                                        class="platforms-status">
                                                                 <span class="flip-indecator"
                                                                       data-toggle-on="{{__('enjaz.published')}}"
-                                                                      data-toggle-off="{{__('enjaz.unpublished')}}">
+                                                                      data-toggle-off="{{__('enjaz.unPublished')}}">
                                                                     </span>
                                                             </label>
                                                         </div>

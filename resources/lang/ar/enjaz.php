@@ -144,5 +144,6 @@ return [
     'achievementCount' => 'عدد الإنجازات',
     'initiativeCount' => 'عدد المبادرات',
     'now' => 'مازلت أعمل فيها',
+    'views' => 'المشاهدات',
 ];
 

@@ -36,23 +36,27 @@ Route::group(
     ], function ()
     {
         /*************************** Teacher Enjaz View Routes **********************************************/
-        Route::group(['prefix' => 'enjaz'], function () {
+        Route::group(['prefix' => 'enjaz/{name_en}'], function () {
 
-            Route::get('{name_en}',[IndexController::class,'index'])->name('enjaz.index');
+            Route::get('',[IndexController::class,'index'])->name('enjaz.index');
 
-            Route::get('/{name_en}/getMemberships',[IndexController::class,'getMemberships']);
+            Route::get('getMemberships',[IndexController::class,'getMemberships']);
 
-            Route::get('/{name_en}/getLanguages',[IndexController::class,'getLanguages']);
+            Route::get('getLanguages',[IndexController::class,'getLanguages']);
 
-            Route::get('/{name_en}/getSkills',[IndexController::class,'getSkills']);
+            Route::get('getSkills',[IndexController::class,'getSkills']);
 
-            Route::get('/{name_en}/getCourses',[IndexController::class,'getCourses']);
+            Route::get('getCourses',[IndexController::class,'getCourses']);
 
-            Route::get('/{name_en}/getExperiences',[IndexController::class,'getExperiences']);
+            Route::get('getExperiences',[IndexController::class,'getExperiences']);
 
-            Route::get('/{name_en}/getQualifications',[IndexController::class,'getQualifications']);
+            Route::get('getQualifications',[IndexController::class,'getQualifications']);
 
-            Route::get('{name_en}/getAwards',[IndexController::class,'getAwards']);
+            Route::get('getAwards',[IndexController::class,'getAwards']);
+
+            Route::get('getAchievement',[IndexController::class,'getAchievement']);
+
+            Route::get('getInitiative',[IndexController::class,'getInitiative']);
 
         });
         /*************************** Teacher Enjaz Routes **********************************************/
