@@ -75,7 +75,8 @@ class IndexController extends Controller
     }
     public function getDetailsArticles($name,$id)
     {
-            $article = Content::where(['user_id'=>1,'status'=>__('enjaz.published'),'id'=>$id])->with('article','user','classification')->first();
-            return view('enjaz.articleView',compact('article'));
+            $article = Content::where(['user_id'=>1,'status'=>__('enjaz.published'),'id'=>$id])->with('article','user','classification','content_file')->first();
+            $articles = Content::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('article','user','classification','content_file')->orderBy('created_at', 'desc')->take(4)->get();
+            return view('enjaz.articleView',compact('article','articles'));
     }
 }
