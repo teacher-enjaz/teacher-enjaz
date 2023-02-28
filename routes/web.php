@@ -58,6 +58,8 @@ Route::group(
 
             Route::get('getInitiative',[IndexController::class,'getInitiative']);
 
+            Route::get('showInitiative/{id}',[IndexController::class,'showInitiative']);
+
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/
