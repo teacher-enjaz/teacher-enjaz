@@ -99,4 +99,13 @@ class IndexController extends Controller
         $viewRender = view('enjaz.initiatives',compact('contents','classifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
+
+    public function showInitiative($id)
+    {
+        /*$content_type = ContentType::where('name','المبادرات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','initiative','content_file','user:id,name_ar')->paginate(6);
+        $viewRender = view('enjaz.initiatives',compact('contents','classifications'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));*/
+    }
 }

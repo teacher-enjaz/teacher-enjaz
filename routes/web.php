@@ -58,7 +58,7 @@ Route::group(
 
             Route::get('getInitiative',[IndexController::class,'getInitiative']);
 
-            Route::get('showInitiative/{id}',[IndexController::class,'showInitiative']);
+            Route::get('showInitiative/{id}',[IndexController::class,'showInitiative'])->name('enjaz.showInitiative');
 
             Route::get('{name_en}/getArticles',[IndexController::class,'getArticles'])->name('index.article');
 
