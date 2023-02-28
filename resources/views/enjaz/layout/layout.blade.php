@@ -16,60 +16,6 @@
     <link rel="stylesheet" href="{{asset('enjaz/assent/styles/css/view-style.css')}}" id="style"/>
     <!--<link rel="stylesheet" href="assent/js/jquery1.dataTables.min.css">-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-    <style>
-        body{
-            /* background-image: url(assent/imgs/bk-login.png);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover; */
-            background-color: #FAFAFA !important;
-        }
-        .dropdown-item-main1 {
-            display: block;
-            width: 100%;
-            padding: .25rem 1rem;
-            clear: both;
-            font-weight: 400;
-            color:#0a0302;
-            text-align: right;
-            text-decoration: none;
-            white-space: nowrap;
-            background-color: transparent;
-            border: 0;
-            position: relative;
-        }
-        .dropdown-menu1{
-            right: 70px;
-            width: fit-content;
-            background-color: #ffc107;
-            border-radius: 10px;
-            color: #0a0302;
-        }
-        .dropdown-toggle1::after {
-            position: relative;
-            right: 5px;
-            margin-top: 5px;
-        }
-        .text-size{
-            font-size: 12px;
-        }
-        .dropdown-item-main1:before{
-            position: absolute;
-            content: "";
-            height: 100%;
-            width: 3px;
-            background-color: #0b6f6b;
-            right: 0;
-            top:0;
-            display: none;
-        }
-        .dropdown-item-main1:hover:before{
-            display: block;
-        }
-        .dropdown-item-main1:hover{
-            color:#0b6f6b
-        }
-    </style>
 </head>
 <body>
     @include('enjaz.layout.header')
@@ -80,7 +26,7 @@
             </div>
         </div>
         <div class="d-flex">
-            @include('enjaz.layout.sidebar')
+            <x-user-side-bar-enjaz/>
             @yield('content')
         </div>
     </div>
