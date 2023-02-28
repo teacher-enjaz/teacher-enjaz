@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Enjaz;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enjaz\Content;
 use App\Models\Enjaz\Course;
 use App\Models\Enjaz\Experience;
 use App\Models\Enjaz\Membership;
@@ -65,5 +66,16 @@ class IndexController extends Controller
         $awards = UserAward::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('award')->get();
         $viewRender = view('enjaz.awards',compact('awards'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+    public function getArticles()
+    {
+        $articles = Content::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('article','user','classification')->get();
+        $viewRender = view('enjaz.articles',compact('articles'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+    public function getDetailsArticles($name,$id)
+    {
+            $article = Content::where(['user_id'=>1,'status'=>__('enjaz.published'),'id'=>$id])->with('article','user','classification')->first();
+            return view('enjaz.articleView',compact('article'));
     }
 }
