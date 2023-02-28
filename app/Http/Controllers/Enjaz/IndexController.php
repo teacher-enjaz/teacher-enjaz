@@ -70,6 +70,18 @@ class IndexController extends Controller
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
+    public function getArticles()
+    {
+        $articles = Content::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('article','user','classification')->get();
+        $viewRender = view('enjaz.articles',compact('articles'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+    public function getDetailsArticles($name,$id)
+    {
+            $article = Content::where(['user_id'=>1,'status'=>__('enjaz.published'),'id'=>$id])->with('article','user','classification','content_file')->first();
+            $articles = Content::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('article','user','classification','content_file')->orderBy('created_at', 'desc')->take(4)->get();
+            return view('enjaz.articleView',compact('article','articles'));
+
     public function getAchievement()
     {
         $content_type = ContentType::where('name','الإنجازات')->first();
