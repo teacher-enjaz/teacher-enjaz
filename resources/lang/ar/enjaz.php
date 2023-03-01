@@ -145,5 +145,10 @@ return [
     'initiativeCount' => 'عدد المبادرات',
     'now' => 'مازلت أعمل فيها',
     'views' => 'المشاهدات',
+    'follow' => 'متابعة',
+    'sendMail' => 'مراسلة',
+    'achievementType' => 'مجال الإنجاز',
+    'videoLink' => 'فيديوهات يوتيوب',
+    'images' => 'صور مرفقة',
 ];
 
