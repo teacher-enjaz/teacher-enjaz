@@ -149,5 +149,6 @@ return [
     'videoLink' => 'الفيديوهات',
     'images' => 'الصور',
     'attachment' => 'مرفق',
+    'lastArticles' => 'آخر المقالات',
 ];
 
