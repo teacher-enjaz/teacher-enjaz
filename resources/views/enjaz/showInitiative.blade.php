@@ -65,7 +65,7 @@
                         </p>
                     </div>
                 </div>
-                {{--<div class="row">
+                <div class="row">
                     <div class="d-flex justify-content-between statics-initiv">
                         <!-- <div class="add-like">
                             <i class="far fa-heart ms-1"></i>أعجبني
@@ -79,28 +79,26 @@
                             </a>
                         </div>
                         <div class="">
-                            <i class="fas fa-eye"></i> <span>33</span>
+                            <i class="fas fa-eye"></i> <span>{{$content->views}}</span>
                             <i class="fas fa-comment"></i> <span>4</span>
-                            <i class="fas fa-heart"></i><span>19</span>
+                            <i class="fas fa-heart"></i><span>{{$content->likes}}</span>
                         </div>
                         <div  class="publisher"><i class="fas fa-book-open"></i><i class="fad fa-books"></i>
-                            <span>اللغة العربية - الأدب   </span>
+                            <span>مبادرة - {{$content->classification->name}}   </span>
                         </div>
                         <div class="date">
                             <i class="fas fa-calendar-week"></i>
-                            20/3/2021
+                            {{$content->initiative->end_date}}
                         </div>
                     </div>
-                </div>--}}
-                {{--<div class="comments-section  my-4">
+                </div>
+                <div class="comments-section  my-4">
                     <div class="row border-bottom mb-2">
                         <div class="col-2 comment-time ">
                             <p class="mb-0">محمد أحمد</p>
                             <p>02:23
                                 |
                                 2020-2-3</p>
-
-
                         </div>
                         <div class="col-10 d-flex justify-content-between">
                             <p class="comment">نص التعليق نص  التعليق التعليق التعليق التعليق التعليق التعليق التعليق التعليق التعليق التعليق</p>
@@ -217,7 +215,7 @@
                             </a>
                         </form>
                     </div>
-                </div>--}}
+                </div>
             </div>
             <div class="col-12 col-lg-5">
                 <div class="row attachments" style="height: 300px;">
