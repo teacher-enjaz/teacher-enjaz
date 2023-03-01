@@ -19,41 +19,41 @@ class IndexController extends Controller
 {
     public function index($name_en)
     {
-        return view('enjaz.index', compact('name_en'));
+        return view('enjaz.index',compact('name_en'));
     }
 
     public function getMemberships()
     {
-        $memberships = Membership::where(['user_id' => 1, 'status' => 1])->get();
-        $viewRender = view('enjaz.membership', compact('memberships'))->render();
+        $memberships = Membership::where(['user_id'=>1,'status'=>1])->get();
+        $viewRender = view('enjaz.membership',compact('memberships'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
     public function getLanguages()
     {
-        $user_languages = UserLanguage::where(['user_id' => 1, 'status' => 1])->get();
-        $viewRender = view('enjaz.languages', compact('user_languages'))->render();
+        $user_languages = UserLanguage::where(['user_id'=>1,'status'=>1])->get();
+        $viewRender = view('enjaz.languages',compact('user_languages'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
     public function getSkills()
     {
-        $skills = Skill::where(['user_id' => 1, 'status' => 1])->get();
-        $viewRender = view('enjaz.skills', compact('skills'))->render();
+        $skills = Skill::where(['user_id'=>1,'status'=>1])->get();
+        $viewRender = view('enjaz.skills',compact('skills'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
     public function getCourses()
     {
-        $courses = Course::where(['user_id' => 1, 'status' => 1])->get();
-        $viewRender = view('enjaz.courses', compact('courses'))->render();
+        $courses = Course::where(['user_id'=>1,'status'=>1])->get();
+        $viewRender = view('enjaz.courses',compact('courses'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
     public function getExperiences()
     {
-        $experiences = Experience::where(['user_id' => 1, 'status' => 1])->with('job')->get();
-        $viewRender = view('enjaz.experiences', compact('experiences'))->render();
+        $experiences = Experience::where(['user_id'=>1,'status'=>1])->with('job')->get();
+        $viewRender = view('enjaz.experiences',compact('experiences'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
@@ -63,50 +63,51 @@ class IndexController extends Controller
         $viewRender = view('enjaz.qualifications', compact('qualifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
-
     public function getAwards()
     {
-        $awards = UserAward::where(['user_id' => 1, 'status' => __('enjaz.published')])->with('award')->get();
-        $viewRender = view('enjaz.awards', compact('awards'))->render();
+        $awards = UserAward::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('award')->get();
+        $viewRender = view('enjaz.awards',compact('awards'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
+
     public function getArticles()
     {
-        $content_type = ContentType::where('name', 'المقالات')->first();
-        $articles = Content::where(['user_id' => 1, 'status' => __('enjaz.published'),'content_type_id'=>$content_type->id])->with('article', 'user', 'classification')->get();
-        $viewRender = view('enjaz.articles', compact('articles'))->render();
+        $content_type = ContentType::where('name','المقالات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'user_id'=>1,'status'=>__('enjaz.published')])->with('classification','article','content_file','user:id,name_ar,name_en')->paginate(6);
+        $viewRender = view('enjaz.articles',compact('contents','classifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
-    public function getDetailsArticles($name, $id)
+    public function showArticle($name,$id)
     {
-        $article = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('article', 'user', 'classification', 'content_file')->first();
-        $articles = Content::where(['user_id' => 1, 'status' => __('enjaz.published')])->with('article', 'user', 'classification', 'content_file')->orderBy('created_at', 'desc')->take(4)->get();
-        return view('enjaz.articleView', compact('article', 'articles'));
+        $content_type = ContentType::where('name','المقالات')->first();
+        $content = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('article', 'user', 'classification', 'content_file')->first();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'user_id' => 1, 'status' => __('enjaz.published')])->with('article', 'user', 'classification', 'content_file')->orderBy('created_at', 'desc')->take(4)->get();
+        return view('enjaz.showArticle', compact('contents', 'content'));
     }
 
     public function getAchievement()
     {
-        $content_type = ContentType::where('name', 'الإنجازات')->first();
-        $classifications = Classification::where(['content_type_id' => $content_type->id, 'status' => 1])->get();
-        $contents = Content::where(['content_type_id'=> $content_type->id,'status' => __('enjaz.published')])->with('classification', 'achievement', 'content_file', 'user:id,name_ar,name_en')->paginate(6);
-        $viewRender = view('enjaz.achievements', compact('contents', 'classifications'))->render();
+        $content_type = ContentType::where('name','الإنجازات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'user_id'=>1,'status'=>__('enjaz.published')])->with('classification','achievement','content_file','user:id,name_ar,name_en')->paginate(6);
+        $viewRender = view('enjaz.achievements',compact('contents','classifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
+
     public function getInitiative()
     {
-        $content_type = ContentType::where('name', 'المبادرات')->first();
-        $classifications = Classification::where(['content_type_id' => $content_type->id, 'status' => 1])->get();
-        $contents = Content::where(['content_type_id'=> $content_type->id,'status' => __('enjaz.published')])->with('classification', 'initiative', 'content_file', 'user:id,name_ar')->paginate(6);
-        $viewRender = view('enjaz.initiatives', compact('contents', 'classifications'))->render();
+        $content_type = ContentType::where('name','المبادرات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'user_id'=>1,'status'=>__('enjaz.published')])->with('classification','initiative','content_file','user:id,name_ar,name_en')->paginate(6);
+        $viewRender = view('enjaz.initiatives',compact('contents','classifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
-    public function showInitiative($id)
+
+    public function showInitiative($name,$id)
     {
-        /*$content_type = ContentType::where('name','المبادرات')->first();
-        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
-        $contents = Content::where('content_type_id',$content_type->id)->with('classification','initiative','content_file','user:id,name_ar')->paginate(6);
-        $viewRender = view('enjaz.initiatives',compact('contents','classifications'))->render();
-        return response()->json(array('success' => true, 'html' => $viewRender));*/
+        $content = Content::where(['id'=>$id,'status'=> __('enjaz.published')])->first();
+        return view('enjaz.showInitiative',compact('content'));
     }
 
     public function getDetailsAchievement($name,$id)
