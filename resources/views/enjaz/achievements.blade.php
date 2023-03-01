@@ -7,7 +7,7 @@
             <div class="row">
                 @foreach($contents as $content)
                     <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                        <a href="#">
+                        <a href="{{route('index.details.achievement',['name_en'=>$content->user->name_en,'id'=>$content->id])}}">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-header">
                                     {{$content->title}}

@@ -64,6 +64,8 @@ Route::group(
 
             Route::get('showArticle/{id}',[IndexController::class,'showArticle'])->name('enjaz.showArticle');
 
+            Route::get('getDetailsAchievement/{id}',[IndexController::class,'getDetailsAchievement'])->name('index.details.achievement');
+
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/

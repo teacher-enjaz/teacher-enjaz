@@ -146,9 +146,10 @@ return [
     'now' => 'مازلت أعمل فيها',
     'views' => 'المشاهدات',
     'initiativeScope' => 'مجال المبادرة',
-    'videoLink' => 'الفيديوهات',
-    'images' => 'الصور',
     'attachment' => 'مرفق',
     'lastArticles' => 'آخر المقالات',
+    'follow' => 'متابعة',
+    'sendMail' => 'مراسلة',
+    'achievementType' => 'مجال الإنجاز',
 ];
 

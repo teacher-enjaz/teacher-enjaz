@@ -109,4 +109,10 @@ class IndexController extends Controller
         $content = Content::where(['id'=>$id,'status'=> __('enjaz.published')])->first();
         return view('enjaz.showInitiative',compact('content'));
     }
+
+    public function getDetailsAchievement($name,$id)
+    {
+        $achievement = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('achievement', 'user', 'classification', 'content_file')->first();
+        return view('enjaz.achievementView', compact('achievement'));
+    }
 }
