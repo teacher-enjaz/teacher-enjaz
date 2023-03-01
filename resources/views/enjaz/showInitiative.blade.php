@@ -220,37 +220,37 @@
                 </div>--}}
             </div>
             <div class="col-12 col-lg-5">
-                <div class="row">
+                <div class="row attachments" style="height: 300px;">
+                    <div class="row">
+                        <h2>
+                            {{__('enjaz.images')}}
+                        </h2>
+                    </div>
                     <div class="col-8 align-items-center">
-                        <div class="attachments">
-                            <h2>
-                                {{__('enjaz.images')}}
-                            </h2>
-                        </div>
                         <img id="expand" class="img-initiv"
                              style="width:100%;" src="{{url($content->content_file->whereIN('extension',['jpeg','png','jpg','gif','svg','webp'])->first()->AttPath)}}">
                     </div>
-                    <div class="col-3 column">
+                    <div class="col-3 column" style="overflow-y: auto;max-height: 300px;">
                         @foreach($content->content_file->whereIN('extension',['jpeg','png','jpg','gif','svg','webp']) as $file)
-                            <img src="{{url($file->AttPath)}}" style="width: 100%;"  onclick="showImage({{$file->id}})" data-image="{{url($file->AttPath)}}" class="img-initiv test" id="image{{$file->id}}"/>
+                            <img src="{{url($file->AttPath)}}" style="width: 100%;height: 100px"  onclick="showImage({{$file->id}})" data-image="{{url($file->AttPath)}}" class="img-initiv test" id="image{{$file->id}}"/>
                         @endforeach
                     </div>
                 </div>
-                <div class="row mt-5">
+                <div class="row mt-5 attachments" style="height: 260px;">
+                    <div class="row">
+                        <h2>
+                            {{__('enjaz.videoLink')}}
+                        </h2>
+                    </div>
                     <div class="col-8 align-items-center">
-                        <div class="attachments">
-                            <h2>
-                                {{__('enjaz.videoLink')}}
-                            </h2>
-                        </div>
                         <iframe  class="embed-responsive-item mx-auto"
-                                 style="border-radius: 10px;border: 2px solid #f9f2f2;box-shadow: 0 8px 16px rgba(94,82,246,.25);width:100%;height: 100%;"
+                                 style="border-radius: 10px;border: 2px solid #f9f2f2;box-shadow: 0 8px 16px rgba(94,82,246,.25);width:100%;height: 80%;"
                                  src="https://www.youtube.com/embed/{{getYoutubeID($content->content_file->whereNull('extension')->first()->name)}}"
                                  id="video-frame"
                                  allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="col-4 column">
+                    <div class="col-4 column" style="overflow-y: auto;max-height: 260px;">
                         @foreach($content->content_file->whereNull('extension') as $file)
                             <img src="https://img.youtube.com/vi/{{getYoutubeID($file->name)}}/mqdefault.jpg"
                                  style="width: 100%;"  onclick="showVideo({{$file->id}})" data-video="{{getYoutubeID($file->name)}}" class="img-initiv" id="video{{$file->id}}"/>
