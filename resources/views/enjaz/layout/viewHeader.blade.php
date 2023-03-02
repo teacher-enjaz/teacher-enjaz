@@ -72,12 +72,12 @@
                 </div>
             </div>
             </div>
-            <form class="col-12 col-md-6 my-2   justify-content-center d-flex rounded-pill p-1 view-search">
+            {{--<form class="col-12 col-md-6 my-2 top  justify-content-center d-flex rounded-pill p-1 view-search">
                 <input class="form-control me-2 border-0 border-left  size-11 " type="search" placeholder="ابحث عن مقالة / مبادرة / إنجاز" aria-label="Search">
                 <a href="#" class="text-center " type="submit">
                     <i class="fa fa-search btn_search rounded-circle"></i>
                 </a>
-            </form>
+            </form>--}}
         </div>
     </nav>
     <!-- End Top Header -->

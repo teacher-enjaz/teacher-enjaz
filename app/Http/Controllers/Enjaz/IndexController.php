@@ -21,6 +21,41 @@ class IndexController extends Controller
     {
         return view('enjaz.index',compact('name_en'));
     }
+    public function mainIndex()
+    {
+        return view('enjaz.allSectionView');
+    }
+
+    public function getAllArticles()
+    {
+        $content_type = ContentType::where('name','المقالات')->first();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'status'=>__('enjaz.published')])->with('classification','article','content_file','user:id,name_ar,name_en')->paginate(12);
+        $viewRender = view('enjaz.allArticles', compact('contents'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+
+    public function getAllAchievement()
+    {
+        $content_type = ContentType::where('name','الإنجازات')->first();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'status'=>__('enjaz.published')])->with('classification','achievement','content_file','user:id,name_ar,name_en')->paginate(12);
+        $viewRender = view('enjaz.allAchievement', compact('contents'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+
+    public function getAllInitiative()
+    {
+        $content_type = ContentType::where('name','المبادرات')->first();
+        $contents = Content::where(['content_type_id'=>$content_type->id,'status'=>__('enjaz.published')])->with('classification','initiative','content_file','user:id,name_ar,name_en')->paginate(12);
+        $viewRender = view('enjaz.allInitiative', compact('contents'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
+
+    public function getAllAwards()
+    {
+        $awards = UserAward::where(['status'=>__('enjaz.published')])->with('award')->paginate(12);
+        $viewRender = view('enjaz.allAwards',compact('awards'))->render();
+        return response()->json(array('success' => true, 'html' => $viewRender));
+    }
 
     public function getMemberships()
     {
@@ -63,6 +98,7 @@ class IndexController extends Controller
         $viewRender = view('enjaz.qualifications', compact('qualifications'))->render();
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
+
     public function getAwards()
     {
         $awards = UserAward::where(['user_id'=>1,'status'=>__('enjaz.published')])->with('award')->get();
@@ -115,4 +151,5 @@ class IndexController extends Controller
         $achievement = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('achievement', 'user', 'classification', 'content_file')->first();
         return view('enjaz.achievementView', compact('achievement'));
     }
+
 }

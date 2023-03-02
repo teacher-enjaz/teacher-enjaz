@@ -67,6 +67,19 @@ Route::group(
             Route::get('getDetailsAchievement/{id}',[IndexController::class,'getDetailsAchievement'])->name('index.details.achievement');
 
         });
+        Route::group(['prefix' => 'main'], function () {
+
+            Route::get('/',[IndexController::class,'mainIndex'])->name('main.index');
+
+            Route::get('getAllArticles',[IndexController::class,'getAllArticles'])->name('main.articles');
+
+            Route::get('getAllAchievement',[IndexController::class,'getAllAchievement'])->name('main.achievement');
+
+            Route::get('getAllInitiative',[IndexController::class,'getAllInitiative'])->name('main.initiative');
+
+            Route::get('getAllAwards',[IndexController::class,'getAllAwards'])->name('main.awards');
+
+        });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/
         Route::group(['prefix' => 'experiences'], function () {
