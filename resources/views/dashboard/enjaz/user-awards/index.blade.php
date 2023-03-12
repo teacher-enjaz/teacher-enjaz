@@ -49,12 +49,12 @@
                                         <div class="col-12 col-md-4 ">
                                             <div class="card articel-card shadow my-4 p-0">
                                                 <div class="card-header py-3">
-                                                    <a href="single_initiative.html">
+                                                    <a href="{{route('main.show.my.awards',['id'=>$user_award->award->id])}}">
                                                         <h6 class="m-0 font-weight-bold text-primary">{{$user_award->award->name}}</h6>
                                                     </a>
                                                 </div>
                                                 <div class="card-body p-0 pb-2">
-                                                    <a href="single_initiative.html">
+                                                    <a href="{{route('main.show.my.awards',['id'=>$user_award->award->id])}}">
                                                         <div class="initiative-img d-flex justify-content-center shadow-dark">
                                                             <img src="{{ url('storage/awards',$user_award->image) }}" alt="{{$user_award->award->name}}" class="image-fluid " style="height: 20rem !important;">
                                                         </div>
@@ -117,6 +117,10 @@
                                         </div>
                                     @endforeach
                                 @endif
+                                    @else
+                                        <div class="h-100  text-light size-55">
+                                            <p>لا يوجد مسابقات وجوائز</p>
+                                        </div>
                             </div>
                             <!-- articels data end -->
                         </section>

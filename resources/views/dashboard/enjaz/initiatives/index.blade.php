@@ -87,12 +87,12 @@
                                         <div class="col-12 col-md-4 ">
                                             <div class="card articel-card shadow my-4 p-0">
                                                 <div class="card-header py-3">
-                                                    <a href="single_initiative.html">
+                                                    <a href="{{url('enjaz/'.Str::slug($content->user->name_en).'/showInitiative/'.$content->id)}}">
                                                         <h6 class="m-0 font-weight-bold text-primary"> {{$content->title}}   </h6>
                                                     </a>
                                                 </div>
                                                 <div class="card-body p-0 pb-2">
-                                                    <a href="#">
+                                                    <a href="{{url('enjaz/'.Str::slug($content->user->name_en).'/showInitiative/'.$content->id)}}">
                                                         <div class="initiative-img d-flex justify-content-center shadow-dark">
                                                             <img src="{{url($content->content_file->whereIN('extension',['jpeg','png','jpg','gif','svg','webp'])->first()->AttPath)}}" alt="" class="image-fluid">
                                                         </div>

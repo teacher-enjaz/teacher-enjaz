@@ -151,5 +151,7 @@ return [
     'follow' => 'متابعة',
     'sendMail' => 'مراسلة',
     'achievementType' => 'مجال الإنجاز',
+    'awardUser' => 'صاحب الجائزة',
+    'externalLinks' => 'روابط خارجية',
 ];
 
