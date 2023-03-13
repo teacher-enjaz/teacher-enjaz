@@ -117,9 +117,10 @@ class IndexController extends Controller
     public function showArticle($name,$id)
     {
         $content_type = ContentType::where('name','المقالات')->first();
+        $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
         $content = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('article', 'user', 'classification', 'content_file')->first();
         $contents = Content::where(['content_type_id'=>$content_type->id,'user_id' => 1, 'status' => __('enjaz.published')])->with('article', 'user', 'classification', 'content_file')->orderBy('created_at', 'desc')->take(4)->get();
-        return view('enjaz.showArticle', compact('contents', 'content'));
+        return view('enjaz.showArticle', compact('contents', 'content','classifications'));
     }
 
     public function getAchievement()

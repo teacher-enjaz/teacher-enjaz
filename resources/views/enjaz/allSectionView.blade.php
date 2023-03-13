@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="container bg-white">
+    <div class="container bg-white" style="border-radius: 20px;">
         <div class="main-content mt-1" style="width: 100%;">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-articles" role="tabpanel" aria-labelledby="pills-articles-tab">

@@ -96,7 +96,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [ExperienceController::class, 'status']);
         });
-
         Route::group(['prefix' => 'courses'], function () {
 
             Route::get('/', [CoursesController::class, 'index'])->name('courses.index');
@@ -111,7 +110,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [CoursesController::class, 'status']);
         });
-
         Route::group(['prefix' => 'social-platforms'], function () {
 
             Route::get('/', [SocialPlatformController::class, 'index'])->name('social-platforms.index');
@@ -126,7 +124,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [SocialPlatformController::class, 'status']);
         });
-
         Route::group(['prefix' => 'social-accounts'], function () {
 
             Route::get('/', [UserSocialAccountController::class, 'index'])->name('social-accounts.index');
@@ -141,7 +138,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [UserSocialAccountController::class, 'status']);
         });
-
         Route::group(['prefix' => 'user-qualifications'], function () {
 
             Route::get('/', [UserQualificationController::class, 'index'])->name('user-qualifications.index');
@@ -156,7 +152,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [UserQualificationController::class, 'status']);
         });
-
         Route::group(['prefix' => 'skills'], function () {
 
             Route::get('/', [SkillController::class, 'index'])->name('skills.index');
@@ -171,7 +166,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [SkillController::class, 'status']);
         });
-
         Route::group(['prefix' => 'memberships'], function () {
 
             Route::get('/', [MembershipController::class, 'index'])->name('memberships.index');
@@ -186,7 +180,6 @@ Route::group(
 
             Route::get('status/{status}/{id}', [MembershipController::class, 'status']);
         });
-
         Route::group(['prefix' => 'enjaz-cpanel'], function () {
 
             Route::get('/', [BioController::class, 'index'])->name('bios.index');
@@ -201,7 +194,6 @@ Route::group(
 
             Route::get('show', [BioController::class, 'show'])->name('bios.show');
         });
-
         Route::group(['prefix' => 'user-languages'], function () {
 
             Route::get('/', [UserLanguageController::class, 'index'])->name('user-languages.index');

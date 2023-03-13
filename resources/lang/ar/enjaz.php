@@ -151,5 +151,7 @@ return [
     'follow' => 'متابعة',
     'sendMail' => 'مراسلة',
     'achievementType' => 'مجال الإنجاز',
+    'images' => 'الصور',
+    'videoLink' => 'الفيديوهات',
 ];
 
