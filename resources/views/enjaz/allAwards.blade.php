@@ -8,7 +8,7 @@
                 <div class="row">
                     @foreach($awards as $award)
                         <div class="col-12 col-lg-4 col-md-6 col-sm-12">
-                            <a href="#">
+                            <a href="{{route('main.show.awards',['id'=>$award->award->id])}}">
                                 <div class="card" style="width: 18rem;">
                                     <div class="card-header">
                                         {{$award->award->name}}

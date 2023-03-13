@@ -28,7 +28,7 @@ class ArticleController extends Controller
     {
         $content_type = ContentType::where('name','المقالات')->first();
         $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
-        $contents = Content::where('content_type_id',$content_type->id)->with('classification','article','content_file','user:id,name_ar')->paginate(2);
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','article','content_file','user:id,name_ar,name_en')->paginate(2);
         return view('dashboard.enjaz.articles.index',compact('classifications','contents'));
     }
 

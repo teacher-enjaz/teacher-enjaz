@@ -25,7 +25,7 @@ class InitiativeController extends Controller
     {
         $content_type = ContentType::where('name','المبادرات')->first();
         $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
-        $contents = Content::where('content_type_id',$content_type->id)->with('classification','initiative','content_file','user:id,name_ar')->paginate(6);
+        $contents = Content::where('content_type_id',$content_type->id)->with('classification','initiative','content_file','user:id,name_ar,name_en')->paginate(6);
         return view('dashboard.enjaz.initiatives.index',compact('classifications','contents'));
     }
 
