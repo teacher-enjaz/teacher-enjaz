@@ -79,6 +79,10 @@ Route::group(
 
             Route::get('getAllAwards',[IndexController::class,'getAllAwards'])->name('main.awards');
 
+            Route::get('showAward/{id}',[IndexController::class,'showAward'])->name('main.show.awards');
+
+            Route::get('showMyAward/{id}',[IndexController::class,'showMyAwards'])->name('main.show.my.awards');
+
         });
         /*************************** Teacher Enjaz Routes **********************************************/
         /*************************** Experience Routes **********************************************/

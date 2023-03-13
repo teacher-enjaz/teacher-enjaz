@@ -117,8 +117,13 @@ class IndexController extends Controller
     public function showArticle($name,$id)
     {
         $content_type = ContentType::where('name','المقالات')->first();
+
         $classifications = Classification::where(['content_type_id'=>$content_type->id,'status'=>1])->get();
         $content = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('article', 'user', 'classification', 'content_file')->first();
+
+//        $content = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('article', 'user', 'classification', 'content_file')->first();
+        $content = Content::where(['user_id' => 1, 'id' => $id])->with('article', 'user', 'classification', 'content_file')->first();
+
         $contents = Content::where(['content_type_id'=>$content_type->id,'user_id' => 1, 'status' => __('enjaz.published')])->with('article', 'user', 'classification', 'content_file')->orderBy('created_at', 'desc')->take(4)->get();
         return view('enjaz.showArticle', compact('contents', 'content','classifications'));
     }
@@ -141,15 +146,29 @@ class IndexController extends Controller
         return response()->json(array('success' => true, 'html' => $viewRender));
     }
 
+    public function showAward($id)
+    {
+        $award = UserAward::where(['award_id'=>$id,'status'=> __('enjaz.published')])->first();
+        return view('enjaz.showAward',compact('award'));
+    }
+
+    public function showMyAwards($id)
+    {
+        $award = UserAward::where(['award_id'=>$id])->first();
+        return view('enjaz.showAward',compact('award'));
+    }
+
     public function showInitiative($name,$id)
     {
-        $content = Content::where(['id'=>$id,'status'=> __('enjaz.published')])->first();
+//        $content = Content::where(['id'=>$id,'status'=> __('enjaz.published')])->first();
+        $content = Content::where(['id'=>$id])->first();
         return view('enjaz.showInitiative',compact('content'));
     }
 
     public function getDetailsAchievement($name,$id)
     {
-        $achievement = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('achievement', 'user', 'classification', 'content_file')->first();
+//        $achievement = Content::where(['user_id' => 1, 'status' => __('enjaz.published'), 'id' => $id])->with('achievement', 'user', 'classification', 'content_file')->first();
+        $achievement = Content::where(['user_id' => 1, 'id' => $id])->with('achievement', 'user', 'classification', 'content_file')->first();
         return view('enjaz.achievementView', compact('achievement'));
     }
 

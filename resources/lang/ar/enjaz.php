@@ -153,5 +153,8 @@ return [
     'achievementType' => 'مجال الإنجاز',
     'images' => 'الصور',
     'videoLink' => 'الفيديوهات',
+    'awardUser' => 'صاحب الجائزة',
+    'externalLinks' => 'روابط خارجية',
+
 ];
 

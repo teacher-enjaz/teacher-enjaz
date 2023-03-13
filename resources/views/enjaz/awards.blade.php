@@ -42,4 +42,26 @@
             </div>
         </div>
     </div>
+@else
+    <div class="articles mt-4">
+        <div class="container">
+            <div class="row">
+                <div class=" text-light size-55" style="height: 120px">
+                    <p>لا يوجد مسابقات وجوائز</p>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+@if($awards->count() == 0)
+    <div class="articles mt-4">
+        <div class="container">
+            <div class="row">
+                <div class=" text-light size-55" style="height: 120px">
+                    <p>لا يوجد مسابقات وجوائز</p>
+                </div>
+            </div>
+        </div>
+    </div>
 @endif

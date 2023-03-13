@@ -93,7 +93,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="card-body p-0 pb-2">
-                                                    <a href="">
+                                                    <a href="{{route('index.details.achievement',['name_en'=>\Illuminate\Support\Str::slug($content->user->name_en),'id'=>$content->id])}}">
                                                         <div class="initiative-img d-flex justify-content-center shadow-dark">
                                                             <img src="{{url($content->content_file->whereIN('extension',['jpeg','png','jpg','gif','svg','webp'])->first()->AttPath)}}" alt="" class="image-fluid" style="max-width: 250px;width: 33.33%;max-height: 200px;height: 200px">
                                                         </div>
